@@ -1,0 +1,11 @@
+---
+applications:
+- name: attendees
+  host: attendees-${random-word}
+  memory: 512MB
+  instances: 1
+  path: ./attendees.jar
+#  buildpack: java_buildpack
+  services: []
+  env:
+    SPRING_PROFILES_ACTIVE: cloud

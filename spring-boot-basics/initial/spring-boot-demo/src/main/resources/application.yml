@@ -1,0 +1,16 @@
+greeting: Hello World 
+
+
+shell:
+  auth:
+    simple:
+      user:
+        name: test
+        password: test 
+
+---
+
+spring:
+  profiles: spanish
+
+greeting: Hola

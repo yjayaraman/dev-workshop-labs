@@ -1,0 +1,9 @@
+---
+applications:
+- name: spring-music
+  memory: 512M 
+  buildpack: java_buildpack
+  instances: 1
+  random-route: true
+  path: spring-music-0.0.1-SNAPSHOT.war
+

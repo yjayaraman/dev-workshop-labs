@@ -1,0 +1,9 @@
+---
+applications:
+- name: attendees
+  buildpack: java_buildpack
+  memory: 512M
+  instances: 1
+  host: attendees-${random-word}
+  path: target/cf-spring-mvc-boot-0.0.1-SNAPSHOT.jar
+
