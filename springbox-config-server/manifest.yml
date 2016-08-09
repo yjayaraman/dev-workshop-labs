@@ -1,0 +1,6 @@
+---
+applications:
+- name: springbox-config-server
+  host: springbox-config-server-yj
+  memory: 512M
+  path: target/springbox-config-server-0.0.1-SNAPSHOT.jar

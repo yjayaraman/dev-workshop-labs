@@ -1,0 +1,20 @@
+= Reference Documentation
+
+Pivotal
+
+=== Index
+Curl Request
+
+include::{snippets}/index/curl-request.adoc[]
+
+
+Http Request
+
+include::{snippets}/index/http-request.adoc[]
+
+
+Http Response
+
+include::{snippets}/index/http-response.adoc[]
+
+

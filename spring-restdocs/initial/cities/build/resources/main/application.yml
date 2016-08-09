@@ -1,0 +1,8 @@
+spring:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:9999/user
+      
+logging:
+  level:
+    org.springframework: TRACE

@@ -1,0 +1,85 @@
+[source,http]
+----
+HTTP/1.1 200 OK
+Content-Type: application/hal+json
+
+{
+  "_embedded" : {
+    "cities" : [ {
+      "name" : "HOLTSVILLE",
+      "county" : "SUFFOLK",
+      "stateCode" : "NY",
+      "postalCode" : "00501",
+      "latitude" : "+40.922326",
+      "longitude" : "-072.637078",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/1"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/1"
+        }
+      }
+    }, {
+      "name" : "HOLTSVILLE",
+      "county" : "SUFFOLK",
+      "stateCode" : "NY",
+      "postalCode" : "00544",
+      "latitude" : "+40.922326",
+      "longitude" : "-072.637078",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/2"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/2"
+        }
+      }
+    }, {
+      "name" : "ADJUNTAS",
+      "county" : "ADJUNTAS",
+      "stateCode" : "PR",
+      "postalCode" : "00601",
+      "latitude" : "+18.165273",
+      "longitude" : "-066.722583",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/3"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/3"
+        }
+      }
+    }, {
+      "name" : "AGUADA",
+      "county" : "AGUADA",
+      "stateCode" : "PR",
+      "postalCode" : "00602",
+      "latitude" : "+18.393103",
+      "longitude" : "-067.180953",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/4"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/4"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/cities"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/profile/cities"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 4,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}
+----
