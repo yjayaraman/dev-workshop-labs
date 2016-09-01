@@ -9,3 +9,5 @@ applications:
     SPRING_PROFILES_ACTIVE: cloud
   services:
     - springbox-catalog-db
+    - springbox-config-service
+  timeout: 120
