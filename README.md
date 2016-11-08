@@ -3,7 +3,7 @@ Content for running the labs portion of Cloud Native Dev Workshop.
 
 ## Getting the workshop content
 
-1. Git clone the repository
+1. Git clone the repository. If you don't have GitHub account, you can download it from https://github.com/yjayaraman-pivotal/dev-workshop-labs/archive/master.zip
 
     $ git clone https://github.com/yjayaraman-pivotal/dev-workshop-labs.git
 
