@@ -1,9 +1,8 @@
 package lab.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import lab.domain.Movie;
 
-public interface MovieRepository extends CrudRepository<Movie, Long> {
-    public Movie findByMlId(String mlId);
+public interface MovieRepository extends PagingAndSortingRepository<Movie, Long> {
 }
