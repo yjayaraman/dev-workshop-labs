@@ -1,28 +1,12 @@
-greeting: Hello
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
 
-endpoints:
-  health:
-    sensitive: false
-
-
-    
+greeting: Hello World
 spring:
-  application:
-    name: springbox-catalog
   jpa:
     hibernate:
       ddl-auto: create-drop
-
----
-
-spring:
-  profiles: default
-  jpa:
-    database: HSQL
-
----
-
-spring:
-  profiles: cloud
-  jpa:
-    database: MYSQL
