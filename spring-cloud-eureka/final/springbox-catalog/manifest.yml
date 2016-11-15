@@ -11,4 +11,5 @@ applications:
   services:
   - springbox-catalog-db
   - springbox-config-service
+  - springbox-service-registry
   timeout: 120
