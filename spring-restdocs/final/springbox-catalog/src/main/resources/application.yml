@@ -1,0 +1,21 @@
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+spring:
+  application:
+    name: springbox-catalog
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+greeting: Hello World
+
+---
+spring:
+  profiles: spanish
+greeting: Hola
+
+
