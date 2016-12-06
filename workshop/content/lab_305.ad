@@ -1,0 +1,292 @@
++++
+categories = ["general"]
+date = "2016-05-11T06:07:56-04:00"
+tags = ["document"]
+title = "Lab05"
+type = "lab"
++++
+
+:compat-mode:
+= Lab 05 - Leveraging Eureka for Service Discovery via Spring Cloud Netflix
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/spring-cloud-eureka/complete/springbox-catalog`.
+
+[abstract]
+--
+Let's continue learning the components found in Spring Cloud to implement patterns for distributed systems.
+We'll use Spring Cloud Netflix to deploy Eureka, which is a component offering service registration and discovery.
+
+In this lab, we'll do the following::
+- Create a Eureka server
+- Set up the springbox-catalog app to use Eureka
+- Create and Register the Client App 
+
+
+---
+***Approximate time: 20 minutes***
+--
+
+
+## Exercises
+
+=== `Run the Eureka Server`
+
+. Change to the lab directory:
++
+----
+$ cd $COURSE_HOME/springbox-eureka
+----
+
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
+
+. In a browser, visit http://localhost:8761 and verify that everything is working properly:
++
+image::/images/eureka_1.png[]
+
+=== `Setup the Configuration`
+
+. Our Config Server has to be set up to consistently configure the Eureka Client across all of our applications.
+In your config repo, create `application.yml` and add the following:
++
+----
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${server.port:8080}}
+  client:    # <--- ADD THE CLIENT SECTION!!!
+    serviceUrl:
+      defaultZone: ${vcap.services.springbox-service-registry.credentials.uri:http://127.0.0.1:8761}/eureka/
+----
+
+
+=== `Run config server`
+
+. A completed `springbox-config-server` project has been placed in `$COURSE_HOME/springbox-config-server` for your convenience.
+In a different terminal window, change to that directory, rebuild, and run the application:
++
+----
+$ cd `$COURSE_HOME/springbox-config-server`
+$ mvn spring-boot:run
+----
+
+=== `Set up the springbox-catalog app to use Eureka`
+
+. Change to the lab directory:
++
+----
+$ cd $COURSE_HOME/spring-cloud-eureka/initial/springbox-catalog
+----
+
+. Now open `lab.SpringboxCatalogApplication` and add the `@EnableDiscoveryClient` annotation:
++
+----
+@SpringBootApplication
+@EnableDiscoveryClient  // <--- ADD THIS!
+public class SpringboxCatalogApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringboxProducerApplication.class, args);
+    }
+}
+----
+
+
+=== `Run the springbox-catalog app`
+
+. And run the springbox-catalog application:
++
+----
+$ mvn spring-boot:run
+----
+
+. Ten seconds after the springbox-catalog application finishes startup, you should see it log its registration with Eureka:
++
+----
+2016-11-13 18:11:11.074  INFO 28062 --- [  restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1479078671074, current=UP, previous=STARTING]
+2016-11-13 18:11:11.076  INFO 28062 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SPRINGBOX-CATALOG/10.0.0.122:springbox-catalog: registering service...
+2016-11-13 18:11:11.118  INFO 28062 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SPRINGBOX-CATALOG/10.0.0.122:springbox-catalog - registration status: 204
+----
++
+You should also be able to refresh http://localhost:8761 in the browser and see the springbox-catalog registered:
++
+image::/images/eureka_2.png[]
+
+
+=== `Create and Register the Client App`
+
+. Change to the lab directory:
++
+----
+$ cd $COURSE_HOME/spring-cloud-eureka/initial/springbox-client
+----
++
+and import the project (via `pom.xml`) into your IDE of choice.
+
+. Create a class `lab.Movie` and enter the following code in it:
++
+----
+package lab.domain;
+
+import java.util.List;
+
+public class Movie {
+
+
+  private String title;
+
+  private String mlId;
+
+  private int numberInStock;
+
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getMlId() {
+    return mlId;
+  }
+
+  public void setMlId(String mlId) {
+    this.mlId = mlId;
+  }
+
+
+  public int getNumberInStock() {
+    return numberInStock;
+  }
+
+  public void setNumberInStock(int numberInStock) {
+    this.numberInStock = numberInStock;
+  }
+
+}
+----
+
+. Now create `lab.MovieClient` class and add the following code:
++
+----
+
+@Component
+public class MovieClient {
+
+  @Autowired
+  @LoadBalanced
+  RestTemplate restTemplate;
+
+  PagedResources<Movie> getMovies() {
+    return restTemplate.exchange(
+                "//SPRINGBOX-CATALOG/movies",
+                HttpMethod.GET, null,
+                new ParameterizedTypeReference<PagedResources<Movie>>() {
+                })
+        .getBody();
+
+  }
+
+}
+
+----
+
+
+. In the package `lab`, modify the class `SpringboxClientApplication`, as follows:
++
+----
+@SpringBootApplication
+@EnableDiscoveryClient
+@RestController
+
+public class SpringboxClientApplication {
+  
+  @Autowired
+  private MovieClient movieClient;
+  
+  
+  public static void main(String[] args) {
+    SpringApplication.run(SpringboxClientApplication.class, args);
+  }
+  
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+    
+
+  
+  @RequestMapping(name="/movies", method = RequestMethod.GET, produces = {"application/json"})
+  public PagedResources<Movie> movies() {
+    return movieClient.getMovies();
+  }
+}
+
+----
+
+. In `src/main/resources/application.yml`, set the `server.port` property:
++
+----
+server:
+  port: 8000 
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+----
+
+. Create the file `src/main/resources/bootstrap.yml` and paste in the following source:
++
+----
+spring:
+  application:
+    name: springbox-client
+  cloud:
+    config:
+      uri: ${vcap.services.springbox-config-service.credentials.uri:http://localhost:8888}
+----
+
+. And run the Client application:
++
+----
+$ mvn spring-boot:run
+----
+
+. Ten seconds after the consumer application finishes startup, you should see it log its registration with Eureka:
++
+----
+2016-11-13 20:19:14.477  INFO 29938 --- [  restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1479086354477 with initial instances count: 2
+2016-11-13 20:19:14.496  INFO 29938 --- [  restartedMain] c.n.e.EurekaDiscoveryClientConfiguration : Registering application springbox-client with eureka with status UP
+2016-11-13 20:19:14.496  INFO 29938 --- [  restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1479086354496, current=UP, previous=STARTING]
+2016-11-13 20:19:14.497  INFO 29938 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SPRINGBOX-CLIENT/10.0.0.122:springbox-client:8000: registering service...
+2016-11-13 20:19:14.533  INFO 29938 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SPRINGBOX-CLIENT/10.0.0.122:springbox-client:8000 - registration status: 204
+----
++
+You should also be able to refresh http://localhost:8761 in the browser and see the Client registered:
++
+image::/images/eureka_3.png[]
+
+. Using `curl`, test the client application and show that it is receiving values from the catalog:
++
+----
+curl -i localhost:8000/movies
+{
+    "_embedded": {
+        "movieList": [
+            {
+                "genres": null,
+                "id": null,
+                "mlId": "1",
+                "numberInStock": 10,
+                "title": "Toy Story (1995)"
+            },
+----

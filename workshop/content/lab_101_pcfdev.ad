@@ -1,0 +1,70 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab101"
+type = "lab"
++++
+
+## Lab 01 - Command Line Interface
+
+
+## `Goal`
+--
+Install the command line interface (CLI) and log into *PCF Dev* Env.
+
+Approximate time: 10 minutes
+--
+
+## `Exercise`  
+
+### `Install PCF Dev`
+
+. In a browser, navigate to https://network.pivotal.io and login with your username and password
+. Click on 'PCF Dev'
+. Download the latest zip file
+. Unzip pcfdev-<version>.zip 
+
+### `Start PCF Dev`
+. From the unzipped folder run start-osx
+
+### `Install the CLI`
+. Check to see if you have a CLI already installed. Open a terminal/command window and type `cf --version`. If you see that you have an installed version of 6.x or greater, you can skip the install.
+
+. Go to https://github.com/cloudfoundry/cli/releases or https://console.run.pivotal.io/tools. Download and run the installer for your platform.
+
+. Verify your install by opening a terminal/command window and typing `cf --version`. You now have a Cloud Foundry client that can communicate with any Cloud Foundry installation.
+
+### `Explore cf help`
+. Type `cf help`. Scroll through the list of commands available to the CLI. Notice that they are organized by category. You will become familiar with most of the categories in this course.
+
+. Type `cf help login`. Use this approach whenever you need a refresher on any of the CLI commands. Because login has an alias, you could have also have typed cf help l.
+
+### `Log into *PCF Dev* with the CLI`
+. From the command line log in the *PCF Dev* environment
+
+. Set the API target for the CLI:
++
+----
+$ cf login -a api.local.pcfdev.io --skip-ssl-validation
+----
++
+. Use 'admin' for username and password 
++
+Once you have logged in, type cf target to view your current API endpoint, User, Org and Space.
+
+### `View the .cf directory`
+. On your local machine’s file system, navigate to your home directory and find the .cf directory. It may be hidden depending on your settings.
+
+. Open the config.json file and notice that your connection settings are cached in that file.
+
+### `If you have time`
+. Browse the commands in cf help and see what you discover.
+
+## `Demo`
+++++
+<video width="320" height="240" controls>
+  <source src="../images/lab_101_pcfdev.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+++++

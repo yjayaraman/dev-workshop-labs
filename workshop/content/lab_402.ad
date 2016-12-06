@@ -1,0 +1,70 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab402"
+type = "lab"
++++
+
+## Lab 02 - Integrating with APM Tools
+
+
+## `Goal`
+--
+Integrate multiple instances of a running application with a third-party Application Performance Monitoring (APM) tool.
+
+Estimated time: 20 minutes
+--
+
+
+## `Exercise`  
+
+### `Configure and Use New Relic APM Service`
+
+  Note:: New Relic Service Broker for Pivotal Cloud Foundry must already be installed. 
+
+. If New Relic Tile is installed, check the Services Marketplace in Apps Manager.
++
+image::/images/nr_marketplace.png[]
+
+. View New Relic Service Plans.  
++
+image::/images/nr-plans.png[]
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-bind.png[]
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view07.png[]
+
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view08.png[]
+
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view09.png[]
+
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view10.png[]
+
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view11.png[]
+
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view12.png[]
+
+
+. Bind the New Relic Service to an Application.
++
+image::/images/nr-view13.png[]

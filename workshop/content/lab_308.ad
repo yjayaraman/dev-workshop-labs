@@ -1,0 +1,193 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab08"
+type = "lab"
++++
+
+
+= Lab 08 - Microservices Security
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/spring-cloud-oauth/final/demo`.
+
+Let’s take a break from MovieLens and look at securing micro services using OAuth.
+
+In this lab, we’ll do the following::
+
+- Run Cloud Foundry UAA server
+
+- Create and run a Secure application
+
+
+
+=== `Run Cloud Foundry UAA server`
+
+. The UAA is the identity management service for Cloud Foundry. Its primary role is as an OAuth2 provider, issuing tokens for client applications to use when they act on behalf of Cloud Foundry users. In collaboration with the login server, it can authenticate users with their Cloud Foundry credentials, and can act as an SSO service using those credentials (or others). It has endpoints for managing user accounts and for registering OAuth2 clients, as well as various other management functions.
+
+. Change to the UAA Server directory:
++
+----
+$ cd $COURSE_HOME/uaa/
+----
+
+. Take a look at uaa.yml
++
+----
+scim:
+  users:
+    - wtran|demo|wtran@pivotal.io|Will|Tran|menu.read,order.me  <---- sample users
+    - frank|demo|frank@whitehouse.gov|Frank|Underwood|menu.read,order.me
+    - freddy|demo|freddy@freddysbbq.com|Freddy|Hayes|menu.read,menu.write,order.admin
+----
+
+. Run the UAA server
++
+----
+→mvn cargo:run
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building microsec-uaa 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+...
+----
+
+
+=== `Create a Secure application`
+
+. Change to the lab directory:
++
+----
+$ cd $COURSE_HOME/spring-cloud-oauth/initial/demo
+----
+
+. Import the project (via `pom.xml`) into your IDE of choice.
+
+. And add the appropriate dependencies for the Spring Security and OAuth:
++
+----
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cloud-connectors</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-oauth2</artifactId>
+    </dependency>
+----
+
+. Now open `lab.DemoApplication` and add the `@SpringBootApplication`,`@Configuration`,`@EnableAutoConfiguration`,`@ComponentScan`,`@Controller`,`@EnableOAuth2Sso` annotations:
++
+----
+@SpringBootApplication
+@Configuration   // <--- ADD THIS!
+@EnableAutoConfiguration   // <--- ADD THIS!
+@ComponentScan   // <--- ADD THIS!
+@Controller   // <--- ADD THIS!
+@EnableOAuth2Sso  // <--- ADD THIS!
+public class SpringboxCatalogApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringboxProducerApplication.class, args);
+    }
+}
+----
+
+. Extend from abstract class WebSecurityConfigurerAdapter, and override `configure` method:
++
+----
+public class DemoApplication extends WebSecurityConfigurerAdapter {
+...
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.antMatcher("/oidc")
+    .authorizeRequests()
+    .expressionHandler(new OAuth2WebSecurityExpressionHandler())
+    .antMatchers("/oidc")
+    .access("#oauth2.hasScope('openid')")
+    .and()
+    .antMatcher("/**").authorizeRequests()
+    .antMatchers("/", "/error").permitAll()
+    .anyRequest().authenticated()
+    .and()
+    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+    .logoutSuccessUrl("/");
+  }
+----
++
+. Add instance variable, and modify the `main` method to ignore SSL cert errors:
++
+----  
+  @Autowired
+  OAuth2ClientContext oauth2Context;
+
+  public static void main(String[] args) {
+    if ("true".equals(System.getenv("SKIP_SSL_VALIDATION"))) {
+      SSLValidationDisabler.disableSSLValidation();
+    }
+    SpringApplication.run(DemoApplication.class, args);
+  }
+
+----
++
+. Add controller methods:
++
+---- 
+  @RequestMapping("/")
+  public String index() {
+    return "index";
+  }
+
+  @RequestMapping("/oidc")
+  public String authCode(Model model, HttpServletRequest request) throws Exception {
+    OAuth2AccessToken accessToken = oauth2Context.getAccessToken();
+    if (accessToken != null) {
+      model.addAttribute("raw_token", oauth2Context.getAccessToken().getValue());
+      model.addAttribute("access_token", toPrettyJsonString(parseToken(accessToken.getValue())));
+    }
+    return "oidc";
+  }
+
+
+  private Map<String, ?> parseToken(String base64Token) throws IOException {
+    String token = base64Token.split("\\.")[1];
+    return objectMapper.readValue(Base64.decodeBase64(token), new TypeReference<Map<String, ?>>() {
+    });
+  }
+
+  private String toPrettyJsonString(Object object) throws Exception {
+    return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+  }
+----
++
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
++
+. Using a browser, Go to http://localhost:8082/
++
+Verify that you are able to see the index.html
+
+. Click on the link ::
++
+Verify that you are prompted to login
++
+image:/images/spring-cloud-oauth-0.png[]
++
+. Enter username (frank) and password (demo)
++
+. Verify that you are asked for permission on behalf of the app
++
+image:/images/spring-cloud-oauth-1.png[]
++
+. Confirm that you are able to see the page with the OAuth token
++
+image:/images/spring-cloud-oauth-2.png[]

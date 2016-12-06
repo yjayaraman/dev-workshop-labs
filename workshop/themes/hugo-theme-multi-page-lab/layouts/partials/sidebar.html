@@ -1,0 +1,23 @@
+		<!-- .doc-sidebar -->
+		<div class="doc-sidebar" style="width:30%; margin-top:0; float:right; padding:10px;">
+			<div class="sidebar-module">
+				
+		    	<div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+		    	<h4 class="type-brand-3">Books</h4>
+		    	<ul class="list-unstyled">
+		    	{{ range $.Site.Params.booklinks }}
+		    	<li><a target="_blank" href="{{ .url }}">{{ .name }}</a><p></p></li>	
+		    	{{end}}
+		    	</ul>
+		  	</div>
+                        <div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+                        <h4 class="type-brand-3">Resources</h4>
+                        <ul class="list-unstyled">
+                        {{ range $.Site.Params.resourcelinks }}
+                            <li><a target="_blank" href="{{ .url }}">{{ .name }}</a><p></p></li>
+                        {{end}}
+                        </ul>
+                        </div>
+			</div>
+		</div>
+		<!-- /.doc-sidebar -->

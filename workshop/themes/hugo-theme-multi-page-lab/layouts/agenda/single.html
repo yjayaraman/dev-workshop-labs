@@ -1,0 +1,68 @@
+{{ partial "header.html" . }}
+<div class="container" style="width:95%; padding:5">
+	<div class="row">
+        {{ $title := .Title }}
+
+	{{partial "sidebar.html" .}}
+
+		<div class="col-sm-8 doc-main" style="width:70%; float:left; padding:30px;">
+			<main role="main">
+				<article>
+					<a id="title"></a>
+					<div class="doc-entry-meta">
+					</div>
+					<section>
+		<!-- Content -->
+        {{ range .Site.Data.agenda.days }}
+            {{ if eq .day $title }} 
+                {{ range .sessions }}
+      	        	<div class="doc-list-header">
+      	        		{{ with .title }}<h1>{{ . | markdownify }}</h1>{{ end }}
+      	        	</div>
+                     {{ range .exercises}}
+                        <div class="doc-list-header">
+
+                        <span class=" h3">{{ with .title }}{{ . | markdownify }}{{ end }}</span>   
+
+                              {{ with .slides }}<a href="{{.}}" class="tag-item label mlm" style="float:right; background-color: gray" >slides</a> {{end}}
+                              {{ with .lab }}<a class="tag-item label label-default"  href="{{.}}" style="float:right; background-color: gray">lab</a> {{end}}   
+                              <div>&nbsp;</div> 
+
+                        </div>                      	
+             	        <div class="doc-list-entry" style="padding:2px;">
+                        {{ range .labs}}
+
+                          <div >
+                            <div style="float:left;">
+                              {{ with .title }}<span>{{ . | markdownify }}</span><br>{{ end }}
+                            </div>
+                            <div style="float:right;">    
+                              {{ with .slides }}<a href="{{.}}" class="tag-item label label-primary mlm">slides</a> {{end}}
+             	                {{ with .lab }}<a class="tag-item label label-primary"  href="{{.}}">lab</a> {{end}}       
+                            </div>
+                          </div><br>
+                          <hr style="height:1px;">
+
+                          {{end}}      
+                          </div>
+                      {{end}}		      
+
+                    {{end}}
+                {{end}}
+        {{end}}
+		<!-- End -->
+
+
+
+						{{ .Content }}
+					</section>
+				</article>
+			</main>
+		</div> <!-- /.doc-main -->
+	</div> <!-- /.row -->
+</div>
+
+		
+
+
+{{ partial "footer.html" . }}

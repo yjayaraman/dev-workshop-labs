@@ -1,0 +1,320 @@
++++
+categories = ["general"]
+date = "2016-05-11T06:07:56-04:00"
+tags = ["document"]
+title = "Lab01"
+type = "lab"
++++
+
+## Lab 02 - Introspection, Monitoring, and Metrics using Spring Boot Actuator
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/spring-boot-actuator/final/springbox-catalog`.
+  
+[abstract]
+--
+In this lab, we'll do the following::
+- We will explore Spring boot actuator.
+
+---
+***Approximate time: 20 minutes***
+--
+
+
+## `Exercises`  
+
+=== `Set up the Actuator`
+
+. Change to the lab directory:
++
+----
+$ cd $COURSE_HOME/spring-boot-actuator/initial/springbox-catalog
+----
++
+
+. Import the project (via `pom.xml`) into your IDE of choice.
+
+. Add the following code to the class `application.yml`:
++
+[source,json]
+----
+management:
+  security:
+    enabled: false #<--- Add this to turn off actuator security
+
+----
+
+
+=== `Introspection Endpoints`
+
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
+
+. Try out the following endpoints. The output is omitted here because it can be quite large:
++
+http://localhost:8080/beans:: Dumps all of the beans in the Spring context.
+http://localhost:8080/autoconfig:: Dumps all of the auto-configuration performed as part of application bootstrapping.
+http://localhost:8080/configprops:: Displays a collated list of all `@ConfigurationProperties`.
+http://localhost:8080/env:: Dumps the application's shell environment as well as all Java system properties.
+http://localhost:8080/mappings:: Dumps all URI request mappings and the controller methods to which they are mapped.
+http://localhost:8080/dump:: Performs a thread dump.
+http://localhost:8080/trace:: Displays trace information (by default the last few HTTP requests).
+
+=== `Build and Version Control Info`
+
+Spring Boot provides an endpoint (http://localhost:8080/info) that allows the exposure of arbitrary metadata.
+
+One thing that it does well is expose information about the specific build and version control coordinates for a given deployment.
+
+. Add the following plugin to your Maven build.
+It will add Git branch and commit coordinates to the `/info` endpoint:
++
+----
+<plugin>
+	<groupId>pl.project13.maven</groupId>
+	<artifactId>git-commit-id-plugin</artifactId>
+	<configuration>
+			<dotGitDirectory>../../../.git</dotGitDirectory>
+	</configuration>
+</plugin>
+----
++
+TIP: The path `../../../.git` refers to the `.git` directory at the root of the course materials.
+
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
+
+. Rename `src/main/resources/application.properties` to `application.yml`:
+
+. Add the following properties to `src/main/resources/application.yml`:
++
+----
+info:
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+----
++
+These will add the project's Maven coordinates to the `/info` endpoint. The Spring Boot Maven plugin will cause them to automatically be replaced in the assembled JAR.
+
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
+. Try out the following endpoint
++
+http://localhost:8080/info:: and verify that the output is similar to the following:
++
+----
+{
+  build: {
+    artifact: "hello-spring-boot",
+    name: "hello-spring-boot",
+    description: "Hello Spring Boot",
+    version: "0.0.1-SNAPSHOT"
+  },
+  git: {
+    branch: "master",
+    commit: {
+      id: "a15f771",
+      time: "2015-05-03T16:51:31-0400"
+    }
+  }
+}
+----
+
+=== `Health Indicators`
+
+Spring Boot provides an endpoint (http://localhost:8080/health) that allows for the notion of various health indicators.
+
+. Try out the end point **http://localhost:8080/health** 
+and see how spring boot autoconfigures the monitoring of the health of various components.
++
+----
+{
+"status": "UP",
+"discoveryComposite": {
+"description": "Discovery Client not initialized",
+"status": "UNKNOWN",
+"discoveryClient": {
+"description": "Discovery Client not initialized",
+"status": "UNKNOWN"
+}
+},
+"diskSpace": {
+"status": "UP",
+"total": 498948268032,
+"free": 22651330560,
+"threshold": 10485760
+},
+"db": {
+"status": "UP",
+"database": "H2",
+"hello": 1
+},
+"refreshScope": {
+"status": "UP"
+},
+"configServer": {
+"status": "UNKNOWN",
+"error": "no property sources located"
+},
+"hystrix": {
+"status": "UP"
+}
+}
+----
+
+. Create the class `lab.FlappingHealthIndicator` and into it paste the following code:
++
+----
+@Component
+public class FlappingHealthIndicator implements HealthIndicator{
+
+    private Random random = new Random(System.currentTimeMillis());
+
+    @Override
+    public Health health() {
+        int result = random.nextInt(100);
+        if (result < 50) {
+            return Health.down().withDetail("flapper", "failure").withDetail("random", result).build();
+        } else {
+            return Health.up().withDetail("flapper", "ok").withDetail("random", result).build();
+        }
+    }
+}
+----
++
+This demo health indicator will randomize the health check.
+
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
+
+. Visit the application in the browser (http://localhost:8080/health), and verify that the output is similar to the following (and changes randomly!)
++
+----
+{
+"status": "DOWN",
+"flapping": {
+"status": "DOWN",
+"flapper": "failure",
+"random": 1
+},
+"discoveryComposite": {
+"description": "Discovery Client not initialized",
+"status": "UNKNOWN",
+"discoveryClient": {
+"description": "Discovery Client not initialized",
+"status": "UNKNOWN"
+}
+},
+"diskSpace": {
+"status": "UP",
+"total": 498948268032,
+"free": 22646751232,
+"threshold": 10485760
+},
+"db": {
+"status": "UP",
+"database": "H2",
+"hello": 1
+},
+"refreshScope": {
+"status": "UP"
+},
+"configServer": {
+"status": "UNKNOWN",
+"error": "no property sources located"
+},
+"hystrix": {
+"status": "UP"
+}
+}
+----
+
+
+=== `Metrics`
+
+Spring Boot provides an endpoint (http://localhost:8080/metrics) that exposes several automatically collected metrics for your application.
+It also allows for the creation of custom metrics.
+
+. Add the following to the application.yml:
++
+----
+greeting: Hello
+----
+
+. Create the class `lab.GreetingService` and into it paste the following code:
++
+----
+@Component
+public class GreetingService {
+
+    @Autowired
+    GaugeService counterService;
+    private int value;
+    
+    @Value("${greeting}")
+    String greeting;
+
+    public String getGreeting() {
+        counterService.submit("counter.services.greeting.invoked",++value);
+        return greeting;
+    }
+}
+----
++
+This class is using the `@Autowired` `org.springframework.boot.actuate.metrics.GaugeService` to count the number of times that the `getGreeting()` method has been invoked.
+
+. Refactor the contents of the class `lab.MovieController`:
++
+----
+@Autowired
+private GreetingService greetingService;
+
+@RequestMapping("/")
+public String greet() {
+    return greetingService.getGreeting();
+}
+
+
+----
++
+`greet()` is now delegating the source of the greeting to our newly created `GreetingService`.
+
+. Run the application:
++
+----
+$ mvn spring-boot:run
+----
+
+. Visit the application in the browser (http://localhost:8080) and refresh the page several times.
+
+. Now visit the `/metrics` endpoint (http://localhost:8080/metrics).
+Among the autogenerated metrics you should see a `counter` for the `GreetingService` invocations:
++
+----
+"gauge.servo.counter.services.greeting.invoked": 4,
+----
++
+To learn more about the autogenerated metrics, visit http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-metrics.html.
+
+=== `Clean Up`
+
+NOTE::
+The next step is optional. You can continue the next lab using the workspace that you have created, or clean up and follow the next lab from scratch.
+
+Let's clean up our application so that we can have a clean start for the next lab 
+
+. Delete the project from your IDE

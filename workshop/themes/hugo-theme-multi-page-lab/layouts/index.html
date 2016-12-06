@@ -1,0 +1,61 @@
+{{ $baseUrl := .Site.Params.basedir }}
+{{ partial "header.html" . }}
+
+<main role="main">
+
+<div class="row">
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="pane bg-dark-2">
+		<div class="container" style="width:95%; padding:5">
+
+			<div style="width:50%; float: right; display: inline-block; padding-top: 10px">
+			    {{ range .Site.Params.instructors }}
+			    	<p>{{ with .name }}{{ . | markdownify }}{{ end }}, {{ with .title }}{{ . | markdownify }}{{ end }}, {{ with .org }}{{ . | markdownify }}{{ end }}<br>
+					<a href="mailto:{{ .email }}">{{ .email }}</a>
+				</p>
+			    {{ end }}
+			</div>
+
+			<h1 class="type-neutral-11 title">{{ .Site.Title }}</h1>
+
+			<p class="type-brand-8"><span style="font-size: xx-large;"> {{ if isset .Site.Params "dates" }}{{ .Site.Params.dates }}{{ else }}You can customize this text by params "dates" in your <code>config.toml</code>.{{ end }} </span></p>
+
+			{{ if isset .Site.Params "customer_logo" }} <img src="images/{{ .Site.Params.customer_logo }}" alt="customer_logo" width="200" height="70"> {{ else }}You can customize the logo by params "customer_logo" in your <code>config.toml</code>.{{ end }}
+			<p class="type-brand-9">{{ if isset .Site.Params "venue" }}{{ .Site.Params.venue | markdownify }}{{ else }}You can customize this text by params "venue" in your <code>config.toml</code>.{{ end }}</p>
+
+		</div>
+
+	</div>
+</div>
+
+{{ range where .Site.Pages "Title" "_index" }}
+	<div class="row doc-main">
+		<div class="container">
+			{{ .Content }}
+					<ul id="og-grid" class="og-grid">
+					{{ range $.Site.Data.items.items }}
+					<li>
+						<a href="{{.url}}" data-largesrc="{{.image}}" data-title="{{.title}}" data-description="{{.description }}">
+							<img src="{{.thumb}}" alt="{{.alt}}"/>
+							{{.title}}
+						</a>
+					</li>
+					{{ end }}
+				</ul>
+
+		</div>
+	</div>
+{{ end }}
+
+{{ if isset .Site.Params "withSitePosts" }}
+<hr />
+
+<div class="row doc-main text-center">
+	<a href="/post">See posts for {{ .Site.Title }}</a>
+</div>
+{{ end }}
+
+
+</main>
+
+{{ partial "footer.html" . }}

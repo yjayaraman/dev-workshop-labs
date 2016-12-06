@@ -1,0 +1,257 @@
++++
+categories = ["general"]
+date = "2016-05-11T05:22:20-04:00"
+tags = ["document"]
+title = "Lab103"
+type = "lab"
++++
+
+## Lab 03 - Deploy a Simple App
+
+
+[abstract]
+--
+In this lab we will deploy a simple Java app, scale it, check its logs and SSH into a container.
+
+
+---
+***Approximate time: 15 minutes***
+--
+
+== `Setup`
+
+. Check out the project labs to local. This can be accomplished as follows:
++
+----
+$ git clone https://github.com/yjayaraman-pivotal/se-labs.git
+----
++
+If you don't have Git installed, you can download a zip file of the app at https://github.com/yjayaraman-pivotal/se-labs/archive/master.zip
+
+
+## `Exercises`  
+
+=== `Push!`
+
+. Change to the _articulate_ sample application directory:
++
+----
+$ cd $COURSE_HOME/pre-built/articulate
+----
+
+. Push the application!
++
+----
+$ cf push articulate -p articulate.jar --random-route
+----
++
+You should see output similar to the following listing. Take a look at the listing callouts for a play-by-play of what's happening:
++
+====
+----
+<1>
+Creating app articulate in org pcfdev-org / space pcfdev-space as admin...
+OK <2>
+
+Creating route articulate.local.pcfdev.io...
+OK <3>
+
+Binding articulate.local.pcfdev.io to articulate...
+OK <4>
+
+Uploading articulate...
+Uploading app files from: articulate.jar
+Uploading 31M, 192 files
+Done uploading <5>
+
+Starting app articulate in org pcfdev-org / space pcfdev-space as admin...
+Downloading nodejs_buildpack...
+Downloading java_buildpack...
+Downloading python_buildpack...
+Downloading go_buildpack...
+Downloading ruby_buildpack...
+Downloading php_buildpack...
+Downloading staticfile_buildpack...
+Downloading binary_buildpack...
+Downloaded binary_buildpack (8.3K)
+Downloaded php_buildpack (262.3M)
+Downloaded ruby_buildpack (247.7M)
+Downloaded nodejs_buildpack (60.7M)
+Downloaded python_buildpack (254.1M)
+Downloaded staticfile_buildpack (2.5M)
+Downloaded java_buildpack (241.6M)
+Downloaded go_buildpack (450.3M)
+Creating container
+Successfully created container
+Downloading app package...
+Downloaded app package (27.6M)
+Staging... <6>
+-----> Java Buildpack Version: v3.6 (offline) | https://github.com/cloudfoundry/java-buildpack.git#5194155
+-----> Downloading Open Jdk JRE 1.8.0_71 from https://download.run.pivotal.io/openjdk/trusty/x86_64/openjdk-1.8.0_71.tar.gz (found in cache) <7>
+       Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.1s)
+-----> Downloading Open JDK Like Memory Calculator 2.0.1_RELEASE from https://download.run.pivotal.io/memory-calculator/trusty/x86_64/memory-calculator-2.0.1_RELEASE.tar.gz (found in cache)
+       Memory Settings: -Xms160M -XX:MetaspaceSize=64M -Xss853K -Xmx160M -XX:MaxMetaspaceSize=64M
+-----> Downloading Spring Auto Reconfiguration 1.10.0_RELEASE from https://download.run.pivotal.io/auto-reconfiguration/auto-reconfiguration-1.10.0_RELEASE.jar (found in cache) <8>
+Exit status 0
+Staging complete
+Uploading droplet, build artifacts cache...
+Uploading build artifacts cache...
+Uploading droplet...
+Uploaded build artifacts cache (107B)
+Uploaded droplet (72.5M) <9>
+Uploading complete
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
+
+
+OK
+
+App articulate was started using this command `CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-2.0.1_RELEASE -memorySizes=metaspace:64m.. -memoryWeights=heap:75,metaspace:10,native:10,stack:5 -memoryInitials=heap:100%,metaspace:100% -totMemory=$MEMORY_LIMIT) && JAVA_OPTS="-Djava.io.tmpdir=$TMPDIR -XX:OnOutOfMemoryError=$PWD/.java-buildpack/open_jdk_jre/bin/killjava.sh $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.:$PWD/.java-buildpack/spring_auto_reconfiguration/spring_auto_reconfiguration-1.10.0_RELEASE.jar org.springframework.boot.loader.JarLauncher` <10>
+
+Showing health and status for app articulate in org pcfdev-org / space pcfdev-space as admin...
+OK <11>
+
+requested state: started
+instances: 1/1
+usage: 256M x 1 instances
+urls: articulate.local.pcfdev.io
+last uploaded: Mon Jun 13 12:28:11 UTC 2016
+stack: cflinuxfs2
+buildpack: java-buildpack=v3.6-offline-https://github.com/cloudfoundry/java-buildpack.git#5194155 java-main open-jdk-like-jre=1.8.0_71 open-jdk-like-memory-calculator=2.0.1_RELEASE spring-auto-reconfiguration=1.10.0_RELEASE
+
+     state     since                    cpu    memory      disk        details
+#0   running   2016-06-13 08:29:37 AM   0.0%   0 of 256M   0 of 512M
+----
+<1> When using a manifest to deploy, shows a message that a manifest is being used to provide necessary configuration details such as application name, memory to be allocated, and path to the application artifact.
+Take a look at link:../lab_104[lab 04]  to see how.
+<2> In most cases, the CLI indicates each Cloud Foundry API call as it happens.
+In this case, the CLI has created an application record for _Spring Music_ in your assigned space.
+<3> All HTTP/HTTPS requests to applications will flow through Cloud Foundry's front-end router called http://docs.cloudfoundry.org/concepts/architecture/router.html[(Go)Router].
+Here the CLI is creating a route with random word tokens inserted (again, see `manifest.yml` for a hint!) to prevent route collisions across the default `cfapps.io` domain.
+<4> Now the CLI is _binding_ the created route to the application.
+Routes can actually be bound to multiple applications to support techniques such as http://www.mattstine.com/2013/07/10/blue-green-deployments-on-cloudfoundry[blue-green deployments].
+<5> The CLI finally uploads the application bits to `Sandbox`. Notice that it's uploading _90 files_! This is because Cloud Foundry actually explodes a ZIP artifact before uploading it for caching purposes.
+<6> Now we begin the staging process. The https://github.com/cloudfoundry/java-buildpack[Java Buildpack] is responsible for assembling the runtime components necessary to run the application.
+<7> Here we see the version of the JRE that has been chosen and installed.
+<8> If running a Jar, then it will use the embedded container otherwise, we will see the version of Tomcat that has been chosen and installed.
+<9> The complete package of your application and all of its necessary runtime components is called a _droplet_.
+Here the droplet is being uploaded to PWS's internal blobstore so that it can be easily copied to one or more _http://docs.cloudfoundry.org/concepts/architecture/#diego-cell[Diego Cells]_ for execution.
+<10> The CLI tells you exactly what command and argument set was used to start your application.
+<11> Finally the CLI reports the current status of your application's health.
+You can get the same output at any time by typing `cf app <app name>`.
+====
+
+. Visit the application in your browser by hitting the route that was generated by the CLI:
++
+image::/images/articulate.png[]
+
+
+### `View logs and events for the app`
+
+. From command line!
++
+----
+$ cf logs articulate --recent
+----
++
+You should see output similar to the following listing:
++
+====
+----
+Connected, dumping recent logs for app articulate in org pcfdev-org / space pcfdev-space as admin...
+
+2016-06-13T08:29:31.10-0400 [APP/0]      OUT  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2016-06-13T08:29:31.10-0400 [APP/0]      OUT  :: Spring Boot ::        (v1.3.2.RELEASE)
+2016-06-13T08:29:31.12-0400 [APP/0]      OUT 2016-06-13 12:29:31.119  INFO 14 --- [           main] nfigurationApplicationContextInitializer : Adding cloud service auto-reconfiguration to ApplicationContext
+2016-06-13T08:29:31.12-0400 [APP/0]      OUT 2016-06-13 12:29:31.121  INFO 14 --- [           main] i.p.e.articulate.ArticulateApplication   : The following profiles are active: cloud
+2016-06-13T08:29:31.13-0400 [APP/0]      OUT 2016-06-13 12:29:31.135  INFO 14 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1e8607e9: startup date [Mon Jun 13 12:29:31 UTC 2016]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@e5fbc05
+2016-06-13T08:29:31.84-0400 [APP/0]      OUT 2016-06-13 12:29:31.843  INFO 14 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-06-13T08:29:32.17-0400 [APP/0]      OUT 2016-06-13 12:29:32.179  INFO 14 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'managementServletContext' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcHypermediaManagementContextConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcAutoConfiguration.class]]
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.452  INFO 14 --- [           main] urceCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type javax.sql.DataSource
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.453  INFO 14 --- [           main] ongoCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type org.springframework.data.mongodb.MongoDbFactory
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.453  INFO 14 --- [           main] bbitCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type org.springframework.amqp.rabbit.connection.ConnectionFactory
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.453  INFO 14 --- [           main] edisCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type org.springframework.data.redis.connection.RedisConnectionFactory
+2016-06-13T08:29:32.48-0400 [APP/0]      OUT 2016-06-13 12:29:32.480  INFO 14 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=165ec935-2890-3d9a-a8de-863066875115
+2016-06-13T08:29:32.75-0400 [APP/0]      OUT 2016-06-13 12:29:32.750  INFO 14 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$ConfigurationPropertiesRebinderConfiguration' of type [class org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$ConfigurationPropertiesRebinderConfiguration$$EnhancerBySpringCGLIB$$907ee5f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-13T08:29:33.25-0400 [APP/0]      OUT 2016-06-13 12:29:33.255  INFO 14 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2016-06-13T08:29:33.27-0400 [APP/0]      OUT 2016-06-13 12:29:33.270  INFO 14 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-06-13T08:29:33.27-0400 [APP/0]      OUT 2016-06-13 12:29:33.271  INFO 14 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.0.30
+2016-06-13T08:29:33.36-0400 [APP/0]      OUT 2016-06-13 12:29:33.361  INFO 14 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-06-13T08:29:33.36-0400 [APP/0]      OUT 2016-06-13 12:29:33.361  INFO 14 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2227 ms
+2016-06-13T08:29:34.36-0400 [APP/0]      OUT 2016-06-13 12:29:34.366  INFO 14 --- [ost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-13T08:29:34.37-0400 [APP/0]      OUT 2016-06-13 12:29:34.376  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'metricFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'requestContextFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.381  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'webRequestLoggingFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.381  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'applicationContextIdFilter' to: [/*]
+2016-06-13T08:29:34.56-0400 [APP/0]      OUT 2016-06-13 12:29:34.561  WARN 14 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2016-06-13T08:29:34.56-0400 [APP/0]      OUT 2016-06-13 12:29:34.562  INFO 14 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2016-06-13T08:29:34.57-0400 [APP/0]      OUT 2016-06-13 12:29:34.571  INFO 14 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@23c91e78
+2016-06-13T08:29:35.06-0400 [APP/0]      OUT 2016-06-13 12:29:35.063  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1e8607e9: startup date [Mon Jun 13 12:29:31 UTC 2016]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@e5fbc05
+2016-06-13T08:29:35.08-0400 [APP/0]      OUT 2016-06-13 12:29:35.084  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.339  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/basics],methods=[GET]}" onto public java.lang.String io.pivotal.enablement.articulate.controller.ArticulateController.kill(javax.servlet.http.HttpServletRequest,boolean,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.341  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/add-attendee],methods=[POST]}" onto public java.lang.String io.pivotal.enablement.articulate.controller.ArticulateController.addAttendee(javax.servlet.http.HttpServletRequest,java.lang.String,java.lang.String,java.lang.String,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.342  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/bluegreen]}" onto public java.lang.String io.pivotal.enablement.articulate.controller.ArticulateController.bluegreen(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.342  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/services],methods=[GET]}" onto public java.lang.String io.pivotal.enablement.articulate.controller.ArticulateController.attendees(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.342  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String io.pivotal.enablement.articulate.controller.ArticulateController.index(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.344  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/bluegreen-check]}" onto public java.lang.String io.pivotal.enablement.articulate.controller.ArticulateRestController.bluegreenRequest() throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.345  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.345  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-13T08:29:35.40-0400 [APP/0]      OUT 2016-06-13 12:29:35.407  INFO 14 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-13T08:29:35.40-0400 [APP/0]      OUT 2016-06-13 12:29:35.408  INFO 14 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-13T08:29:35.43-0400 [APP/0]      OUT 2016-06-13 12:29:35.433  INFO 14 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2016-06-13T08:29:35.46-0400 [APP/0]      OUT 2016-06-13 12:29:35.467  INFO 14 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-13T08:29:36.69-0400 [APP/0]      OUT 2016-06-13 12:29:36.692  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.69-0400 [APP/0]      OUT 2016-06-13 12:29:36.693  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.69-0400 [APP/0]      OUT 2016-06-13 12:29:36.699  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.699  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.701  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/actuator || /actuator.json],produces=[application/json]}" onto public org.springframework.hateoas.ResourceSupport org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links()
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.704  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.704  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.705  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/refresh || /refresh.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.endpoint.GenericPostableMvcEndpoint.invoke()
+----
+====
++
+PCF provides access to an aggregated view of logs related to your application. This includes HTTP access logs, as well as output from app operations such as scaling, restarting, and restaging.
++
+Every log line contains four fields:
++
+ - Timestamp
+ - Log type
+ - Channel
+ - Message
+
+### `Scale the app`
+
+. Increase the number of instances for you app to 2. Notice how quick this is, since the droplet just needs to be copied to a new container.
++
+----
+$ cf scale articulate -i 2
+----
++
+You should see output similar to the following listing:
++
+====
+----
+Scaling app articulate in org pcfdev-org / space pcfdev-space as admin...
+OK
+----
+====
+. Decrease the number of instances for your app back to 1.
+
+
+Congratulations, you have pushed an application, scaled it, viewed its logs.
+
+## `Demo`
+++++
+<video width="320" height="240" controls>
+  <source src="../images/lab103.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+++++

@@ -1,0 +1,37 @@
+[[items]]
+title = "Workshop"
+image = "images/icon_pivotal_generic@2x.png"
+thumb = "images/icon_pivotal_generic@2x.png"
+alt = "Workshop"
+description = ""
+url = ""
+[[items]]
+title = "PCF"
+image = "images/icon_cf_green@2x.png"
+thumb = "images/icon_cf_green@2x.png"
+alt = "Hugrid Theme"
+description = ""
+url = ""
+[[items]]
+title = "Security"
+image = "images/icon_elasticruntime@2x.png"
+thumb = "images/icon_elasticruntime@2x.png"
+alt = "Hugrid Theme"
+description = ""
+url = ""
+[[items]]
+title = "Microservices"
+image = "images/icon-bigdata@2x.png"
+thumb = "images/icon-bigdata@2x.png"
+alt = "Hugrid Theme"
+description = ""
+url = ""
+[[items]]
+title = "Bosh"
+image = "images/icon-appsuite@2x.png"
+thumb = "images/icon-appsuite@2x.png"
+alt = "Hugrid Theme"
+description = ""
+url = ""
+
+

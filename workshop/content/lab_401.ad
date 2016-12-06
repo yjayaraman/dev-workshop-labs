@@ -1,0 +1,32 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab401"
+type = "lab"
++++
+
+## Lab 01 - Logging and Metrics
+
+
+[abstract]
+--
+In this lab we will setup a log drain and view the logs using a logging service like Splunk. As part of Liberty forge a logging service would be bound to your application space. You will bind your app to this service and then drain logs into your service
+
+---
+***Approximate Time: 10 minutes***
+--
+
+
+## `Exercise`  
+
+### `Explore available Splunk log drain service`
+
+. Download and explore the Router logs from the Logs tab. View the access.log in the gorouter directory.
+
+### `bind service to your app`
+. Type cf help. Scroll through the list of commands available to the CLI. Notice that they are organized by category. You will become familiar with most of the categories in this course.
+
+### `View logs in Splunk`
+. In a browser, navigate to <url>. Your username will be first initial + lastname. Password will be provided in the class.
+

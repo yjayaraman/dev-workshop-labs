@@ -1,0 +1,164 @@
+   [[days]]
+        day = "Workshop Day1"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+
+        [[days.sessions.exercises.labs]]
+            title = "_8:30 AM - 9:00 AM: Breakfast_"
+            
+
+            [[days.sessions.exercises.labs]]
+                title = "**Intro**"
+
+    [[days.sessions]]
+        title = "Microservices Session 1:"
+
+        [[days.sessions.exercises]]
+            title = "_Spring Boot Primer_"
+            slides = "/slides/session3/session_01.pdf"
+
+            [[days.sessions.exercises.labs]]
+                title = "Setting up the workshop env"
+                lab = "/lab_101"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot Basics"
+                lab = "/lab_301"
+                slides = "/slides/session1/spring-boot-basics.pdf"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot Actuator"
+                lab = "/lab_302"
+                slides = "http://sl02.cfapps.io//spring-boot-actuator-slides/index.html#/"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot With Spring Data Rest - Data meets Hypermedia"
+                lab = "/lab_303"
+                slides = "http://sl02.cfapps.io//spring-data-rest-slides/index.html#/"
+
+            [[days.sessions.exercises.labs]]
+                lab = "/lab_303a"
+                title = "Deploying it to Cloud Foundry"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Morning Break**"
+
+
+    [[days.sessions]]
+        title = "Microservices Session 2:"
+
+        [[days.sessions.exercises]]
+            title = "_Cloud Native Architectures: Part One_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Config"
+                slides = "http://sl02.cfapps.io//spring-cloud-config-slides/index.html#/"
+                lab = "/lab_304"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Registry"
+                slides = "http://sl02.cfapps.io//spring-cloud-netflix-service-discovery-slides/index.html#/"
+                lab = "/lab_305"
+
+            [[days.sessions.exercises.labs]]
+                lab = "/lab_305a"
+                title = "Deploying it to Cloud Foundry"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+    [[days.sessions]]
+        title = "Microservices Session 3:"
+
+        [[days.sessions.exercises]]
+            title = "_Cloud Native Architectures: Part Two_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Fault Tolerance With Hystrix and Monitoring Circuit Breakers with Hystrix Dashboard"
+                slides = "/slides/session3/session_06.pdf"
+                lab = "/lab_306"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Afternoon Break**"
+
+          [[days.sessions.exercises]]
+            title = "_Testing and Documenting RESTful Web Service_"
+            
+            [[days.sessions.exercises.labs]]
+                title = "Documenting RESTful Web Service with Spring RestDocs"
+                slides = "/slides/session3/restdocs.pdf"
+
+        [[days.sessions.exercises]]
+            title = "_Securing RESTful Web Service_"
+            
+            [[days.sessions.exercises.labs]]
+                title = "Securing RESTful Web Service with Spring Cloud Security"
+                slides = "/slides/session4/PCF_Microservices_Security.pdf"
+                lab = "/lab_308"
+            [[days.sessions.exercises.labs]]
+                title = "Demo: Securing Web Service using Pivotal SSO"
+
+
+
+        [[days.sessions.exercises]]
+            title = "**_Retrospective_**"
+
+    [[days]]
+        day = "Workshop Day2"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+            title = ""
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+
+        [[days.sessions.exercises.labs]]
+            title = "Demo: Deep Dive into Pivotal Cloud Foundry"
+            slides = "/slides/session1/pcf-intro.pdf"
+
+        [[days.sessions.exercises.labs]]
+            title = "Deep Dive Discussion into Nuance Microservices Architecture"
+
+        [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+    [[days.sessions]]
+        title = "Afternoon Session"
+
+        [[days.sessions.exercises]]
+            title = "_Consumer Driven Contracts_"
+            
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Contract"
+                slides = "/slides/session4/Consumer_Contract.pdf"
+                lab = "#"
+
+    [[days.sessions]]
+        title = "Data Microservices:"
+
+        [[days.sessions.exercises]]
+            title = "_Spring Cloud Data Flow_"
+
+
+            [[days.sessions.exercises.labs]]
+                title = "Demo: RealTime Failure Prediction of Emulated Devices Demo"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Data Flow"
+                slides = "/slides/session4/springcloud_dataflow.pdf"
+
+        [[days.sessions.exercises]]
+            title = "**_Retrospective_**"
+
+
+
+           
+
+ 

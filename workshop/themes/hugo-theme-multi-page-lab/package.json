@@ -1,0 +1,22 @@
+{
+  "name": "hugo-theme-bootie-docs",
+  "version": "1.0.0",
+  "description": "**Bootie Docs** is a simple [hugo](http://gohugo.io/) theme for documentation.   The name \"bootie\" comes from [Bootstrap](http://getbootstrap.com/) CSS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pivotal-enablement/hugo-theme-bootie-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pivotal-enablement/hugo-theme-bootie-docs/issues"
+  },
+  "homepage": "https://github.com/pivotal-enablement/hugo-theme-bootie-docs#readme",
+  "devDependencies": {
+    "jquery": "^2.1.4"
+  }
+}

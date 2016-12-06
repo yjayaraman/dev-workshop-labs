@@ -1,0 +1,120 @@
+body {
+  padding-top: 5px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+ul.navbar-nav {
+  padding-top: 10px;
+}
+
+.doc-main {
+  margin-top: 25px;
+}
+
+.doc-sidebar {
+  margin-top: 25px;
+}
+
+.navbar-pivotal {
+  background-color:black;
+}
+
+.navbar-inverse .navbar-nav>li>a.dropdown-toggle {
+    color: #2e6da4;
+}
+
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -o-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#3c3c3c),to(#222));
+    background-image: linear-gradient(to bottom,#3c3c3c 0,#000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+}
+
+.navbar-txt{
+  color: white;
+}
+
+.navbar-txt:hover {
+  color: #00776D;
+}
+
+.nav-pipe {
+  margin-top: 3px;
+  color: white;
+}
+
+img {
+  max-width: 100%;
+}
+
+.title {
+  border: none;
+}
+
+.pivotal-logo {
+	max-height: 50px;
+  margin-top: -15px;
+}
+
+.label-default {
+  background-color: #999999; }
+  .label-default[href]:hover, .label-default[href]:focus {
+    background-color: gray; }
+
+.label-primary {
+  background-color: #00A79D !important;}
+  .label-primary[href]:hover, .label-primary[href]:focus {
+    background-color: #00746d !important; }
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 300px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 300px;
+  background-color: #777;
+}
+.carousel-inner > .item > a > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 300px;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 300px;
+}
+
+
+

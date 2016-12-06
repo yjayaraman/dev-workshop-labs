@@ -1,0 +1,115 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab101"
+type = "lab"
++++
+
+## Lab 01 - Setting up CLI, Orgs, Spaces, Users & Roles
+
+
+## `Goal`
+--
+In this lab, we'll do the following::
+- We will install the command line interface (CLI) 
+- Log into *PCF* Env and use Apps manager to explore Orgs and Spaces
+
+Approximate time: 30 minutes  
+--
+
+
+## `Exercises`  
+
+### `Install the Cloud Foundry CLI`
+
+
+. Check to see if you have a CLI already installed. Open a terminal/command window and type `cf --version`. If you see that you have an installed version of 6.x or greater, you can skip the install.
+
+. Go to https://console.run.pivotal.io/tools. Download and run the installer for your platform. Optionally you can download it from https://github.com/cloudfoundry/cli/releases 
+
+. Verify your install by opening a terminal/command window and typing `cf --version`. You now have a Cloud Foundry client that can communicate with any Cloud Foundry installation.
+
+### `Explore cf help`
+. Type `cf help`. Scroll through the list of commands available to the CLI. Notice that they are organized by category. You will become familiar with most of the categories in this course.
+
+. Type `cf help login`. Use this approach whenever you need a refresher on any of the CLI commands. Because login has an alias, you could have also have typed cf help l.
+
+### `Log into *CF environment* with the CLI`
+. Use the CLI’s cf login command to log in to your *CF* account (you may have to logout first). 
+
+. There are 25 accounts created for this workshop. Choose one account per participant from user[1-25]@nuance.com. Password is `password`
+
+. From the command line, +
+ use `cf login -a https://api.run.haas-89.pez.pivotal.io --skip-ssl-validation` to target an environment. Enter username: `user[1-24]@nuance.com` and  password: `password`
++
+----
+→cf login -a https://api.run.haas-89.pez.pivotal.io --skip-ssl-validation
+API endpoint: https://api.run.haas-89.pez.pivotal.io
+
+Email> user1@nuance.com
+
+Password>
+Authenticating...
+OK
+
+Targeted org lab-org1
+
+Targeted space development
+
+
+
+API endpoint:   https://api.run.haas-89.pez.pivotal.io (API version: 2.58.0)
+User:           user1@nuance.com
+Org:            lab-org1
+Space:          development
+----
+
+[NOTE]
+If you are on a network that requires a proxy, set the proxy as an environment variable:
+----
+export HTTP_PROXY={HTTP_PROXY}
+----
+
+
+### `Using Apps manager`
+
+. In a browser, go to https://apps.run.haas-89.pez.pivotal.io (ignore the insecure SSL connection error - we are using self-signed SSL cert for the endpoints)
+
+. Log in to the Apps Manager using the same User credentials as CLI.
+
+. The Apps Manager displays information for your org and all of the spaces in your org.
++
+image::/images/console-org.png[]
+
+. The current org is highlighted in the Apps Manager navigation. The drop-down menu on the right displays other orgs. Use this menu to switch between orgs.
++
+image::/images/select-org.png[]
++
+Note::
+In this lab you only have access to one org
+
+. The Apps Manager navigation also shows the spaces in the current org. The current space is highlighted.
++
+image::/images/app-spaces.png[]
+
+. Click on `development` space
+
+. From the Space page, click the `Setting` tab.
++
+image::/images/space-settings.png[]
++
+[NOTE]
+You can rename or delete the space here but we will not do this in this lab, Click 'cancel'
+
+. The Apps List displays information about the Status, Name, Route, number of Instances, and amount of Memory for each app in the current space.
++
+image::/images/apps-in-space.png[]
+
+. The Services view lists services bound to apps in the current space.
++
+image::/images/services-space.png[]
+
+---
+**Congratulations, logged into PCF Env and used Apps manager to explore Orgs and Spaces.**
+

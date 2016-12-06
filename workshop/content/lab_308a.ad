@@ -1,0 +1,31 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab08"
+type = "lab"
++++
+
+
+= Lab 08a - Microservices Security - Deploying to Cloud Foundry
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/spring-cloud-oauth/final/demo`.
+
+Let’s take a break from MovieLens and look at securing micro services using OAuth.
+
+In this lab, we’ll do the following::
+
+- Use Pivotal SSO service to create a `Service Plan` with internal store for users
+
+- Create an `Admin` Client App
+
+- Add users to the Internal store for users
+
+- Create a service instance of the `SSO service` 
+
+- Push the client app
+
+- Bind the client app to the `SSO Service` and configure it
+
+- Test the client app
+

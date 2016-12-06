@@ -1,0 +1,233 @@
++++
+categories = ["general"]
+date = "2016-05-11T06:07:56-04:00"
+tags = ["document"]
+title = "Lab03"
+type = "lab"
++++
+
+:compat-mode:
+= Lab 03a - Build a database app using Spring Boot and Spring Cloud Connectors
+
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/spring-boot-data/complete/springbox-catalog`.
+
+[abstract]
+--
+In this lab::
+- Create a MySQL database
+- We'll deploy the app to Cloud Foundry
+- Bind the app to MySQL
+
+---
+***Approximate time: 20 minutes***
+--
+
+
+## `Exercises`
+
+
+=== `Preparing for Cloud Foundry`
+
+. Create `manifest.yml` file under `springbox-catalog` and copy the following contents:
++
+----
+---
+applications:
+- name: springbox-catalog
+  host: springbox-catalog-${random-word}
+  memory: 256M
+  instances: 1
+  path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+  timeout: 120
+  
+----
+
+. Rebuild the JAR:
++
+----
+$ mvn package
+----
+
+. Push to Cloud Foundry:
++
+----
+$ cf push
+----
+
+. Check the url 'movies/1000'
+
+
+=== `Binding to MySql Database instead of H2`
+
+. We want to bind to a MySQL data source running on Cloud Foundry, so let's create one:
++
+Go to Cloud Foundry UI https://apps.run.haas-89.pez.pivotal.io and create an instance of MySQL DB call it springbox-catalog-db . Do not bind it to any apps at this time.
++
+Alternatively, create one using CLI:
++
+----
+$ cf cs p-mysql 100mb-dev springbox-catalog-db
+Creating service instance springbox-catalog-db in org Northeast / Canada / space development as yjayaraman@pivotal.io...
+OK
+----
+
+. Open `pom.xml`,  add the appropriate dependencies for the Spring Cloud Connectors:
++
+----
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+        </dependency>
+        <!-- If you intend to deploy the app on Cloud Foundry, add the following -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+        </dependency>
+----
+
+=== `Deploying to Cloud Foundry` to add `springbox-catalog-db` service
+
+. Modify `manifest.yml`:
++
+[source,yml]
+----
+---
+applications:
+- name: springbox-catalog
+  host: springbox-catalog-${random-word}
+  memory: 512M
+  instances: 1
+  path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - springbox-catalog-db
+----
+
+. Paste the following into `application.yml`:
++
+----
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+----
+
+. Rebuild the JAR:
++
+----
+$ mvn package
+----
+
+. Push to Cloud Foundry:
++
+----
+$ cf push
+
+...
+
+→cf push
+Using manifest file /Users/yjayaraman/projects/dev-workshop-labs/spring-boot-data/initial/springbox-catalog/manifest.yml
+
+Updating app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+OK
+
+Creating route springbox-catalog-nonrepressed-inflectedness.cfapps.haas-89.pez.pivotal.io...
+OK
+
+Binding springbox-catalog-nonrepressed-inflectedness.cfapps.haas-89.pez.pivotal.io to springbox-catalog...
+OK
+
+Uploading springbox-catalog...
+Uploading app files from: /var/folders/vm/l9pjyw7n4jzdzdcn1j03nsch0000gp/T/unzipped-app936584468
+Uploading 1.2M, 132 files
+Done uploading
+
+----
+
+. Verify that the MySQL service is bound to the app
++
+----
+→cf env springbox-catalog
+Getting env variables for app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+OK
+
+System-Provided:
+{
+ "VCAP_SERVICES": {
+  "p-mysql": [
+   {
+    "credentials": {
+     "hostname": "10.193.158.111",
+     "jdbcUrl": "jdbc:mysql://10.193.158.111:3306/cf_65796a8b_e524_48af_bb5c_093a6519314b?user=T2PnSrGaNxj5RHYt\u0026password=GrYWS85MxaSW3aSU",
+     "name": "cf_65796a8b_e524_48af_bb5c_093a6519314b",
+     "password": "GrYWS85MxaSW3aSU",
+     "port": 3306,
+     "uri": "mysql://T2PnSrGaNxj5RHYt:GrYWS85MxaSW3aSU@10.193.158.111:3306/cf_65796a8b_e524_48af_bb5c_093a6519314b?reconnect=true",
+     "username": "T2PnSrGaNxj5RHYt"
+    },
+    "label": "p-mysql",
+    "name": "springbox-catalog-db",
+    "plan": "100mb-dev",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "mysql",
+     "relational"
+    ],
+    "volume_mounts": []
+   }
+  ]
+ }
+}
+----
+. Access the application using `curl` at the random route provided by CF:
++
+----
+→curl -i http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000
+HTTP/1.1 200 OK
+Content-Type: application/hal+json;charset=UTF-8
+Date: Sun, 13 Nov 2016 18:03:42 GMT
+X-Application-Context: springbox-catalog:cloud:0
+X-Vcap-Request-Id: 0f0a6cc5-972e-495b-5892-12a0127ab709
+Content-Length: 472
+
+{
+  "title" : "Toy Story (1995)",
+  "mlId" : "1",
+  "numberInStock" : 10,
+  "_links" : {
+    "self" : {
+      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000"
+    },
+    "movie" : {
+      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000"
+    },
+    "genres" : {
+      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000/genres"
+    }
+  }
+}
+----
+
+=== `Clean Up`
+
+NOTE::
+The next step is optional. You can continue the next lab using the workspace that you have created, or clean up and follow the next lab from scratch.
+
+Let's clean up our application so that we can have a clean start for the next lab 
+
+. Delete the project from your IDE
+
+. Delete the application:
++
+----
+→cf d springbox-catalog
+
+Really delete the app springbox-catalog?> y
+Deleting app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+OK
+----
