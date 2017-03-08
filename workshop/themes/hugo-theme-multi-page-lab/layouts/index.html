@@ -32,17 +32,6 @@
 	<div class="row doc-main">
 		<div class="container">
 			{{ .Content }}
-					<ul id="og-grid" class="og-grid">
-					{{ range $.Site.Data.items.items }}
-					<li>
-						<a href="{{.url}}" data-largesrc="{{.image}}" data-title="{{.title}}" data-description="{{.description }}">
-							<img src="{{.thumb}}" alt="{{.alt}}"/>
-							{{.title}}
-						</a>
-					</li>
-					{{ end }}
-				</ul>
-
 		</div>
 	</div>
 {{ end }}
