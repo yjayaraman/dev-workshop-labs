@@ -17,7 +17,7 @@ copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
     venue = "Nuance, 1500 Rue University #935, Montréal, QC"
     dates = "Nov 22-23"
     customer_logo="nuance.png"
-    mainMenu = [ "Workshop Day1", "Workshop Day2", "Lab Requirements"]
+    mainMenu = [ "workshop_day1", "workshop_day2", "lab_requirements"]
     noCategoryLink = true
     #feedbackLink = "https://docs.google.com/forms/d/1KG88z2eWfG2Rx0guENzKgzeu6VlMjhRyW2PiJoCbtxI/viewform?entry.1504550910&entry.108151957&entry.1907066466=Liberty+Mutual&entry.1934264208&entry.2083454847&entry.1484855815&entry.1880096690&entry.879050699"
 

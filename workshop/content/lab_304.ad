@@ -154,7 +154,7 @@ Welcome Movie Club Buffs!!!
 
 === `Create Config Server Service in Cloud Foundry`
 
-. Go to Cloud Foundry UI https://apps.run.haas-89.pez.pivotal.io and create an instance of `Config Server` call it `springbox-config-service` . Do not bind it to any apps at this time.
+. Go to Cloud Foundry UI https://apps.run.haas-80.pez.pivotal.io and create an instance of `Config Server` call it `springbox-config-service` . Do not bind it to any apps at this time.
 
 . Click on the Service and Click on `Manage`
 +
@@ -225,7 +225,7 @@ applications:
   path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.run.haas-89.pez.pivotal.io  # <--- Add this!
+    TRUST_CERTS: api.run.haas-80.pez.pivotal.io  # <--- Add this!
   services:
     - springbox-catalog-db
     - springbox-config-service  # <--- Add this!
@@ -274,13 +274,13 @@ $ cf push
 →cf push
 Using manifest file /Users/yjayaraman/projects/dev-workshop-labs/spring-cloud-config/initial/springbox-catalog/manifest.yml
 
-Creating app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Creating app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 
-Creating route springbox-catalog-bondless-volcanologist.cfapps.haas-89.pez.pivotal.io...
+Creating route springbox-catalog-bondless-volcanologist.cfapps.haas-80.pez.pivotal.io...
 OK
 
-Binding springbox-catalog-bondless-volcanologist.cfapps.haas-89.pez.pivotal.io to springbox-catalog...
+Binding springbox-catalog-bondless-volcanologist.cfapps.haas-80.pez.pivotal.io to springbox-catalog...
 OK
 
 Uploading springbox-catalog...
@@ -288,16 +288,16 @@ Uploading app files from: /var/folders/vm/l9pjyw7n4jzdzdcn1j03nsch0000gp/T/unzip
 Uploading 1.7M, 139 files
 Done uploading
 OK
-Binding service springbox-catalog-db to app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Binding service springbox-catalog-db to app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
-Binding service springbox-config-service to app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Binding service springbox-config-service to app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 
 
 requested state: started
 instances: 1/1
 usage: 1G x 1 instances
-urls: springbox-catalog-bondless-volcanologist.cfapps.haas-89.pez.pivotal.io
+urls: springbox-catalog-bondless-volcanologist.cfapps.haas-80.pez.pivotal.io
 last uploaded: Sun Nov 13 20:21:43 UTC 2016
 stack: cflinuxfs2
 buildpack: java-buildpack=v3.8.1-offline-https://github.com/cloudfoundry/java-buildpack.git#29c79f2 java-main maria-db-jdbc=1.4.6 open-jdk-like-jre=1.8.0_91-unlimited-crypto open-jdk-like-memory-calculator=2.0.2_RELEASE spring-auto-reconfiguration=1.10.0_RELEASE
@@ -353,7 +353,7 @@ Let's clean up our application so that we can have a clean start for the next la
 →cf d springbox-catalog
 
 Really delete the app springbox-catalog?> y
-Deleting app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Deleting app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 ----
 

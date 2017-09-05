@@ -64,7 +64,7 @@ $ cf push
 
 . We want to bind to a MySQL data source running on Cloud Foundry, so let's create one:
 +
-Go to Cloud Foundry UI https://apps.run.haas-89.pez.pivotal.io and create an instance of MySQL DB call it springbox-catalog-db . Do not bind it to any apps at this time.
+Go to Cloud Foundry UI https://apps.run.haas-80.pez.pivotal.io and create an instance of MySQL DB call it springbox-catalog-db . Do not bind it to any apps at this time.
 +
 Alternatively, create one using CLI:
 +
@@ -132,13 +132,13 @@ $ cf push
 →cf push
 Using manifest file /Users/yjayaraman/projects/dev-workshop-labs/spring-boot-data/initial/springbox-catalog/manifest.yml
 
-Updating app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Updating app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 
-Creating route springbox-catalog-nonrepressed-inflectedness.cfapps.haas-89.pez.pivotal.io...
+Creating route springbox-catalog-nonrepressed-inflectedness.cfapps.haas-80.pez.pivotal.io...
 OK
 
-Binding springbox-catalog-nonrepressed-inflectedness.cfapps.haas-89.pez.pivotal.io to springbox-catalog...
+Binding springbox-catalog-nonrepressed-inflectedness.cfapps.haas-80.pez.pivotal.io to springbox-catalog...
 OK
 
 Uploading springbox-catalog...
@@ -152,7 +152,7 @@ Done uploading
 +
 ----
 →cf env springbox-catalog
-Getting env variables for app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Getting env variables for app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 
 System-Provided:
@@ -187,7 +187,7 @@ System-Provided:
 . Access the application using `curl` at the random route provided by CF:
 +
 ----
-→curl -i http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000
+→curl -i http://springbox-catalog-nonbiased-paunch.cfapps.haas-80.pez.pivotal.io/movies/1000
 HTTP/1.1 200 OK
 Content-Type: application/hal+json;charset=UTF-8
 Date: Sun, 13 Nov 2016 18:03:42 GMT
@@ -201,13 +201,13 @@ Content-Length: 472
   "numberInStock" : 10,
   "_links" : {
     "self" : {
-      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000"
+      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-80.pez.pivotal.io/movies/1000"
     },
     "movie" : {
-      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000"
+      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-80.pez.pivotal.io/movies/1000"
     },
     "genres" : {
-      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-89.pez.pivotal.io/movies/1000/genres"
+      "href" : "http://springbox-catalog-nonbiased-paunch.cfapps.haas-80.pez.pivotal.io/movies/1000/genres"
     }
   }
 }
@@ -228,6 +228,6 @@ Let's clean up our application so that we can have a clean start for the next la
 →cf d springbox-catalog
 
 Really delete the app springbox-catalog?> y
-Deleting app springbox-catalog in org lab-org99 / space development as user99@nuance.com...
+Deleting app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 ----

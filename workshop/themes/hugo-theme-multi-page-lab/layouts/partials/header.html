@@ -36,7 +36,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<div class="nav navbar-brand">
-						{{ if isset .Site.Params "homeLink" }}
+						{{ if isset .Site.Params.homeLink "homeLink" }}
 							<a href='/..{{.Site.Params.homeLink}}'>
 							 <img class="nav pivotal-logo" src="/Pivotal_Teal.png"/>
 						 	</a>
@@ -48,14 +48,14 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-			{{ if isset .Site.Params "mainMenu" }}
+			{{ if  .Site.Params.mainMenu  }}
 				{{ $url := .Permalink }}
 				{{ range $item := .Site.Params.mainMenu }}
 					{{ $itemUrl := printf "%s/%s/" $item }}
 					<li {{ if eq $url $itemUrl }}class="active"{{ end }}><a class="navbar-txt" href="/{{ $item }}">{{ title $item }}</a></li>
 				{{ end }}
 			{{ end }}
-			{{ if isset .Site.Params "noResourcesLink" }}{{ else }}
+			{{ if  .Site.Params.noResourcesLink }}{{ else }}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -65,7 +65,7 @@
 					</ul>
 				</li>
 			{{ end }}
-			{{ if isset .Site.Params "noBooksLink" }}{{ else }}
+			{{ if  .Site.Params.noBooksLink }}{{ else }}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -75,7 +75,7 @@
 					</ul>
 				</li>
 			{{ end }}
-				{{ if isset .Site.Params "noCategoryLink" }}{{ else }}
+				{{ if  .Site.Params.noCategoryLink }}{{ else }}
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -85,7 +85,7 @@
 						</ul>
 					</li>
 				{{ end }}
-                        {{ if isset .Site.Params "feedbackLink" }} 
+                        {{ if  .Site.Params.feedbackLink }} 
                                <li><a class="navbar-txt" href="{{ .Site.Params.feedbackLink }}" target="_"> Feedback </a></li>
                         {{ end }}
 				</ul>

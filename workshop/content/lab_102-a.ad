@@ -23,10 +23,10 @@ In this lab we will deploy a simple Java app, scale it, check its logs and SSH i
 . Check out the project labs to local. This can be accomplished as follows:
 +
 ----
-$ git clone https://github.com/yjayaraman-pivotal/nuance-labs.git
+$ git clone https://github.com/yjayaraman-pivotal/raytheon-labs.git
 ----
 +
-If you don't have Git installed, you can download a zip file of the app at https://github.com/yjayaraman-pivotal/nuance-labs/archive/master.zip
+If you don't have Git installed, you can download a zip file of the app at https://github.com/yjayaraman-pivotal/raytheon-labs/archive/master.zip
 
 
 ## `Exercises`  

@@ -38,16 +38,16 @@ Approximate time: 30 minutes
 ### `Log into *CF environment* with the CLI`
 . Use the CLI’s cf login command to log in to your *CF* account (you may have to logout first). 
 
-. There are 25 accounts created for this workshop. Choose one account per participant from user[1-25]@nuance.com. Password is `password`
+. There are 25 accounts created for this workshop. Choose one account per participant from user[1-25]@raytheon.com. Password is `password`
 
 . From the command line, +
- use `cf login -a https://api.run.haas-89.pez.pivotal.io --skip-ssl-validation` to target an environment. Enter username: `user[1-24]@nuance.com` and  password: `password`
+ use `cf login -a https://api.run.haas-80.pez.pivotal.io --skip-ssl-validation` to target an environment. Enter username: `user[1-24]@raytheon.com` and  password: `password`
 +
 ----
-→cf login -a https://api.run.haas-89.pez.pivotal.io --skip-ssl-validation
-API endpoint: https://api.run.haas-89.pez.pivotal.io
+→cf login -a https://api.run.haas-80.pez.pivotal.io --skip-ssl-validation
+API endpoint: https://api.run.haas-80.pez.pivotal.io
 
-Email> user1@nuance.com
+Email> user1@raytheon.com
 
 Password>
 Authenticating...
@@ -59,8 +59,8 @@ Targeted space development
 
 
 
-API endpoint:   https://api.run.haas-89.pez.pivotal.io (API version: 2.58.0)
-User:           user1@nuance.com
+API endpoint:   https://api.run.haas-80.pez.pivotal.io (API version: 2.58.0)
+User:           user1@raytheon.com
 Org:            lab-org1
 Space:          development
 ----
@@ -74,7 +74,7 @@ export HTTP_PROXY={HTTP_PROXY}
 
 ### `Using Apps manager`
 
-. In a browser, go to https://apps.run.haas-89.pez.pivotal.io (ignore the insecure SSL connection error - we are using self-signed SSL cert for the endpoints)
+. In a browser, go to https://apps.run.haas-80.pez.pivotal.io (ignore the insecure SSL connection error - we are using self-signed SSL cert for the endpoints)
 
 . Log in to the Apps Manager using the same User credentials as CLI.
 

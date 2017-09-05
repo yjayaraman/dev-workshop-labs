@@ -11,7 +11,7 @@ title = "Lab Requirements"
 1. Appropriate permissions to install software on your laptop. 
 
 2. Internet Access. Internet access is required to take this course.  Students must be able to access
-the labs environment at https://apps.run.haas-89.pez.pivotal.io to perform practical work.  Outbound access to this site over TCP ports 80 (http), 443 (https), 
+the labs environment at https://apps.run.haas-80.pez.pivotal.io to perform practical work.  Outbound access to this site over TCP ports 80 (http), 443 (https), 
 and 4443 (websockets) is required.
 
 3. Installation of [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
