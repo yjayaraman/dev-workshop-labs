@@ -1,6 +1,7 @@
 package lab;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.core.ParameterizedTypeReference;
@@ -31,19 +32,24 @@ public class MovieClient {
 //			@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") }, threadPoolProperties = {
 //					@HystrixProperty(name = "coreSize", value = "30"),
 //					@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") })
-	String getMoviess() {
+	String getMovies() {
 		return restTemplate.getForObject("//SPRINGBOX-CATALOG/movies", String.class);
 	}
 
-	PagedResources<Movie> getMovies() {
+	PagedResources<Movie> getMovies2() {
 		return restTemplate.exchange(
                 "//SPRINGBOX-CATALOG/movies",
                 HttpMethod.GET, null,
                 new ParameterizedTypeReference<PagedResources<Movie>>() {
                 })
         .getBody();
-
 	}
+	
+	String getBackendUri() {
+		return loadBalancer.choose("SPRINGBOX-CATALOG").getUri().toString();
+	}
+
+	
 	String getDefaultMovies() {
 		return "{movies: \"dummy\"}";
 	}

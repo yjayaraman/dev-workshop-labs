@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Raytheon Pivotal Workshops">
+		<link rel="icon" href="/favicon.ico">
+		<title>Lab105 - Raytheon Pivotal Workshops</title>
+		<link rel="stylesheet" href="/css/highlight.js.min.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="/css/pui-v2.0.0/pivotal-ui.css">
+		<link rel="stylesheet" href="/css/theme.css">
+		<link rel="stylesheet" href="/css/component.css">
+
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/bootie-docs.css">
+		<script src="http://raytheon.cfapps.io/js/modernizr.custom.js"></script>
+
+		
+		<style type="text/css">
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+		</style>
+	</head>
+
+<body role="document">
+	
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top  ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav navbar-brand">
+						
+							<img class="nav pivotal-logo" src="/Pivotal_Teal.png"/>
+						
+				</div>
+				<a class="navbar-brand navbar-txt" href="/">Raytheon Pivotal Workshops </a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+			
+				
+				
+					
+					<li ><a class="navbar-txt" href="/lab_requirements">Lab_requirements</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day1">Billerica_day1</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day2">Billerica_day2</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day3">Billerica_day3</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/cloud_tig">Cloud_tig</a></li>
+				
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a></li>
+                     
+                        <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://www.git-scm.com">Git</a></li>
+                     
+                        <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a></li>
+                     
+                        <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a></li>
+                     
+                        <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a></li>
+                     
+                        <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a></li>
+                     
+					</ul>
+				</li>
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a></li>
+                     
+                        <li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a></li>
+                     
+                        <li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a></li>
+                     
+                        <li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a></li>
+                     
+					</ul>
+				</li>
+			
+				
+                        
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<div class="container" style="width:95%; padding:5">
+	<div class="row">
+
+	    		
+		<div class="doc-sidebar" style="width:30%; margin-top:0; float:right; padding:10px;">
+			<div class="sidebar-module">
+				
+		    	<div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+		    	<h4 class="type-brand-3">Books</h4>
+		    	<ul class="list-unstyled">
+		    	
+		    	<li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a><p></p></li>	
+		    	
+		    	</ul>
+		  	</div>
+                        <div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+                        <h4 class="type-brand-3">Resources</h4>
+                        <ul class="list-unstyled">
+                        
+                            <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a><p></p></li>
+                        
+                            <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://www.git-scm.com">Git</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a><p></p></li>
+                        
+                        </ul>
+                        </div>
+			</div>
+		</div>
+		
+
+
+		<div class="col-sm-8 doc-main" style="width:70%; float:left; padding:30px;">
+			<main role="main">
+				<article>
+					<a id="title"></a>
+					<div class="doc-entry-meta">
+					</div>
+					<section>
+						<div class="sect1">
+<h2 id="_lab_05_bind_to_cloud_foundry_services">Lab 05 - Bind to Cloud Foundry Services</h2>
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>The <em>attendees</em> application was designed to illustrate the ease with which various types of data services can be bound to and utilized by Spring applications running on Cloud Foundry.
+In this lab, we&#8217;ll be binding the application to MySql database.</p>
+</div>
+<div class="paragraph">
+<p>Cloud Foundry services are managed through two primary types of operations:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Create/Delete</dt>
+<dd>
+<p>These operations create or delete instances of a service.
+For a database this could mean creating/deleting a schema in an existing multitenant cluster or creating/deleting a dedicated database cluster.</p>
+</dd>
+<dt class="hdlist1">Bind/Unbind</dt>
+<dd>
+<p>These operations create or delete unique credential sets for an existing service instance that can then be injected into the environment of an application instance.</p>
+</dd>
+</dl>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong><strong>Approximate time: 30 minutes</strong></strong></p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_a_bit_of_review_code"><code>A Bit of Review</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your instance of <em>attendees</em> should still be running from the end of <a href="../lab_103">Lab 03</a>.
+Visit the application in your browser by hitting the route that was generated by the CLI:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/attendees.png" alt="attendees">
+</div>
+</div>
+<div class="paragraph">
+<p>The information dialog in the top right-hand corner indicates that we&#8217;re currently running with an in-memory database, and that we&#8217;re not bound to any services.
+Let&#8217;s change that.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_exercises_code"><code>Exercises</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_code_the_services_marketplace_code"><code>The Services Marketplace</code></h3>
+<div class="paragraph">
+<p>There are two ways to discover what services are available on Pivotal Web Services.
+The first is available on any instance of Cloud Foundry: the CLI. Just type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf marketplace</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and you&#8217;ll get a list of services, their available plans, and descriptions.</p>
+</div>
+<div class="paragraph">
+<p>The second way is specific to Pivotal Cloud Foundry&#8217;s Application Manager UI.
+If you haven&#8217;t already, login to it by visiting {CF-CONSOLE-URL}.</p>
+</div>
+<div class="paragraph">
+<p>Click on the ``Marketplace'' link:
+<em>The Screenshots below are from Pivotal Web Services (public managed Pivotal CF).  If you are using Pivotal Cloud Foundry, you will see something similar.</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/PWS_AM_InstructorSpace.png" alt="PWS AM InstructorSpace">
+</div>
+</div>
+<div class="paragraph">
+<p>and you&#8217;ll see the same service/plan/description listing in the browser:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/PWS_Marketplace.png" alt="PWS Marketplace">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_creating_and_binding_to_a_service_instance_code"><code>Creating and Binding to a Service Instance</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Let&#8217;s begin by creating a MySql instance provided by Pivotal.</p>
+</li>
+<li>
+<p>From the CLI, let&#8217;s <em>create</em> a p-mysql service instance:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf create-service p-mysql 100mb-dev attendees-db
+Creating service attendees-db in org ACME / space instructor as mstine@pivotal.io...
+OK</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Next we&#8217;ll <em>bind</em> the newly created instance to our <code>attendees</code> application:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf bs attendees attendees-db
+Binding service attendees-db to app attendees in org ACME / space instructor as mstine@pivotal.io...
+OK
+TIP: Use 'cf restage' to ensure your env variable changes take effect</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Notice the admonition to <code>Use 'cf restage' to ensure your env variable changes take effect</code>.
+Let&#8217;s take a look at the environment variables for our application to see what&#8217;s been done. We can do this by typing:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf env attendees</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The subset of the output we&#8217;re interested in is located near the very top, titled <code>System-Provided</code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>System-Provided:
+{
+ "VCAP_SERVICES": { <b class="conum">(1)</b>
+  "p-mysql": [
+   {
+    "credentials": {
+     "hostname": "10.68.50.61",
+     "jdbcUrl": "jdbc:mysql://10.68.50.61:3306/cf_ddbe0221_d1fc_478f_b693_69279b2de702?user=mWsYAON34zbaQPAA\u0026password=CZImCZ9iSNU7HfP2",
+     "name": "cf_ddbe0221_d1fc_478f_b693_69279b2de702",
+     "password": "CZImCZ9iSNU7HfP2",
+     "port": 3306,
+     "uri": "mysql://mWsYAON34zbaQPAA:CZImCZ9iSNU7HfP2@10.68.50.61:3306/cf_ddbe0221_d1fc_478f_b693_69279b2de702?reconnect=true", <b class="conum">(2)</b>
+     "username": "mWsYAON34zbaQPAA"
+    },
+    "label": "p-mysql",
+    "name": "attendees-db",
+    "plan": "100mb-dev",
+    "tags": [
+     "mysql",
+     "relational"
+    ]
+   }
+  ]
+ }
+}
+
+{
+ "VCAP_APPLICATION": {
+  "application_name": "attendees",
+  "application_uris": [
+   "attendees-unbragging-pourparler.pcf2.fe.gopivotal.com"
+  ],
+  "application_version": "e3fa423d-69ad-41cb-bd17-0e88427dfe4c",
+  "limits": {
+   "disk": 1024,
+   "fds": 16384,
+   "mem": 512
+  },
+  "name": "attendees",
+  "space_id": "080ba4e6-bafc-482b-9a98-42f612eef736",
+  "space_name": "jfullam",
+  "uris": [
+   "attendees-unbragging-pourparler.pcf2.fe.gopivotal.com"
+  ],
+  "users": null,
+  "version": "e3fa423d-69ad-41cb-bd17-0e88427dfe4c"
+ }
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>VCAP_SERVICES</code> is a special Cloud Foundry environment variable that contains a JSON document containing all of the information for any services bound to an application.</p>
+</li>
+<li>
+<p>Notice here the unique URI for this instance of MySql that <code>attendees</code> has been bound to.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Now let&#8217;s <em>restage</em> the application, which cycles our application back through the staging/buildpack process before redeploying the application.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf restage attendees</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the application is running again, revisit or refresh the browser tab where you have the <em>attendees</em> application loaded:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/attendees-db.png" alt="attendees db">
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see from the information dialog, the application is now utilizing a MySql database via the <code>attendees-db</code> service.</p>
+</div>
+</li>
+<li>
+<p><strong>(OPTIONAL STEPS)</strong> If you have a MySql GUI tool handy and you are using a lab environment that has the necessary network access (ask your instructor), you can inspect the music database created. Otherwise, your instructor will demo via a Pivotal VPN connection.</p>
+</li>
+<li>
+<p>In your DB tool, create a new server connection and populate the properties with values from the URI in your <code>VCAP_SERVICES</code> environment variable (remember <code>cf env spring-muisc</code>!):</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_unbinding_a_service_code"><code>Unbinding a service</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Next we&#8217;ll unbind our application from our MySql instance :</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf us attendees attendees-db</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you visit your application now, you&#8217;ll see that it still works.
+If you recall, environment variable changes (such as binding/unbinding of services) don&#8217;t actually take effect until a <em>restage</em> or <em>restart</em>.</p>
+</div>
+</li>
+<li>
+<p>And then do a restage:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf restage attendees</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the application is running again, revisit or refresh the browser tab where you have the <em>attendees</em> application loaded:</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_clean_up_code"><code>Clean Up</code></h3>
+<div class="paragraph">
+<p>Let&#8217;s clean up our application and services to make room for future labs.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete the <code>attendees</code> application:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf d attendees
+
+Really delete the app attendees?&gt; y
+Deleting app attendees in org oreilly-class / space instructor as mstine@pivotal.io...
+OK</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete the <code>attendees-db</code> service:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf ds attendees-db
+
+Really delete the service attendees-db?&gt; y
+Deleting service attendees-db in org oreilly-class / space instructor as mstine@pivotal.io...
+OK</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. In this case, we could accomplish the same goal by only <em>restarting</em> the application via <code>cf restart attendees</code>. A <em>restage</em> is generally recommended because Cloud Foundry buildpacks also have access to injected environment variables and can install or configure things differently based on their values.
+</div>
+</div>
+
+					</section>
+				</article>
+			</main>
+		</div> 
+	</div> 
+</div>
+
+		
+
+
+
+
+<hr />
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<p class="doc-footer-em"><a href="#">Back to TOP</a></p>
+		</div>
+	</div>
+
+</div> 
+          
+<footer class="doc-footer">
+        <span>Last Updated on  2016-03-23 19:58:14 -0400 EDT  </span>
+	
+	<p>Copyright (c) 2015, Pivotal; All rights reserved.</p>
+</footer>
+
+
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+		<script>
+			var $event = $.event,
+			$special,
+			resizeTimeout;
+			$special = $event.special.debouncedresize = {
+				setup: function() {
+					$( this ).on( "resize", $special.handler );
+				},
+				teardown: function() {
+					$( this ).off( "resize", $special.handler );
+				},
+				handler: function( event, execAsap ) {
+					var context = this,
+						args = arguments,
+						dispatch = function() {
+							event.type = "debouncedresize";
+							$event.dispatch.apply( context, args );
+						};
+					if ( resizeTimeout ) {
+						clearTimeout( resizeTimeout );
+					}
+					execAsap ?
+						dispatch() :
+						resizeTimeout = setTimeout( dispatch, $special.threshold );
+				},
+				threshold: 250
+			};
+			var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+			$.fn.imagesLoaded = function( callback ) {
+				var $this = this,
+					deferred = $.isFunction($.Deferred) ? $.Deferred() : 0,
+					hasNotify = $.isFunction(deferred.notify),
+					$images = $this.find('img').add( $this.filter('img') ),
+					loaded = [],
+					proper = [],
+					broken = [];
+				if ($.isPlainObject(callback)) {
+					$.each(callback, function (key, value) {
+						if (key === 'callback') {
+							callback = value;
+						} else if (deferred) {
+							deferred[key](value);
+						}
+					});
+				}
+				function doneLoading() {
+					var $proper = $(proper),
+						$broken = $(broken);
+					if ( deferred ) {
+						if ( broken.length ) {
+							deferred.reject( $images, $proper, $broken );
+						} else {
+							deferred.resolve( $images );
+						}
+					}
+					if ( $.isFunction( callback ) ) {
+						callback.call( $this, $images, $proper, $broken );
+					}
+				}
+				function imgLoaded( img, isBroken ) {
+					if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
+						return;
+					}
+					loaded.push( img );
+					if ( isBroken ) {
+						broken.push( img );
+					} else {
+						proper.push( img );
+					}
+					$.data( img, 'imagesLoaded', { isBroken: isBroken, src: img.src } );
+					if ( hasNotify ) {
+						deferred.notifyWith( $(img), [ isBroken, $images, $(proper), $(broken) ] );
+					}
+					if ( $images.length === loaded.length ){
+						setTimeout( doneLoading );
+						$images.unbind( '.imagesLoaded' );
+					}
+				}
+				if ( !$images.length ) {
+					doneLoading();
+				} else {
+					$images.bind( 'load.imagesLoaded error.imagesLoaded', function( event ){
+						imgLoaded( event.target, event.type === 'error' );
+					}).each( function( i, el ) {
+						var src = el.src;
+						var cached = $.data( el, 'imagesLoaded' );
+						if ( cached && cached.src === src ) {
+							imgLoaded( el, cached.isBroken );
+							return;
+						}
+						if ( el.complete && el.naturalWidth !== undefined ) {
+							imgLoaded( el, el.naturalWidth === 0 || el.naturalHeight === 0 );
+							return;
+						}
+						if ( el.readyState || el.complete ) {
+							el.src = BLANK;
+							el.src = src;
+						}
+					});
+				}
+				return deferred ? deferred.promise( $this ) : $this;
+			};
+			var Grid = (function() {
+				var $grid = $( '#og-grid' ),
+					$items = $grid.children( 'li' ),
+					current = -1,
+					previewPos = -1,
+					scrollExtra = 0,
+					marginExpanded = 10,
+					$window = $( window ), winsize,
+					$body = $( 'html, body' ),
+					transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					support = Modernizr.csstransitions,
+					settings = {
+						minHeight : 500,
+						speed : 350,
+						easing : 'ease'
+					};
+				function init( config ) {
+					
+					settings = $.extend( true, {}, settings, config );
+					$grid.imagesLoaded( function() {
+						saveItemInfo( true );
+						getWinSize();
+						initEvents();
+					} );
+				}
+				function addItems( $newitems ) {
+					$items = $items.add( $newitems );
+					$newitems.each( function() {
+						var $item = $( this );
+						$item.data( {
+							offsetTop : $item.offset().top,
+							height : $item.height()
+						} );
+					} );
+					initItemsEvents( $newitems );
+				}
+				function saveItemInfo( saveheight ) {
+					$items.each( function() {
+						var $item = $( this );
+						$item.data( 'offsetTop', $item.offset().top );
+						if( saveheight ) {
+							$item.data( 'height', $item.height() );
+						}
+					} );
+				}
+				function initEvents() {
+					
+					initItemsEvents( $items );
+					
+					$window.on( 'debouncedresize', function() {
+						
+						scrollExtra = 0;
+						previewPos = -1;
+						saveItemInfo();
+						getWinSize();
+						var preview = $.data( this, 'preview' );
+						if( typeof preview != 'undefined' ) {
+							hidePreview();
+						}
+					} );
+				}
+				function initItemsEvents( $items ) {
+					$items.on( 'click', 'span.og-close', function() {
+						hidePreview();
+						return false;
+					} ).children( 'a' ).on( 'click', function(e) {
+						var $item = $( this ).parent();
+						current === $item.index() ? hidePreview() : showPreview( $item );
+						return false;
+					} );
+				}
+				function getWinSize() {
+					winsize = { width : $window.width(), height : $window.height() };
+				}
+				function showPreview( $item ) {
+					var preview = $.data( this, 'preview' ),
+						position = $item.data( 'offsetTop' );
+					scrollExtra = 0;
+					if( typeof preview != 'undefined' ) {
+						if( previewPos !== position ) {
+							if( position > previewPos ) {
+								scrollExtra = preview.height;
+							}
+							hidePreview();
+						}
+						else {
+							preview.update( $item );
+							return false;
+						}
+						
+					}
+					previewPos = position;
+					preview = $.data( this, 'preview', new Preview( $item ) );
+					preview.open();
+				}
+				function hidePreview() {
+					current = -1;
+					var preview = $.data( this, 'preview' );
+					preview.close();
+					$.removeData( this, 'preview' );
+				}
+				function Preview( $item ) {
+					this.$item = $item;
+					this.expandedIdx = this.$item.index();
+					this.create();
+					this.update();
+				}
+				Preview.prototype = {
+					create : function() {
+						this.$title = $( '<h3></h3>' );
+						this.$description = $( '<p></p>' );
+						this.$href = $( '<a href="#"></a>' );
+						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+						this.$loading = $( '<div class="og-loading"></div>' );
+						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+						this.$closePreview = $( '<span class="og-close"></span>' );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
+						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
+						this.$item.append( this.getEl() );
+						if( support ) {
+							this.setTransition();
+						}
+					},
+					update : function( $item ) {
+						if( $item ) {
+							this.$item = $item;
+						}
+						
+						if( current !== -1 ) {
+							var $currentItem = $items.eq( current );
+							$currentItem.removeClass( 'og-expanded' );
+							this.$item.addClass( 'og-expanded' );
+							this.positionPreview();
+						}
+						current = this.$item.index();
+						var $itemEl = this.$item.children( 'a' ),
+							eldata = {
+								href : $itemEl.attr( 'href' ),
+								largesrc : $itemEl.data( 'largesrc' ),
+								title : $itemEl.data( 'title' ),
+								description : $itemEl.data( 'description' )
+							};
+						this.$title.html( eldata.title );
+						this.$description.html( eldata.description );
+						this.$href.attr( 'href', eldata.href );
+						var self = this;
+						
+						if( typeof self.$largeImg != 'undefined' ) {
+							self.$largeImg.remove();
+						}
+						if( self.$fullimage.is( ':visible' ) ) {
+							this.$loading.show();
+							$( '<img/>' ).load( function() {
+								var $img = $( this );
+								if( $img.attr( 'src' ) === self.$item.children('a').data( 'largesrc' ) ) {
+									self.$loading.hide();
+									self.$fullimage.find( 'img' ).remove();
+									self.$largeImg = $img.fadeIn( 350 );
+									self.$fullimage.append( self.$largeImg );
+								}
+							} ).attr( 'src', eldata.largesrc );	
+						}
+					},
+					open : function() {
+						setTimeout( $.proxy( function() {	
+							this.setHeights();
+							this.positionPreview();
+						}, this ), 25 );
+					},
+					close : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									$( this ).off( transEndEventName );
+								}
+								self.$item.removeClass( 'og-expanded' );
+								self.$previewEl.remove();
+							};
+						setTimeout( $.proxy( function() {
+							if( typeof this.$largeImg !== 'undefined' ) {
+								this.$largeImg.fadeOut( 'fast' );
+							}
+							this.$previewEl.css( 'height', 0 );
+							var $expandedItem = $items.eq( this.expandedIdx );
+							$expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
+							if( !support ) {
+								onEndFn.call();
+							}
+						}, this ), 25 );
+						
+						return false;
+					},
+					calcHeight : function() {
+						var heightPreview = winsize.height - this.$item.data( 'height' ) - marginExpanded,
+							itemHeight = winsize.height;
+						if( heightPreview < settings.minHeight ) {
+							heightPreview = settings.minHeight;
+							itemHeight = settings.minHeight + this.$item.data( 'height' ) + marginExpanded;
+						}
+						this.height = heightPreview;
+						this.itemHeight = itemHeight;
+					},
+					setHeights : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									self.$item.off( transEndEventName );
+								}
+								self.$item.addClass( 'og-expanded' );
+							};
+						this.calcHeight();
+						this.$previewEl.css( 'height', this.height );
+						this.$item.css( 'height', this.itemHeight ).on( transEndEventName, onEndFn );
+						if( !support ) {
+							onEndFn.call();
+						}
+					},
+					positionPreview : function() {
+						var position = this.$item.data( 'offsetTop' ),
+							previewOffsetT = this.$previewEl.offset().top - scrollExtra,
+							scrollVal = this.height + this.$item.data( 'height' ) + marginExpanded <= winsize.height ? position : this.height < winsize.height ? previewOffsetT - ( winsize.height - this.height ) : previewOffsetT;
+						
+						$body.animate( { scrollTop : scrollVal }, settings.speed );
+					},
+					setTransition  : function() {
+						this.$previewEl.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+						this.$item.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+					},
+					getEl : function() {
+						return this.$previewEl;
+					}
+				}
+				return { 
+					init : init,
+					addItems : addItems
+				};
+			})();
+		</script>
+		<script>
+			$(function() {
+				Grid.init();
+			});
+		</script>
+</body>
+</html>
+

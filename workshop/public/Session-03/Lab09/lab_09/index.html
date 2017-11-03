@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Raytheon Pivotal Workshops">
+		<link rel="icon" href="/favicon.ico">
+		<title> - Raytheon Pivotal Workshops</title>
+		<link rel="stylesheet" href="/css/highlight.js.min.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="/css/pui-v2.0.0/pivotal-ui.css">
+		<link rel="stylesheet" href="/css/theme.css">
+		<link rel="stylesheet" href="/css/component.css">
+
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/bootie-docs.css">
+		<script src="http://raytheon.cfapps.io/js/modernizr.custom.js"></script>
+
+		
+		<style type="text/css">
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+		</style>
+	</head>
+
+<body role="document">
+	
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top  ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav navbar-brand">
+						
+							<img class="nav pivotal-logo" src="/Pivotal_Teal.png"/>
+						
+				</div>
+				<a class="navbar-brand navbar-txt" href="/">Raytheon Pivotal Workshops </a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+			
+				
+				
+					
+					<li ><a class="navbar-txt" href="/lab_requirements">Lab_requirements</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day1">Billerica_day1</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day2">Billerica_day2</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day3">Billerica_day3</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/cloud_tig">Cloud_tig</a></li>
+				
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a></li>
+                     
+                        <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://www.git-scm.com">Git</a></li>
+                     
+                        <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a></li>
+                     
+                        <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a></li>
+                     
+                        <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a></li>
+                     
+                        <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a></li>
+                     
+					</ul>
+				</li>
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a></li>
+                     
+                        <li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a></li>
+                     
+                        <li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a></li>
+                     
+                        <li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a></li>
+                     
+					</ul>
+				</li>
+			
+				
+                        
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<div class="container" style="width:95%; padding:5">
+	<div class="row">
+
+	    		
+		<div class="doc-sidebar" style="width:30%; margin-top:0; float:right; padding:10px;">
+			<div class="sidebar-module">
+				
+		    	<div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+		    	<h4 class="type-brand-3">Books</h4>
+		    	<ul class="list-unstyled">
+		    	
+		    	<li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a><p></p></li>	
+		    	
+		    	</ul>
+		  	</div>
+                        <div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+                        <h4 class="type-brand-3">Resources</h4>
+                        <ul class="list-unstyled">
+                        
+                            <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a><p></p></li>
+                        
+                            <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://www.git-scm.com">Git</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a><p></p></li>
+                        
+                        </ul>
+                        </div>
+			</div>
+		</div>
+		
+
+
+		
+<div class="col-sm-14 doc-sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4>Table of Contents</h4>
+			
+		</div>
+	</div>
+</div>
+
+
+		<div class="col-sm-8 doc-main" style="width:70%; float:left; padding:30px;">
+			<main role="main">
+				<article>
+					<a id="title"></a>
+					<div class="doc-entry-meta">
+					</div>
+					<section>
+						<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>In this lab we will continue to add functionality to the Fortune Teller application.
+We will explore some of the existing horizontal scaling issues with the app and how Steeltoe connectors and data protection providers can help solve those issues.</p>
+</div>
+<div class="paragraph">
+<p>If you started with the <em>FortuneTeller.sln</em>, and completed Lab 8, you have an app that is still not where we would like it to be:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>Fortune Teller Service</code> can not scale horizontally, as it uses a backend in-memory datastore to hold Fortunes.</p>
+</li>
+<li>
+<p>The <code>Fortune Teller UI</code> can not scale horizontally, as its session state (i.e. Users Fortune) gets lost since the Session is not shared between instances.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The goals for Lab 9 are to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Understand ASP.NET Core Session services.</p>
+</li>
+<li>
+<p>Understand ASP.NET Core Data Protection services</p>
+</li>
+<li>
+<p>Use Steeltoe MySql Connector to bind the <code>FortuneContext</code> with a  MySql database.</p>
+</li>
+<li>
+<p>Use Steeltoe Redis Connector to cause the ASP.NET Core Session to use Redis for its Session storage.</p>
+</li>
+<li>
+<p>Use Steeltoe Redis DataProtection Key Storage provider to cause the ASP.NET Core Data Protection service to use Redis to store its key ring.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For some background information on ASP.NET Core Sessions, have a look at this <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/app-state">documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on ASP.NET Core Data Protection, have a look at this <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction">documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on Steeltoe Connectors, explore the Readmes in this <a href="https://github.com/SteeltoeOSS/Connectors">repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on Steeltoe Security providers, including the Redis DataProtection Key Storage provider, explore the Readmes in this <a href="https://github.com/SteeltoeOSS/Security">repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>Also, for Steeltoe Sample apps illustrating the use of Connectors, explore the code in this <a href="https://github.com/SteeltoeOSS/Samples/tree/master/Connectors">repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>And for Steeltoe Sample apps illustrating the use of various Security providers, explore the code in this <a href="https://github.com/SteeltoeOSS/Samples/tree/master/Security">repository</a>.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_open_visual_studio_solution">Open Visual Studio Solution</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start Visual Studio and open the solution/folder you wish to use:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>Workshop/Session-03/Lab09.sln</em> if you want to start with finished code.</p>
+</li>
+<li>
+<p><em>Workshop/FortuneTeller/FortuneTeller.sln</em> if you are writing code from scratch.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_understanding_asp_net_core_sessions_and_data_protection">Understanding ASP.NET Core Sessions and Data Protection</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-UI</code> project</p>
+</li>
+<li>
+<p>Open and examine <code>Startup</code>, as this is where the ASP.NET Core Session services and middleware is setup</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Examine <code>ConfigureServices()</code></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Explain <code>AddSession()</code></p>
+</li>
+<li>
+<p>Explain <code>AddDistributedMemoryCache()</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Examine <code>Configure()</code></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Explain <code>UseSession()</code></p>
+</li>
+<li>
+<p>Explain implied <code>UseCookies()</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Understand how <code>DataProtection</code> is used for encryption.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>How its used to encrypt data stored in session</p>
+</li>
+<li>
+<p>How its use to encrypt session ids.</p>
+</li>
+<li>
+<p>Understand key ring</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_steeltoe_mysql_connector">Use Steeltoe MySQL Connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section we will be adding code to the <code>Fortune Teller Service</code> to make use of the Steeltoe MySQL connector.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on the Steeltoe MySql Connector, explore the Readme in this <a href="https://github.com/SteeltoeOSS/Connectors/tree/master/src/Steeltoe.CloudFoundry.Connector.MySql">repository</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_step_01_run_spring_cloud_eureka_server_locally">Step 01 - Run Spring Cloud Eureka Server Locally</h3>
+<div class="paragraph">
+<p>We are still using the Eureka Server, so we need to make sure it is still running locally so its easier to development and test with.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To run Eureka Server you will need Java JDK installed on your machine and the JAVA_HOME environment variable set to the JDK&#8217;s installed location:</p>
+<div class="listingblock">
+<div class="content">
+<pre>e.g. JAVA_HOME=C:\Program Files\Java\jdk1.8.0_112 or equivalent on Linux/Mac</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open a command window.</p>
+</li>
+<li>
+<p>Change directory to <em>Workshop/EurekaServer</em></p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cd Workshop\EurekaServer</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Startup the eureka server</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; mvnw spring-boot:run</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><br>
+It will start up on port 8761 and serve the Eureka API from "/eureka".</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_02_run_spring_cloud_config_server_locally">Step 02 - Run Spring Cloud Config Server Locally</h3>
+<div class="paragraph">
+<p>We are still using the Config Server, so we need to make sure it is still running locally so its easier to development and test with.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To run Config Server you will need Java JDK installed on your machine and the JAVA_HOME environment variable set to the JDK&#8217;s installed location:</p>
+<div class="listingblock">
+<div class="content">
+<pre>e.g. JAVA_HOME=C:\Program Files\Java\jdk1.8.0_112 or equivalent on Linux/Mac</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open a command window.</p>
+</li>
+<li>
+<p>Change directory to <em>Workshop/ConfigServer</em></p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cd Workshop\ConfigServer</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Startup the config server</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; mvnw spring-boot:run</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><br>
+It will start up on port 8888 and serve configuration data from "file:./steeltoe/config-repo". This will be the directory <em>Workshop/ConfigServer/steeltoe/config-repo</em>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_03_add_steeltoe_mysql_connector_nuget">Step 03 - Add Steeltoe MySql Connector Nuget</h3>
+<div class="paragraph">
+<p>Here we add the appropriate Steeltoe MySql Connector Nuget to the <code>Fortune Teller Service</code>.
+You will make use of the Nuget: <code>Steeltoe.CloudFoundry.Connector.MySql</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-Service</code> project.</p>
+</li>
+<li>
+<p>Open <code>.csproj</code> and add the<code>PackageReference</code>:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Include="Steeltoe.CloudFoundry.Connector.MySql" Version="1.0.0"</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  &lt;ItemGroup&gt;
+   .......
+    &lt;PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.0.3" /&gt;
+    &lt;PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.0.3" /&gt;
+    &lt;PackageReference Include="Pivotal.Extensions.Configuration.ConfigServer" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Pivotal.Discovery.Client" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Steeltoe.CloudFoundry.Connector.MySql" version="1.0.0" /&gt;
+  &lt;/ItemGroup&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save the <code>csproj</code> and make sure that a <code>dotnet restore</code> is done.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_04_add_steeltoe_mysql_connector">Step 04 - Add Steeltoe MySql Connector</h3>
+<div class="paragraph">
+<p>Next we need to configure the <code>DbContext</code> to use MySql.
+Remember we did that in the <code>Startup</code> class; in the <code>ConfigureServices</code> method where the service container is setup.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-Service</code> project</p>
+</li>
+<li>
+<p>Open <code>Startup</code> and locate the <code>ConfigureServices()</code> method. You should see something like the following:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    services.AddEntityFramework()
+            .AddDbContext&lt;FortuneContext&gt;(options =&gt; options.UseInMemoryDatabase());
+
+    services.AddSingleton&lt;IFortuneRepository, FortuneRepository&gt;();
+
+    // Add framework services.
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ideally, if we were running an instance of MySQL locally on our desktop, we would just like to use it when we launch the app locally, in <code>development</code> mode.
+If that were the case then we could simply change the <code>.AddDbContext&lt;FortuneContext&gt;()</code> call above to use MySql instead of the InMemory database and then configure the Steeltoe Connector in <code>appsettings</code> to use it.
+The code and configuration would look something like below.
+With this code, the Steeltoe Connector would use the configuration (i.e. <code>appsettings</code>) when launched locally, but then would override its configuration with the MySql service binding when pushed to Cloud Foundry.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+   services.AddEntityFramework()
+         .AddDbContext&lt;FortuneContext&gt;(options =&gt; options.UseMySql(Configuration));
+    services.AddSingleton&lt;IFortuneRepository, FortuneRepository&gt;();
+
+    // Add framework services.
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "spring": {
+    "application": {
+      "name": "fortuneService"
+    },
+    "cloud": {
+      "config": {
+        "uri": "http://localhost:8888"
+      }
+    }
+  },
+  "mysql": {
+    "client": {
+      "database": "mydatabase",
+      "username": "username",
+      "password": "password"
+    }
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But since we are not running MySQL locally, we will instead configure things to use an In-Memory database when in <code>Development</code> mode, but then use a MySql database when in any other.
+To do that we will modify the <code>ConfigureServices()</code> method as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    if (Environment.IsDevelopment())
+    {
+        services.AddEntityFramework()
+                .AddDbContext&lt;FortuneContext&gt;(options =&gt; options.UseInMemoryDatabase());
+    } else
+    {
+        services.AddEntityFramework()
+             .AddDbContext&lt;FortuneContext&gt;(options =&gt; options.UseMySql(Configuration));
+    }
+
+    services.AddSingleton&lt;IFortuneRepository, FortuneRepository&gt;();
+
+    // Add framework services.
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_05_run_locally">Step 05 - Run Locally</h3>
+<div class="paragraph">
+<p>At this point you should be ready to run both Fortune-Tellers locally and test.
+Every thing should work as it did before, as you will still be using the In-Memory database when running locally.
+In an upcoming exercise, we will push the Fortune-Tellers to Cloud Foundry and test the MySql connection.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the skills you picked up in Lab05, run the apps from VS2017 and/or from the command line.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>CTRL-F5 or F5 on VS2017</p>
+</li>
+<li>
+<p><code>dotnet run --server.urls <a href="http://*:5000" class="bare">http://*:5000</a></code> - Fortune-Teller-Service</p>
+</li>
+<li>
+<p><code>dotnet run --server.urls <a href="http://*:5555" class="bare">http://*:5555</a></code> - Fortune-Teller-UI</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_redis_for_session_storage">Use Redis for Session Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section we will be adding code to the <code>Fortune Teller UI</code> to make use of the Steeltoe Redis connector.
+We will use it to hook up the ASP.NET Core DistributedCache to a Redis service instance. Remember, Session uses the DistributedCache to store session state.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on the Steeltoe Redis Connector, explore the Readme in this <a href="https://github.com/SteeltoeOSS/Connectors/tree/master/src/Steeltoe.CloudFoundry.Connector.Redis">repository</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_step_01_run_spring_cloud_eureka_server_locally_2">Step 01 - Run Spring Cloud Eureka Server Locally</h3>
+<div class="paragraph">
+<p>We are still using the Eureka Server, so make sure it is still running locally.
+See above if its not!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_02_run_spring_cloud_config_server_locally_2">Step 02 - Run Spring Cloud Config Server Locally</h3>
+<div class="paragraph">
+<p>We are still using the Config Server, so make sure it is still running locally.
+See above if its not!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_03_add_steeltoe_redis_connector_nuget">Step 03 - Add Steeltoe Redis Connector Nuget</h3>
+<div class="paragraph">
+<p>Here we add the appropriate Steeltoe Redis Connector Nuget to the <code>Fortune Teller UI</code>.
+You will make use of the Nuget: <code>Steeltoe.CloudFoundry.Connector.Redis</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-UI</code> project.</p>
+</li>
+<li>
+<p>Open <code>.csproj</code> and add the<code>PackageReference</code>:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Include="Steeltoe.CloudFoundry.Connector.Redis" Version="1.0.0"</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  &lt;ItemGroup&gt;
+   .......
+    &lt;PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.0.3" /&gt;
+    &lt;PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.0.3" /&gt;
+    &lt;PackageReference Include="Pivotal.Extensions.Configuration.ConfigServer" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Pivotal.Discovery.Client" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Steeltoe.CloudFoundry.Connector.Redis" version="1.0.0" /&gt;
+  &lt;/ItemGroup&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save <code>csproj</code> and ensure that a <code>dotnet restore</code> is done.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_04_add_steeltoe_redis_connector">Step 04 - Add Steeltoe Redis Connector</h3>
+<div class="paragraph">
+<p>Currently the <code>Fortune-Teller-UI</code> is using an In-memory cache for its session storage.
+To see how this is currently setup to work:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-UI</code> project</p>
+</li>
+<li>
+<p>Open <code>Startup</code> and locate the <code>ConfigureServices()</code> method. You should see something like the whats shown below.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton&lt;IFortuneService, FortuneServiceClient&gt;();
+    services.Configure&lt;FortuneServiceConfig&gt;(Configuration.GetSection("fortuneService"));
+    services.AddDiscoveryClient(Configuration);
+
+    // Add framework services.
+    services.AddDistributedMemoryCache();
+
+    services.AddSession();
+
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like the case above with MySql, if we were running an instance of Redis locally on our desktop, we would just like to use it when we launch the app locally, in <code>development</code> mode.
+If that were the case then we could simply change the <code>. services.AddDistributedMemoryCache()</code> call above to use a DistributedRedisCache instead of the InMemory cache and then configure the Steeltoe Connector in <code>appsettings</code> to use it.
+The code and configuration would look something like that shown below.
+With this code, the Steeltoe Connector would use the configuration (i.e. <code>appsettings</code>) when launched locally, but then would override its configuration with the Redis service binding when pushed to Cloud Foundry.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton&lt;IFortuneService, FortuneServiceClient&gt;();
+    services.Configure&lt;FortuneServiceConfig&gt;(Configuration.GetSection("fortuneService"));
+    services.AddDiscoveryClient(Configuration);
+
+    // Add framework services.
+    services.AddDistributedMemoryCache();
+
+    services.AddSession();
+
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "spring": {
+    "application": {
+      "name": "fortuneui"
+    },
+    "cloud": {
+      "config": {
+        "uri": "http://localhost:8888",
+      }
+    }
+  },
+  "redis": {
+    "client": {
+      "host": "http://foo.bar",
+      "port": 1111
+    }
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But, just like the case with MySQL, we are not running Redis locally, so we will instead have to configure things similar to MySql.
+That is to use an In-Memory database when in <code>Development</code> mode, but then use a Redis cache when in any other.
+To do that we will modify the <code>ConfigureServices()</code> method as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton&lt;IFortuneService, FortuneServiceClient&gt;();
+    services.Configure&lt;FortuneServiceConfig&gt;(Configuration.GetSection("fortuneService"));
+    services.AddDiscoveryClient(Configuration);
+
+    // Add framework services.
+
+    if (Environment.IsDevelopment())
+    {
+        services.AddDistributedMemoryCache();
+    }
+    else
+    {
+        // Use Redis cache to store session data
+        services.AddDistributedRedisCache(Configuration);
+    }
+
+    services.AddSession();
+
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_05_run_locally_2">Step 05 - Run Locally</h3>
+<div class="paragraph">
+<p>At this point you should be ready to run both Fortune-Tellers locally and test.
+Every thing should work as it did before, as you will still be using the In-Memory cache when running locally.
+In an upcoming exercise, we will push the Fortune-Tellers to Cloud Foundry and test the cache connection.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the skills you picked up in Lab05, run the apps from VS2017 and/or from the command line.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>CTRL-F5 or F5 on VS2017</p>
+</li>
+<li>
+<p><code>dotnet run --server.urls <a href="http://*:5000" class="bare">http://*:5000</a></code> - Fortune-Teller-Service</p>
+</li>
+<li>
+<p><code>dotnet run --server.urls <a href="http://*:5555" class="bare">http://*:5555</a></code> - Fortune-Teller-UI</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_redis_for_data_protection_key_storage">Use Redis for Data Protection Key Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this exercise we will be adding code to the <code>Fortune Teller UI</code> to make use of the Steeltoe Redis DataProtection Key Storage provider.
+We will use it to configure the ASP.NET Core DataProtection service to persist its keys to a Redis service instance.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on the Steeltoe Redis DataProtection Key Storage provider, explore the Readme in this <a href="https://github.com/SteeltoeOSS/Security/tree/master/src/Steeltoe.Security.DataProtection.Redis">repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>For some background information on Configuring ASP.NET Core Data Protection, explore this <a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview">documentation</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_step_01_run_spring_cloud_eureka_server_locally_3">Step 01 - Run Spring Cloud Eureka Server Locally</h3>
+<div class="paragraph">
+<p>We are still using the Eureka Server, so make sure it is still running locally.
+See above if its not!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_02_run_spring_cloud_config_server_locally_3">Step 02 - Run Spring Cloud Config Server Locally</h3>
+<div class="paragraph">
+<p>We are still using the Config Server, so make sure it is still running locally.
+See above if its not!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_03_add_steeltoe_redis_connector_nuget_2">Step 03 - Add Steeltoe Redis Connector Nuget</h3>
+<div class="paragraph">
+<p>Here we add the appropriate Steeltoe Redis Connector Nuget to the <code>Fortune Teller UI</code> as the Steeltoe Redis DataProtection Key Storage provider requires it in order to configure DataProtection.
+Since we already did this in the previous exercise, we will not have to do it again.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_04_add_steeltoe_redis_dataprotection_key_storage_provider_nuget">Step 04 - Add Steeltoe Redis DataProtection Key Storage provider Nuget</h3>
+<div class="paragraph">
+<p>Here we add the appropriate Steeltoe Redis DataProtection Key Storage provider Nuget to the <code>Fortune Teller UI</code>.
+You will make use of the Nuget: <code>"Steeltoe.Security.DataProtection.Redis"</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-UI</code> project.</p>
+</li>
+<li>
+<p>Open <code>.csproj</code> and add the<code>PackageReference</code>:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Include="Steeltoe.Security.DataProtection.Redis" Version="1.0.0"</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  &lt;ItemGroup&gt;
+   .......
+    &lt;PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.0.3" /&gt;
+    &lt;PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.0.3" /&gt;
+    &lt;PackageReference Include="Pivotal.Extensions.Configuration.ConfigServer" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Pivotal.Discovery.Client" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Steeltoe.CloudFoundry.Connector.Redis" version="1.0.0" /&gt;
+    &lt;PackageReference Include="Steeltoe.Security.DataProtection.Redis" version="1.0.0" /&gt;
+  &lt;/ItemGroup&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save <code>csproj</code> and ensure that a <code>dotnet restore</code> is done.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_05_add_steeltoe_redis_dataprotection_key_storage_provider">Step 05 - Add Steeltoe Redis DataProtection Key Storage provider</h3>
+<div class="paragraph">
+<p>The default for ASP.NET Core DataProtection services is to store its key ring in a file, local to the running machine.
+Of course, this will not work well when we want to scale horizontally. (i.e. Running multiple instances of the <code>Fortune-Teller-UI</code>).
+To change this we are going to configure DataProtection to use a Redis cache to store its key ring and in addition, automatically configure what redis cache it uses.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>Fortune-Teller-UI</code> project</p>
+</li>
+<li>
+<p>Open <code>Startup</code> and locate the <code>ConfigureServices()</code> method. You should see something like the whats shown below.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton&lt;IFortuneService, FortuneServiceClient&gt;();
+    services.Configure&lt;FortuneServiceConfig&gt;(Configuration.GetSection("fortuneService"));
+    services.AddDiscoveryClient(Configuration);
+
+    // Add framework services.
+    if (Environment.IsDevelopment())
+    {
+        services.AddDistributedMemoryCache();
+    }
+    else
+    {
+        // Use Redis cache on CloudFoundry to store session data
+        services.AddDistributedRedisCache(Configuration);
+    }
+
+    services.AddSession();
+
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Modify the <code>ConfigureServices</code> method to look as folows:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void ConfigureServices(IServiceCollection services)
+{
+    if (!Environment.IsDevelopment())
+    {
+        // Use Redis cache on CloudFoundry for DataProtection Keys
+        services.AddRedisConnectionMultiplexer(Configuration);
+        services.AddDataProtection()
+            .PersistKeysToRedis()
+            .SetApplicationName("fortuneui");
+    }
+    services.AddSingleton&lt;IFortuneService, FortuneServiceClient&gt;();
+    services.Configure&lt;FortuneServiceConfig&gt;(Configuration.GetSection("fortuneService"));
+    services.AddDiscoveryClient(Configuration);
+
+    // Add framework services.
+    if (Environment.IsDevelopment())
+    {
+        services.AddDistributedMemoryCache();
+    }
+    else
+    {
+        // Use Redis cache on CloudFoundry to store session data
+        services.AddDistributedRedisCache(Configuration);
+    }
+
+    services.AddSession();
+
+    services.AddMvc();
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the above code first adds DataProtection to the service container using the <code>AddDataProtection()</code> method call.
+Then, to further configure the service, it instructs DataProtection to persist its keys to Redis using the Steeltoe DataProtection key provider. It does this by calling the extension method <code>PersistKeysToRedis()</code>.
+But the Steeltoe DataProtection key provider expects that when it is constructed a Redis <code>ConnectionMultiplexer</code> will exist in the container and it will be configured to access a Redis cache.
+We make that happen by using the Steeltoe Redis connector extension method <code>AddRedisConnectionMultiplexer(Configuration);</code>
+Now, since we are going to use Redis for the backing store, and we are not running Redis locally, we will wrap the configuration in an if statement so we don&#8217;t any of this when in <code>development</code> mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_06_run_locally">Step 06 - Run Locally</h3>
+<div class="paragraph">
+<p>At this point you should be ready to run both Fortune-Tellers locally and test.
+Every thing should work as it did before, as you will still be using the default DataProtection provider which stores keys to local file system.
+In the next exercise, we will push the Fortune-Tellers to Cloud Foundry and test using Redis to store the key ring.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the skills you picked up in Lab05, run the apps from VS2017 and/or from the command line.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>CTRL-F5 or F5 on VS2017</p>
+</li>
+<li>
+<p><code>dotnet run --server.urls <a href="http://*:5000" class="bare">http://*:5000</a></code> - Fortune-Teller-Service</p>
+</li>
+<li>
+<p><code>dotnet run --server.urls <a href="http://*:5555" class="bare">http://*:5555</a></code> - Fortune-Teller-UI</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploy_to_cloud_foundry">Deploy to Cloud Foundry</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_step_01_setup_mysql_server_instance">Step 01 - Setup MySql Server Instance</h3>
+<div class="paragraph">
+<p>You must first create an instance of the MySql Server service in your org/space.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a command window.</p>
+</li>
+<li>
+<p>Using the command window, create an instance of the MySql service:</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf create-service p-mysql 100mb myMySqlService</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_02_setup_redis_server_instance">Step 02 - Setup Redis Server Instance</h3>
+<div class="paragraph">
+<p>You must first create an instance of the Redis service in your org/space.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a command window.</p>
+</li>
+<li>
+<p>Using the command window, create an instance of the Redis service:</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf create-service p-redis shared-vm myRedisService</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_03_push_to_cloud_foundry">Step 03 - Push to Cloud Foundry</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Examine the <code>manfest.yml</code> files for both projects and notice <code>services</code> additions shown below.
+You need to make these changes in your <code>manifest.yml</code> before you push to Cloud Foundry.
+Also, notice the <code>ASPNETCORE_ENVIRONMENT</code> setting.
+Feel free to change that to <code>Development</code> if you want to turn on debug logging.</p>
+<div class="listingblock">
+<div class="content">
+<pre>---
+applications:
+- name: fortuneService
+  random-route: true
+  env:
+    ASPNETCORE_ENVIRONMENT: Production
+  services:
+   - myConfigServer
+   - myMySqlService
+   - myDiscoveryService
+---
+applications:
+- name: fortuneui
+  random-route: true
+  env:
+    ASPNETCORE_ENVIRONMENT: Production
+  services:
+   - myConfigServer
+   - myDiscoveryService
+   - myRedisService</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Using the skills you picked from Lab05, publish and push the components to a Linux cell on Cloud Foundry.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Pushing Fortune Teller Service - If you are using the finished lab code on Windows:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>cd Workshop/Session-03/Lab09/Fortune-Teller-Service</code></p>
+</li>
+<li>
+<p><code>dotnet restore</code></p>
+</li>
+<li>
+<p><code>dotnet build </code></p>
+</li>
+<li>
+<p><code>dotnet publish -o %CD%\publish -f netcoreapp1.1 -r ubuntu.14.04-x64</code></p>
+</li>
+<li>
+<p><code>cf push -f manifest.yml -p .\publish</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Pushing Fortune Teller Service - If you are using the finished lab code on Mac/Linux:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>cd Workshop/Session-03/Lab09/Fortune-Teller-Service</code></p>
+</li>
+<li>
+<p><code>dotnet restore</code></p>
+</li>
+<li>
+<p><code>dotnet build </code></p>
+</li>
+<li>
+<p><code>dotnet publish -f netcoreapp1.1 -r ubuntu.14.04-x64 -o $PWD/publish</code></p>
+</li>
+<li>
+<p><code>cf push -f manifest.yml -p publish</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Pushing Fortune Teller UI - If you are using the finished lab code on Windows:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>cd Workshop/Session-03/Lab09/Fortune-Teller-UI</code></p>
+</li>
+<li>
+<p><code>dotnet restore</code></p>
+</li>
+<li>
+<p><code>dotnet build </code></p>
+</li>
+<li>
+<p><code>dotnet publish -o %CD%\publish -f netcoreapp1.1 -r ubuntu.14.04-x64</code></p>
+</li>
+<li>
+<p><code>cf push -f manifest.yml -p .\publish</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Pushing Fortune Teller UI - If you are using the finished lab code on Mac/Linux:</p>
+</li>
+<li>
+<p><code>cd Workshop/Session-03/Lab09/Fortune-Teller-UI</code></p>
+</li>
+<li>
+<p><code>dotnet restore</code></p>
+</li>
+<li>
+<p><code>dotnet build </code></p>
+</li>
+<li>
+<p><code>dotnet publish -f netcoreapp1.1 -r ubuntu.14.04-x64 -o $PWD/publish</code></p>
+</li>
+<li>
+<p><code>cf push -f manifest.yml -p publish</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Try hitting the <code>Fortune Teller UI</code> and if it fails to communicate with the <code>Fortune Teller Service</code>.
+make sure fortuneui.yml file us updated as follows "address: fortuneService".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_04_verify_you_can_scale_the_fortune_teller_ui">Step 04 - Verify you can scale the Fortune-Teller-UI</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the skills you picked up from Lab 3</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Scale both of the apps to 2 instances and see if the fortune cached in session remains accessable.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+					</section>
+				</article>
+			</main>
+		</div> 
+	</div> 
+</div>
+
+		
+
+
+
+
+<hr />
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<p class="doc-footer-em"><a href="#">Back to TOP</a></p>
+		</div>
+	</div>
+
+</div> 
+          
+<footer class="doc-footer">
+        <span>Last Updated on  0001-01-01 00:00:00 &#43;0000 UTC  </span>
+	
+	<p>Copyright (c) 2015, Pivotal; All rights reserved.</p>
+</footer>
+
+
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+		<script>
+			var $event = $.event,
+			$special,
+			resizeTimeout;
+			$special = $event.special.debouncedresize = {
+				setup: function() {
+					$( this ).on( "resize", $special.handler );
+				},
+				teardown: function() {
+					$( this ).off( "resize", $special.handler );
+				},
+				handler: function( event, execAsap ) {
+					var context = this,
+						args = arguments,
+						dispatch = function() {
+							event.type = "debouncedresize";
+							$event.dispatch.apply( context, args );
+						};
+					if ( resizeTimeout ) {
+						clearTimeout( resizeTimeout );
+					}
+					execAsap ?
+						dispatch() :
+						resizeTimeout = setTimeout( dispatch, $special.threshold );
+				},
+				threshold: 250
+			};
+			var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+			$.fn.imagesLoaded = function( callback ) {
+				var $this = this,
+					deferred = $.isFunction($.Deferred) ? $.Deferred() : 0,
+					hasNotify = $.isFunction(deferred.notify),
+					$images = $this.find('img').add( $this.filter('img') ),
+					loaded = [],
+					proper = [],
+					broken = [];
+				if ($.isPlainObject(callback)) {
+					$.each(callback, function (key, value) {
+						if (key === 'callback') {
+							callback = value;
+						} else if (deferred) {
+							deferred[key](value);
+						}
+					});
+				}
+				function doneLoading() {
+					var $proper = $(proper),
+						$broken = $(broken);
+					if ( deferred ) {
+						if ( broken.length ) {
+							deferred.reject( $images, $proper, $broken );
+						} else {
+							deferred.resolve( $images );
+						}
+					}
+					if ( $.isFunction( callback ) ) {
+						callback.call( $this, $images, $proper, $broken );
+					}
+				}
+				function imgLoaded( img, isBroken ) {
+					if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
+						return;
+					}
+					loaded.push( img );
+					if ( isBroken ) {
+						broken.push( img );
+					} else {
+						proper.push( img );
+					}
+					$.data( img, 'imagesLoaded', { isBroken: isBroken, src: img.src } );
+					if ( hasNotify ) {
+						deferred.notifyWith( $(img), [ isBroken, $images, $(proper), $(broken) ] );
+					}
+					if ( $images.length === loaded.length ){
+						setTimeout( doneLoading );
+						$images.unbind( '.imagesLoaded' );
+					}
+				}
+				if ( !$images.length ) {
+					doneLoading();
+				} else {
+					$images.bind( 'load.imagesLoaded error.imagesLoaded', function( event ){
+						imgLoaded( event.target, event.type === 'error' );
+					}).each( function( i, el ) {
+						var src = el.src;
+						var cached = $.data( el, 'imagesLoaded' );
+						if ( cached && cached.src === src ) {
+							imgLoaded( el, cached.isBroken );
+							return;
+						}
+						if ( el.complete && el.naturalWidth !== undefined ) {
+							imgLoaded( el, el.naturalWidth === 0 || el.naturalHeight === 0 );
+							return;
+						}
+						if ( el.readyState || el.complete ) {
+							el.src = BLANK;
+							el.src = src;
+						}
+					});
+				}
+				return deferred ? deferred.promise( $this ) : $this;
+			};
+			var Grid = (function() {
+				var $grid = $( '#og-grid' ),
+					$items = $grid.children( 'li' ),
+					current = -1,
+					previewPos = -1,
+					scrollExtra = 0,
+					marginExpanded = 10,
+					$window = $( window ), winsize,
+					$body = $( 'html, body' ),
+					transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					support = Modernizr.csstransitions,
+					settings = {
+						minHeight : 500,
+						speed : 350,
+						easing : 'ease'
+					};
+				function init( config ) {
+					
+					settings = $.extend( true, {}, settings, config );
+					$grid.imagesLoaded( function() {
+						saveItemInfo( true );
+						getWinSize();
+						initEvents();
+					} );
+				}
+				function addItems( $newitems ) {
+					$items = $items.add( $newitems );
+					$newitems.each( function() {
+						var $item = $( this );
+						$item.data( {
+							offsetTop : $item.offset().top,
+							height : $item.height()
+						} );
+					} );
+					initItemsEvents( $newitems );
+				}
+				function saveItemInfo( saveheight ) {
+					$items.each( function() {
+						var $item = $( this );
+						$item.data( 'offsetTop', $item.offset().top );
+						if( saveheight ) {
+							$item.data( 'height', $item.height() );
+						}
+					} );
+				}
+				function initEvents() {
+					
+					initItemsEvents( $items );
+					
+					$window.on( 'debouncedresize', function() {
+						
+						scrollExtra = 0;
+						previewPos = -1;
+						saveItemInfo();
+						getWinSize();
+						var preview = $.data( this, 'preview' );
+						if( typeof preview != 'undefined' ) {
+							hidePreview();
+						}
+					} );
+				}
+				function initItemsEvents( $items ) {
+					$items.on( 'click', 'span.og-close', function() {
+						hidePreview();
+						return false;
+					} ).children( 'a' ).on( 'click', function(e) {
+						var $item = $( this ).parent();
+						current === $item.index() ? hidePreview() : showPreview( $item );
+						return false;
+					} );
+				}
+				function getWinSize() {
+					winsize = { width : $window.width(), height : $window.height() };
+				}
+				function showPreview( $item ) {
+					var preview = $.data( this, 'preview' ),
+						position = $item.data( 'offsetTop' );
+					scrollExtra = 0;
+					if( typeof preview != 'undefined' ) {
+						if( previewPos !== position ) {
+							if( position > previewPos ) {
+								scrollExtra = preview.height;
+							}
+							hidePreview();
+						}
+						else {
+							preview.update( $item );
+							return false;
+						}
+						
+					}
+					previewPos = position;
+					preview = $.data( this, 'preview', new Preview( $item ) );
+					preview.open();
+				}
+				function hidePreview() {
+					current = -1;
+					var preview = $.data( this, 'preview' );
+					preview.close();
+					$.removeData( this, 'preview' );
+				}
+				function Preview( $item ) {
+					this.$item = $item;
+					this.expandedIdx = this.$item.index();
+					this.create();
+					this.update();
+				}
+				Preview.prototype = {
+					create : function() {
+						this.$title = $( '<h3></h3>' );
+						this.$description = $( '<p></p>' );
+						this.$href = $( '<a href="#"></a>' );
+						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+						this.$loading = $( '<div class="og-loading"></div>' );
+						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+						this.$closePreview = $( '<span class="og-close"></span>' );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
+						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
+						this.$item.append( this.getEl() );
+						if( support ) {
+							this.setTransition();
+						}
+					},
+					update : function( $item ) {
+						if( $item ) {
+							this.$item = $item;
+						}
+						
+						if( current !== -1 ) {
+							var $currentItem = $items.eq( current );
+							$currentItem.removeClass( 'og-expanded' );
+							this.$item.addClass( 'og-expanded' );
+							this.positionPreview();
+						}
+						current = this.$item.index();
+						var $itemEl = this.$item.children( 'a' ),
+							eldata = {
+								href : $itemEl.attr( 'href' ),
+								largesrc : $itemEl.data( 'largesrc' ),
+								title : $itemEl.data( 'title' ),
+								description : $itemEl.data( 'description' )
+							};
+						this.$title.html( eldata.title );
+						this.$description.html( eldata.description );
+						this.$href.attr( 'href', eldata.href );
+						var self = this;
+						
+						if( typeof self.$largeImg != 'undefined' ) {
+							self.$largeImg.remove();
+						}
+						if( self.$fullimage.is( ':visible' ) ) {
+							this.$loading.show();
+							$( '<img/>' ).load( function() {
+								var $img = $( this );
+								if( $img.attr( 'src' ) === self.$item.children('a').data( 'largesrc' ) ) {
+									self.$loading.hide();
+									self.$fullimage.find( 'img' ).remove();
+									self.$largeImg = $img.fadeIn( 350 );
+									self.$fullimage.append( self.$largeImg );
+								}
+							} ).attr( 'src', eldata.largesrc );	
+						}
+					},
+					open : function() {
+						setTimeout( $.proxy( function() {	
+							this.setHeights();
+							this.positionPreview();
+						}, this ), 25 );
+					},
+					close : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									$( this ).off( transEndEventName );
+								}
+								self.$item.removeClass( 'og-expanded' );
+								self.$previewEl.remove();
+							};
+						setTimeout( $.proxy( function() {
+							if( typeof this.$largeImg !== 'undefined' ) {
+								this.$largeImg.fadeOut( 'fast' );
+							}
+							this.$previewEl.css( 'height', 0 );
+							var $expandedItem = $items.eq( this.expandedIdx );
+							$expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
+							if( !support ) {
+								onEndFn.call();
+							}
+						}, this ), 25 );
+						
+						return false;
+					},
+					calcHeight : function() {
+						var heightPreview = winsize.height - this.$item.data( 'height' ) - marginExpanded,
+							itemHeight = winsize.height;
+						if( heightPreview < settings.minHeight ) {
+							heightPreview = settings.minHeight;
+							itemHeight = settings.minHeight + this.$item.data( 'height' ) + marginExpanded;
+						}
+						this.height = heightPreview;
+						this.itemHeight = itemHeight;
+					},
+					setHeights : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									self.$item.off( transEndEventName );
+								}
+								self.$item.addClass( 'og-expanded' );
+							};
+						this.calcHeight();
+						this.$previewEl.css( 'height', this.height );
+						this.$item.css( 'height', this.itemHeight ).on( transEndEventName, onEndFn );
+						if( !support ) {
+							onEndFn.call();
+						}
+					},
+					positionPreview : function() {
+						var position = this.$item.data( 'offsetTop' ),
+							previewOffsetT = this.$previewEl.offset().top - scrollExtra,
+							scrollVal = this.height + this.$item.data( 'height' ) + marginExpanded <= winsize.height ? position : this.height < winsize.height ? previewOffsetT - ( winsize.height - this.height ) : previewOffsetT;
+						
+						$body.animate( { scrollTop : scrollVal }, settings.speed );
+					},
+					setTransition  : function() {
+						this.$previewEl.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+						this.$item.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+					},
+					getEl : function() {
+						return this.$previewEl;
+					}
+				}
+				return { 
+					init : init,
+					addItems : addItems
+				};
+			})();
+		</script>
+		<script>
+			$(function() {
+				Grid.init();
+			});
+		</script>
+</body>
+</html>
+

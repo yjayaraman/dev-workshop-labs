@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Section #2...D on Raytheon Pivotal Workshops</title>
+    <link>http://raytheon.cfapps.io/dotnet/</link>
+    <description>Recent content in Section #2...D on Raytheon Pivotal Workshops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2015, Pivotal; All rights reserved.</copyright>
+    <lastBuildDate>Thu, 08 Jun 2017 01:06:13 +0200</lastBuildDate>
+    
+	<atom:link href="http://raytheon.cfapps.io/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lab100</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_100/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_100/</guid>
+      <description>Lab 2 - Pushing Your First ASP.NET Framework Application   Goal  In this lab, we&amp;#8217;ll do the following    We will deploy a simple ASP .NET app
+      Approximate time: 5 minutes
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnet/pcf-dotnet-environment-viewer/ViewEnvironment/.      Depends on BOSH Release for Windows on Pivotal Network</description>
+    </item>
+    
+    <item>
+      <title>Lab101</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_101/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_101/</guid>
+      <description>Lab 3 - Pushing Your First ASP.NET Core Application   Goal  In this lab, we&amp;#8217;ll do the following    We will deploy a ASP.NET Core app
+      Approximate time: 10 minutes
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnet/lab01/.      In this lab we will push a pre-built ASP.</description>
+    </item>
+    
+    <item>
+      <title>Lab101</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_109/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_109/</guid>
+      <description>Lab 11 - Steeltoe connectors and data protection providers   Goal The goals for this lab are to:
+  Understand ASP.NET Core Session services.
+  Understand ASP.NET Core Data Protection services
+  Use Steeltoe MySql Connector to bind the FortuneContext with a MySql database.
+  Use Steeltoe Redis Connector to cause the ASP.NET Core Session to use Redis for its Session storage.
+  Use Steeltoe Redis DataProtection Key Storage provider to cause the ASP.</description>
+    </item>
+    
+    <item>
+      <title>Lab104</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_102/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_102/</guid>
+      <description>Lab 4 - Binding to Cloud Foundry Services   Goal In this lab: - we&amp;#8217;ll be binding a MySQL database service to the application we pushed earlier and then view the configuration data Cloud Foundry provides to the application as a result.
+ Approximate time: 10 minutes
+    In this lab, we&amp;#8217;ll be binding a MySQL database service to the application we pushed earlier and then view the configuration data Cloud Foundry provides to the application as a result.</description>
+    </item>
+    
+    <item>
+      <title>Lab105</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_103/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_103/</guid>
+      <description>Lab 5 - Scaling and Operating Applications   Goal  In this lab    we&amp;#8217;ll scaling the application.
+      Approximate time: 10 minutes
+    Pivotal Cloudfoundry makes the work of performing actions, such as scaling, doing a zero-downtime deploy, and managing application health very easy. In the next two labs we&amp;#8217;ll explore Pivotal Cloud Foundry operations.
+     Scale the Application Up  Now let&amp;#8217;s increase the number of running application instances to 3.</description>
+    </item>
+    
+    <item>
+      <title>Lab105</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_104/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_104/</guid>
+      <description>Lab 6 - Monitoring Applications   Goal  In this lab    We&amp;#8217;ll tail Application Logs
+  Demonstrate self-healing
+      Approximate time: 10 minutes
+    Pivotal Cloud Foundry makes the work of performing actions, such as managing logs, doing a zero-downtime deploy, and managing application health very easy. In this lab we&amp;#8217;ll explore some of these capabilities.
+     Tailing Application Logs One of the most important enablers of visibility into application behavior is logging.</description>
+    </item>
+    
+    <item>
+      <title>Lab105</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_105/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_105/</guid>
+      <description>Lab 7 - Running, Publishing and Deploying ASP.NET Core Micro-services   Goal  In this lab    We&amp;#8217;ll become comfortable with running ASP.NET Core Web applications locally
+  Push the application to Cloud-Foundry
+      Approximate time: 1 hour
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnet/lab05/.      In this lab we will become comfortable with running ASP.</description>
+    </item>
+    
+    <item>
+      <title>Lab106</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_106/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_106/</guid>
+      <description>Lab 8 - Programming ASP.NET Core Micro-services   Goal  In this lab    We&amp;#8217;ll build a fully functional Fortune Teller application which uses several of the Steeltoe components
+      Approximate time: 1 hour
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnet/lab06/.      Starting with this lab we will begin the process of creating a fully functional Fortune Teller application which uses several of the Steeltoe components.</description>
+    </item>
+    
+    <item>
+      <title>Lab106</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_107/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_107/</guid>
+      <description>Lab 9 - Configuration and Steeltoe Config Server Client   Goal The goals for this lab are to:
+  Understand ASP.NET Core Configuration.
+  Understand ASP.NET Core Enironments
+  Understand ASP.NET Core Options services.
+  Use Environments to have seperate configuration for Development and Production.
+  Use Options to configure the FortuneServiceClient with the address of the Fortune Teller Service
+  Use Spring Cloud Config Server to centralize configurations</description>
+    </item>
+    
+    <item>
+      <title>Lab106</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_108/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_108/</guid>
+      <description>Lab 10 - Service Discovery and Steeltoe Eureka Client   Goal The goals for this lab are to:
+  Use Spring Cloud Eureka Server for Service Registration and Discovery
+  Use Steeltoe Discovery client to register and discover the Fortune Teller Service
+   Approximate time: 1 hour
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnet/lab06/.      In this lab we will continue to add functionality to the Fortune Teller application.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_110/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_110/</guid>
+      <description>Coming Soon!
+   </description>
+    </item>
+    
+  </channel>
+</rss>

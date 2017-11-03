@@ -1,5 +1,128 @@
    [[days]]
-        day = "Workshop Day1"
+        day = "Billerica Day1"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+            
+        [[days.sessions.exercises]]
+            title = "_Introduction_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pivotal Overview" 
+                slides = "/slides/general/Pivotal Corporate Story.pptx"
+
+            [[days.sessions.exercises.labs]]
+                title = "Enabling a Cloud-Native Organization" 
+                slides = "/slides/general/Enabling a Cloud-Native Organization.key"   
+
+            [[days.sessions.exercises.labs]]
+                title = "Pivotal Cloud Foundry Intro"
+                slides = "/slides/session1/PCF_Basics.key"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+    [[days.sessions]]
+        title = "Afternoon Session"
+            
+        [[days.sessions.exercises]]
+            title = "_Setting up the workshop env_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Lab Requirements"
+                lab = "/lab_requirements/"
+
+            [[days.sessions.exercises.labs]]
+                title = "PCF access"
+                lab = "/lab_101"
+
+        [[days.sessions.exercises]]
+            title = "**_Retrospective_**"
+            slides = "https://postfacto.io/retros/raytheon"
+
+   [[days]]
+        day = "Billerica Day2"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+            
+
+    [[days.sessions]]
+      title = "Intro to Pivotal Cloud Foundry"
+
+        [[days.sessions.exercises]]
+            title = "_Setting up the workshop env_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Orgs, Spaces, Quotas"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+                lab = "/lab_101"
+
+        [[days.sessions.exercises]]
+            title = "_Pushing Your First Application_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First Application - Java"
+                lab = "/lab_102"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First ASP .NET Application"
+                lab = "/dotnet/lab_100"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First .NET Core Application"
+                lab = "/dotnet/lab_101"
+
+            [[days.sessions.exercises.labs]]
+                title = "Binding to Cloud Foundry Services - .NET"
+                lab = "/dotnet/lab_102"
+
+            [[days.sessions.exercises.labs]]
+                title = "Scaling and Operating Applications - .NET"
+                lab = "/dotnet/lab_103"
+
+            [[days.sessions.exercises.labs]]
+                title = "Monitoring Applications - .NET"
+                lab = "/dotnet/lab_104"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+    [[days.sessions]]
+      title = "Intro to Cloud Native Architectures"
+
+        [[days.sessions.exercises]]
+            title = "_CI/CD Using Concourse_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Simple Concourse Pipeline"
+                slides = "/slides/session3/session_06.pdf"
+                lab = "/lab_306"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Afternoon Break**"
+
+        [[days.sessions.exercises]]
+            title = "_.Cloud Native Architectures_"
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core_"
+            
+        [[days.sessions.exercises]]
+            title = "**_Retrospective_**"
+
+   [[days]]
+        day = "Billerica Day3"
 
     [[days.sessions]]
         title = "Morning Session"
@@ -18,12 +141,20 @@
         title = "Microservices Session 1:"
 
         [[days.sessions.exercises]]
-            title = "_Spring Boot Primer_"
-            slides = "/slides/session3/session_01.pdf"
+            title = "_.NET Core Primer_"
 
             [[days.sessions.exercises.labs]]
-                title = "Setting up the workshop env"
-                lab = "/lab_101"
+                title = "Running, Publishing and Deploying ASP.NET Core Micro-services"
+                lab = "/dotnet/lab_105"
+
+            [[days.sessions.exercises.labs]]
+                title = "Build Fortune teller Micro-services"
+                lab = "/dotnet/lab_106"
+
+
+        [[days.sessions.exercises]]
+            title = "_Spring Boot Primer_"
+            slides = "/slides/session3/session_01.pdf"
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Boot Basics"
@@ -52,7 +183,18 @@
         title = "Microservices Session 2:"
 
         [[days.sessions.exercises]]
-            title = "_Cloud Native Architectures: Part One_"
+            title = "_.NET Core Cloud Native Architectures: Part One_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe Config Server"
+                lab = "/dotnet/lab_107"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe Service Registry"
+                lab = "/dotnet/lab_108"
+
+        [[days.sessions.exercises]]
+            title = "_Spring Cloud Native Architectures: Part One_"
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Cloud Config"
@@ -75,7 +217,15 @@
         title = "Microservices Session 3:"
 
         [[days.sessions.exercises]]
-            title = "_Cloud Native Architectures: Part Two_"
+            title = "_.NET Core Cloud Native Architectures: Part Two_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe connectors and data protection providers"
+                lab = "/lab_109"
+
+
+        [[days.sessions.exercises]]
+            title = "_Spring Cloud Native Architectures: Part Two_"
 
             [[days.sessions.exercises.labs]]
                 title = "Fault Tolerance With Hystrix and Monitoring Circuit Breakers with Hystrix Dashboard"
@@ -86,79 +236,8 @@
                 title = "**Afternoon Break**"
 
           [[days.sessions.exercises]]
-            title = "_Testing and Documenting RESTful Web Service_"
+            title = "_Wrap up labs_"
             
-            [[days.sessions.exercises.labs]]
-                title = "Documenting RESTful Web Service with Spring RestDocs"
-                slides = "/slides/session3/restdocs.pdf"
-
-        [[days.sessions.exercises]]
-            title = "_Securing RESTful Web Service_"
-            
-            [[days.sessions.exercises.labs]]
-                title = "Securing RESTful Web Service with Spring Cloud Security"
-                slides = "/slides/session4/PCF_Microservices_Security.pdf"
-                lab = "/lab_308"
-            [[days.sessions.exercises.labs]]
-                title = "Demo: Securing Web Service using Pivotal SSO"
-
-
 
         [[days.sessions.exercises]]
             title = "**_Retrospective_**"
-
-    [[days]]
-        day = "Workshop Day2"
-
-    [[days.sessions]]
-        title = "Morning Session"
-
-        [[days.sessions.exercises]]
-            title = ""
-
-            [[days.sessions.exercises.labs]]
-                title = "_8:30 AM - 9:00 AM: Breakfast_"
-
-        [[days.sessions.exercises.labs]]
-            title = "Demo: Deep Dive into Pivotal Cloud Foundry"
-            slides = "/slides/session1/pcf-intro.pdf"
-
-        [[days.sessions.exercises.labs]]
-            title = "Deep Dive Discussion into Nuance Microservices Architecture"
-
-        [[days.sessions.exercises.labs]]
-                title = "**Lunch**"
-
-    [[days.sessions]]
-        title = "Afternoon Session"
-
-        [[days.sessions.exercises]]
-            title = "_Consumer Driven Contracts_"
-            
-            [[days.sessions.exercises.labs]]
-                title = "Spring Cloud Contract"
-                slides = "/slides/session4/Consumer_Contract.pdf"
-                lab = "#"
-
-    [[days.sessions]]
-        title = "Data Microservices:"
-
-        [[days.sessions.exercises]]
-            title = "_Spring Cloud Data Flow_"
-
-
-            [[days.sessions.exercises.labs]]
-                title = "Demo: RealTime Failure Prediction of Emulated Devices Demo"
-
-            [[days.sessions.exercises.labs]]
-                title = "Spring Cloud Data Flow"
-                slides = "/slides/session4/springcloud_dataflow.pdf"
-
-        [[days.sessions.exercises]]
-            title = "**_Retrospective_**"
-
-
-
-           
-
- 

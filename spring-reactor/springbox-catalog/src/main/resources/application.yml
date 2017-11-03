@@ -1,0 +1,5 @@
+greeting: Hello World
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop

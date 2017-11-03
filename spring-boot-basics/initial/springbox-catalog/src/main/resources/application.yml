@@ -1,0 +1,28 @@
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+spring:
+  application:
+    name: springbox-catalog
+  profiles:
+    active: english 
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      
+info:
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+
+greeting: Hello World
+
+---
+spring:
+  profiles: spanish
+greeting: Hola

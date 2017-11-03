@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Raytheon Pivotal Workshops">
+		<link rel="icon" href="/favicon.ico">
+		<title>Lab102 - Raytheon Pivotal Workshops</title>
+		<link rel="stylesheet" href="/css/highlight.js.min.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="/css/pui-v2.0.0/pivotal-ui.css">
+		<link rel="stylesheet" href="/css/theme.css">
+		<link rel="stylesheet" href="/css/component.css">
+
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/bootie-docs.css">
+		<script src="http://raytheon.cfapps.io/js/modernizr.custom.js"></script>
+
+		
+		<style type="text/css">
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+		</style>
+	</head>
+
+<body role="document">
+	
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top  ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav navbar-brand">
+						
+							<img class="nav pivotal-logo" src="/Pivotal_Teal.png"/>
+						
+				</div>
+				<a class="navbar-brand navbar-txt" href="/">Raytheon Pivotal Workshops </a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+			
+				
+				
+					
+					<li ><a class="navbar-txt" href="/lab_requirements">Lab_requirements</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day1">Billerica_day1</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day2">Billerica_day2</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day3">Billerica_day3</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/cloud_tig">Cloud_tig</a></li>
+				
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a></li>
+                     
+                        <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://www.git-scm.com">Git</a></li>
+                     
+                        <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a></li>
+                     
+                        <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a></li>
+                     
+                        <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a></li>
+                     
+                        <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a></li>
+                     
+					</ul>
+				</li>
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a></li>
+                     
+                        <li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a></li>
+                     
+                        <li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a></li>
+                     
+                        <li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a></li>
+                     
+					</ul>
+				</li>
+			
+				
+                        
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<div class="container" style="width:95%; padding:5">
+	<div class="row">
+
+	    		
+		<div class="doc-sidebar" style="width:30%; margin-top:0; float:right; padding:10px;">
+			<div class="sidebar-module">
+				
+		    	<div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+		    	<h4 class="type-brand-3">Books</h4>
+		    	<ul class="list-unstyled">
+		    	
+		    	<li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a><p></p></li>	
+		    	
+		    	</ul>
+		  	</div>
+                        <div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+                        <h4 class="type-brand-3">Resources</h4>
+                        <ul class="list-unstyled">
+                        
+                            <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a><p></p></li>
+                        
+                            <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://www.git-scm.com">Git</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a><p></p></li>
+                        
+                        </ul>
+                        </div>
+			</div>
+		</div>
+		
+
+
+		<div class="col-sm-8 doc-main" style="width:70%; float:left; padding:30px;">
+			<main role="main">
+				<article>
+					<a id="title"></a>
+					<div class="doc-entry-meta">
+					</div>
+					<section>
+						<div class="sect1">
+<h2 id="_lab_02_deploy_a_simple_application_scale_and_bind_services">Lab 02 - Deploy a simple application, scale, and bind services</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_goal_code"><code>Goal</code></h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">In this lab, we&#8217;ll do the following</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>We will install the command line interface (CLI)</p>
+</li>
+<li>
+<p>Log into <strong>PCF</strong> Env and deploy a simple Java app</p>
+</li>
+<li>
+<p>Scale it</p>
+</li>
+<li>
+<p>Check its logs and SSH into a container.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Approximate time: 30 minutes</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_setup_code"><code>Setup</code></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You can download a zip file of the labs at <a href="https://github.com/yjayaraman-pivotal/dev-workshop-labs/archive/master.zip" class="bare">https://github.com/yjayaraman-pivotal/dev-workshop-labs/archive/master.zip</a></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can also use <code>Git</code> to check out the project labs to local. This can be accomplished as follows:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ git clone https://github.com/yjayaraman-pivotal/dev-workshop-labs.git</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_exercise_code"><code>Exercise</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_code_push_code"><code>Push!</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From command line! Change to the <em>pre-built</em> sample application directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd $COURSE_HOME/pre-built</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Rename the <code>manifest.yml</code> file to something like <code>manifest.yml.disabled</code> (the actual name is not important)</p>
+</li>
+<li>
+<p>Push the application!</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf push attendees -p attendees.jar --random-route</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see output similar to the following listing. Take a look at the listing callouts for a play-by-play of what&#8217;s happening:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><b class="conum">(1)</b>
+Creating app attendees in org pcfdev-org / space pcfdev-space as admin...
+OK <b class="conum">(2)</b>
+
+Creating route attendees.local.pcfdev.io...
+OK <b class="conum">(3)</b>
+
+Binding attendees.local.pcfdev.io to attendees...
+OK <b class="conum">(4)</b>
+
+Uploading attendees...
+Uploading app files from: attendees.jar
+Uploading 31M, 192 files
+Done uploading <b class="conum">(5)</b>
+
+Starting app attendees in org pcfdev-org / space pcfdev-space as admin...
+Downloading nodejs_buildpack...
+Downloading java_buildpack...
+Downloading python_buildpack...
+Downloading go_buildpack...
+Downloading ruby_buildpack...
+Downloading php_buildpack...
+Downloading staticfile_buildpack...
+Downloading binary_buildpack...
+Downloaded binary_buildpack (8.3K)
+Downloaded php_buildpack (262.3M)
+Downloaded ruby_buildpack (247.7M)
+Downloaded nodejs_buildpack (60.7M)
+Downloaded python_buildpack (254.1M)
+Downloaded staticfile_buildpack (2.5M)
+Downloaded java_buildpack (241.6M)
+Downloaded go_buildpack (450.3M)
+Creating container
+Successfully created container
+Downloading app package...
+Downloaded app package (27.6M)
+Staging... <b class="conum">(6)</b>
+-----&gt; Java Buildpack Version: v3.6 (offline) | https://github.com/cloudfoundry/java-buildpack.git#5194155
+-----&gt; Downloading Open Jdk JRE 1.8.0_71 from https://download.run.pivotal.io/openjdk/trusty/x86_64/openjdk-1.8.0_71.tar.gz (found in cache) <b class="conum">(7)</b>
+       Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.1s)
+-----&gt; Downloading Open JDK Like Memory Calculator 2.0.1_RELEASE from https://download.run.pivotal.io/memory-calculator/trusty/x86_64/memory-calculator-2.0.1_RELEASE.tar.gz (found in cache)
+       Memory Settings: -Xms160M -XX:MetaspaceSize=64M -Xss853K -Xmx160M -XX:MaxMetaspaceSize=64M
+-----&gt; Downloading Spring Auto Reconfiguration 1.10.0_RELEASE from https://download.run.pivotal.io/auto-reconfiguration/auto-reconfiguration-1.10.0_RELEASE.jar (found in cache) <b class="conum">(8)</b>
+Exit status 0
+Staging complete
+Uploading droplet, build artifacts cache...
+Uploading build artifacts cache...
+Uploading droplet...
+Uploaded build artifacts cache (107B)
+Uploaded droplet (72.5M) <b class="conum">(9)</b>
+Uploading complete
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
+
+
+OK
+
+App attendees was started using this command `CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-2.0.1_RELEASE -memorySizes=metaspace:64m.. -memoryWeights=heap:75,metaspace:10,native:10,stack:5 -memoryInitials=heap:100%,metaspace:100% -totMemory=$MEMORY_LIMIT) &amp;&amp; JAVA_OPTS="-Djava.io.tmpdir=$TMPDIR -XX:OnOutOfMemoryError=$PWD/.java-buildpack/open_jdk_jre/bin/killjava.sh $CALCULATED_MEMORY" &amp;&amp; SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.:$PWD/.java-buildpack/spring_auto_reconfiguration/spring_auto_reconfiguration-1.10.0_RELEASE.jar org.springframework.boot.loader.JarLauncher` <b class="conum">(10)</b>
+
+Showing health and status for app attendees in org pcfdev-org / space pcfdev-space as admin...
+OK <b class="conum">(11)</b>
+
+requested state: started
+instances: 1/1
+usage: 256M x 1 instances
+urls: attendees.local.pcfdev.io
+last uploaded: Mon Jun 13 12:28:11 UTC 2016
+stack: cflinuxfs2
+buildpack: java-buildpack=v3.6-offline-https://github.com/cloudfoundry/java-buildpack.git#5194155 java-main open-jdk-like-jre=1.8.0_71 open-jdk-like-memory-calculator=2.0.1_RELEASE spring-auto-reconfiguration=1.10.0_RELEASE
+
+     state     since                    cpu    memory      disk        details
+#0   running   2016-06-13 08:29:37 AM   0.0%   0 of 256M   0 of 512M</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>When using a manifest to deploy, shows a message that a manifest is being used to provide necessary configuration details such as application name, memory to be allocated, and path to the application artifact.
+Take a look at <a href="../lab_104">lab 04</a>  to see how.</p>
+</li>
+<li>
+<p>In most cases, the CLI indicates each Cloud Foundry API call as it happens.
+In this case, the CLI has created an application record for <em>attendees</em> in your assigned space.</p>
+</li>
+<li>
+<p>All HTTP/HTTPS requests to applications will flow through Cloud Foundry&#8217;s front-end router called <a href="http://docs.cloudfoundry.org/concepts/architecture/router.html">(Go)Router</a>.
+Here the CLI is creating a route with random word tokens inserted (again, see <code>manifest.yml</code> for a hint!) to prevent route collisions across the default <code>cfapps.io</code> domain.</p>
+</li>
+<li>
+<p>Now the CLI is <em>binding</em> the created route to the application.
+Routes can actually be bound to multiple applications to support techniques such as <a href="http://www.mattstine.com/2013/07/10/blue-green-deployments-on-cloudfoundry">blue-green deployments</a>.</p>
+</li>
+<li>
+<p>The CLI finally uploads the application bits to <code>Sandbox</code>. Notice that it&#8217;s uploading <em>90 files</em>! This is because Cloud Foundry actually explodes a ZIP artifact before uploading it for caching purposes.</p>
+</li>
+<li>
+<p>Now we begin the staging process. The <a href="https://github.com/cloudfoundry/java-buildpack">Java Buildpack</a> is responsible for assembling the runtime components necessary to run the application.</p>
+</li>
+<li>
+<p>Here we see the version of the JRE that has been chosen and installed.</p>
+</li>
+<li>
+<p>If running a Jar, then it will use the embedded container otherwise, we will see the version of Tomcat that has been chosen and installed.</p>
+</li>
+<li>
+<p>The complete package of your application and all of its necessary runtime components is called a <em>droplet</em>.
+Here the droplet is being uploaded to PCF&#8217;s internal blobstore so that it can be easily copied to one or more <em><a href="http://docs.cloudfoundry.org/concepts/architecture/#diego-cell">Diego Cells</a></em> for execution.</p>
+</li>
+<li>
+<p>The CLI tells you exactly what command and argument set was used to start your application.</p>
+</li>
+<li>
+<p>Finally the CLI reports the current status of your application&#8217;s health.
+You can get the same output at any time by typing <code>cf app &lt;app name&gt;</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Type <code>cf apps</code> to get info on all apps in your space</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf apps
+Getting apps in org student1-org / space development as student1...
+OK
+
+name        requested state   instances   memory   disk   urls
+attendees   started           1/1         512M     1G     attendees-inferoanterior-omnibearing.cfapps.io</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Visit the application in your browser by hitting the route that was generated for <code>attendees</code>:</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/attendees.png" alt="attendees">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_view_logs_and_events_for_the_app_code"><code>View logs and events for the app</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From command line!</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf logs attendees --recent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see output similar to the following listing:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>Connected, dumping recent logs for app attendees in org pcfdev-org / space pcfdev-space as admin...
+
+2016-06-13T08:29:31.10-0400 [APP/0]      OUT  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2016-06-13T08:29:31.10-0400 [APP/0]      OUT  :: Spring Boot ::        (v1.3.2.RELEASE)
+2016-06-13T08:29:31.12-0400 [APP/0]      OUT 2016-06-13 12:29:31.119  INFO 14 --- [           main] nfigurationApplicationContextInitializer : Adding cloud service auto-reconfiguration to ApplicationContext
+2016-06-13T08:29:31.12-0400 [APP/0]      OUT 2016-06-13 12:29:31.121  INFO 14 --- [           main] i.p.e.attendees.attendeesApplication   : The following profiles are active: cloud
+2016-06-13T08:29:31.13-0400 [APP/0]      OUT 2016-06-13 12:29:31.135  INFO 14 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1e8607e9: startup date [Mon Jun 13 12:29:31 UTC 2016]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@e5fbc05
+2016-06-13T08:29:31.84-0400 [APP/0]      OUT 2016-06-13 12:29:31.843  INFO 14 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-06-13T08:29:32.17-0400 [APP/0]      OUT 2016-06-13 12:29:32.179  INFO 14 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'managementServletContext' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcHypermediaManagementContextConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcAutoConfiguration.class]]
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.452  INFO 14 --- [           main] urceCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type javax.sql.DataSource
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.453  INFO 14 --- [           main] ongoCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type org.springframework.data.mongodb.MongoDbFactory
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.453  INFO 14 --- [           main] bbitCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type org.springframework.amqp.rabbit.connection.ConnectionFactory
+2016-06-13T08:29:32.45-0400 [APP/0]      OUT 2016-06-13 12:29:32.453  INFO 14 --- [           main] edisCloudServiceBeanFactoryPostProcessor : Skipping auto-reconfiguring beans of type org.springframework.data.redis.connection.RedisConnectionFactory
+2016-06-13T08:29:32.48-0400 [APP/0]      OUT 2016-06-13 12:29:32.480  INFO 14 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=165ec935-2890-3d9a-a8de-863066875115
+2016-06-13T08:29:32.75-0400 [APP/0]      OUT 2016-06-13 12:29:32.750  INFO 14 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$ConfigurationPropertiesRebinderConfiguration' of type [class org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$ConfigurationPropertiesRebinderConfiguration$$EnhancerBySpringCGLIB$$907ee5f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-13T08:29:33.25-0400 [APP/0]      OUT 2016-06-13 12:29:33.255  INFO 14 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2016-06-13T08:29:33.27-0400 [APP/0]      OUT 2016-06-13 12:29:33.270  INFO 14 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-06-13T08:29:33.27-0400 [APP/0]      OUT 2016-06-13 12:29:33.271  INFO 14 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.0.30
+2016-06-13T08:29:33.36-0400 [APP/0]      OUT 2016-06-13 12:29:33.361  INFO 14 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-06-13T08:29:33.36-0400 [APP/0]      OUT 2016-06-13 12:29:33.361  INFO 14 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2227 ms
+2016-06-13T08:29:34.36-0400 [APP/0]      OUT 2016-06-13 12:29:34.366  INFO 14 --- [ost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-13T08:29:34.37-0400 [APP/0]      OUT 2016-06-13 12:29:34.376  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'metricFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.380  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'requestContextFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.381  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'webRequestLoggingFilter' to: [/*]
+2016-06-13T08:29:34.38-0400 [APP/0]      OUT 2016-06-13 12:29:34.381  INFO 14 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'applicationContextIdFilter' to: [/*]
+2016-06-13T08:29:34.56-0400 [APP/0]      OUT 2016-06-13 12:29:34.561  WARN 14 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2016-06-13T08:29:34.56-0400 [APP/0]      OUT 2016-06-13 12:29:34.562  INFO 14 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2016-06-13T08:29:34.57-0400 [APP/0]      OUT 2016-06-13 12:29:34.571  INFO 14 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@23c91e78
+2016-06-13T08:29:35.06-0400 [APP/0]      OUT 2016-06-13 12:29:35.063  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1e8607e9: startup date [Mon Jun 13 12:29:31 UTC 2016]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@e5fbc05
+2016-06-13T08:29:35.08-0400 [APP/0]      OUT 2016-06-13 12:29:35.084  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.339  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/basics],methods=[GET]}" onto public java.lang.String io.pivotal.enablement.attendees.controller.attendeesController.kill(javax.servlet.http.HttpServletRequest,boolean,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.341  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/add-attendee],methods=[POST]}" onto public java.lang.String io.pivotal.enablement.attendees.controller.attendeesController.addAttendee(javax.servlet.http.HttpServletRequest,java.lang.String,java.lang.String,java.lang.String,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.342  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/bluegreen]}" onto public java.lang.String io.pivotal.enablement.attendees.controller.attendeesController.bluegreen(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.342  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/services],methods=[GET]}" onto public java.lang.String io.pivotal.enablement.attendees.controller.attendeesController.attendees(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.342  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String io.pivotal.enablement.attendees.controller.attendeesController.index(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model) throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.344  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/bluegreen-check]}" onto public java.lang.String io.pivotal.enablement.attendees.controller.attendeesRestController.bluegreenRequest() throws java.lang.Exception
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.345  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-13T08:29:35.34-0400 [APP/0]      OUT 2016-06-13 12:29:35.345  INFO 14 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-13T08:29:35.40-0400 [APP/0]      OUT 2016-06-13 12:29:35.407  INFO 14 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-13T08:29:35.40-0400 [APP/0]      OUT 2016-06-13 12:29:35.408  INFO 14 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-13T08:29:35.43-0400 [APP/0]      OUT 2016-06-13 12:29:35.433  INFO 14 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2016-06-13T08:29:35.46-0400 [APP/0]      OUT 2016-06-13 12:29:35.467  INFO 14 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-13T08:29:36.69-0400 [APP/0]      OUT 2016-06-13 12:29:36.692  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.69-0400 [APP/0]      OUT 2016-06-13 12:29:36.693  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.69-0400 [APP/0]      OUT 2016-06-13 12:29:36.699  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.699  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.701  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/actuator || /actuator.json],produces=[application/json]}" onto public org.springframework.hateoas.ResourceSupport org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links()
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.704  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.704  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2016-06-13T08:29:36.70-0400 [APP/0]      OUT 2016-06-13 12:29:36.705  INFO 14 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/refresh || /refresh.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.endpoint.GenericPostableMvcEndpoint.invoke()</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>PCF provides access to an aggregated view of logs related to your application. This includes HTTP access logs, as well as output from app operations such as scaling, restarting, and restaging.</p>
+</div>
+<div class="paragraph">
+<p>Every log line contains four fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Timestamp</p>
+</li>
+<li>
+<p>Log type</p>
+</li>
+<li>
+<p>Channel</p>
+</li>
+<li>
+<p>Message</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_scale_the_app_code"><code>Scale the app</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Increase the number of instances for you app to 2. Notice how quick this is, since the droplet just needs to be copied to a new container.</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf scale attendees -i 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see output similar to the following listing:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>Scaling app attendees in org pcfdev-org / space pcfdev-space as admin...
+OK</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Decrease the number of instances for your app back to 1.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_the_services_marketplace_code"><code>The Services Marketplace</code></h3>
+<div class="paragraph">
+<p>There are two ways to discover what services are available on Pivotal Web Services.
+The first is available on any instance of Cloud Foundry: the CLI. Just type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf marketplace</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and you&#8217;ll get a list of services, their available plans, and descriptions.</p>
+</div>
+<div class="paragraph">
+<p>The second way is specific to Pivotal Cloud Foundry&#8217;s Application Manager UI.
+If you haven&#8217;t already, login to it by visiting <a href="https://apps.run.haas-80.pez.pivotal.io/login" class="bare">https://apps.run.haas-80.pez.pivotal.io/login</a>.</p>
+</div>
+<div class="paragraph">
+<p>Click on the ``Marketplace'' link:
+<em>The Screenshots below are from Pivotal Web Services (public managed Pivotal CF).  Your image will look different if you are using your own instance of Pivotal Cloud Foundry.</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/PWS_AM_InstructorSpace.png" alt="PWS AM InstructorSpace">
+</div>
+</div>
+<div class="paragraph">
+<p>and you&#8217;ll see the same service/plan/description listing in the browser:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/PWS_Marketplace.png" alt="PWS Marketplace">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_creating_and_binding_to_a_service_instance_code"><code>Creating and Binding to a Service Instance</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Let&#8217;s begin by creating a MySql instance provided by Pivotal.</p>
+</li>
+<li>
+<p>From the CLI, let&#8217;s <em>create</em> a p-mysql service instance:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf create-service p-mysql 100mb-dev attendees-db
+Creating service attendees-db in org ACME / space instructor as mstine@pivotal.io...
+OK</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Next we&#8217;ll <em>bind</em> the newly created instance to our <code>attendees</code> application:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf bs attendees attendees-db
+Binding service attendees-db to app attendees in org ACME / space instructor as mstine@pivotal.io...
+OK
+TIP: Use 'cf restage' to ensure your env variable changes take effect</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Notice the admonition to <code>Use 'cf restage' to ensure your env variable changes take effect</code>.
+Let&#8217;s take a look at the environment variables for our application to see what&#8217;s been done. We can do this by typing:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf env attendees</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The subset of the output we&#8217;re interested in is located near the very top, titled <code>System-Provided</code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>System-Provided:
+{
+ "VCAP_SERVICES": { <b class="conum">(1)</b>
+  "p-mysql": [
+   {
+    "credentials": {
+     "hostname": "10.68.50.61",
+     "jdbcUrl": "jdbc:mysql://10.68.50.61:3306/cf_ddbe0221_d1fc_478f_b693_69279b2de702?user=mWsYAON34zbaQPAA\u0026password=CZImCZ9iSNU7HfP2",
+     "name": "cf_ddbe0221_d1fc_478f_b693_69279b2de702",
+     "password": "CZImCZ9iSNU7HfP2",
+     "port": 3306,
+     "uri": "mysql://mWsYAON34zbaQPAA:CZImCZ9iSNU7HfP2@10.68.50.61:3306/cf_ddbe0221_d1fc_478f_b693_69279b2de702?reconnect=true", <b class="conum">(2)</b>
+     "username": "mWsYAON34zbaQPAA"
+    },
+    "label": "p-mysql",
+    "name": "attendees-db",
+    "plan": "100mb-dev",
+    "tags": [
+     "mysql",
+     "relational"
+    ]
+   }
+  ]
+ }
+}
+
+{
+ "VCAP_APPLICATION": {
+  "application_name": "attendees",
+  "application_uris": [
+   "attendees-unbragging-pourparler.pcf2.fe.gopivotal.com"
+  ],
+  "application_version": "e3fa423d-69ad-41cb-bd17-0e88427dfe4c",
+  "limits": {
+   "disk": 1024,
+   "fds": 16384,
+   "mem": 512
+  },
+  "name": "attendees",
+  "space_id": "080ba4e6-bafc-482b-9a98-42f612eef736",
+  "space_name": "jfullam",
+  "uris": [
+   "attendees-unbragging-pourparler.pcf2.fe.gopivotal.com"
+  ],
+  "users": null,
+  "version": "e3fa423d-69ad-41cb-bd17-0e88427dfe4c"
+ }
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>VCAP_SERVICES</code> is a special Cloud Foundry environment variable that contains a JSON document containing all of the information for any services bound to an application.</p>
+</li>
+<li>
+<p>Notice here the unique URI for this instance of MySql that <code>attendees</code> has been bound to.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Now let&#8217;s <em>restage</em> the application, which cycles our application back through the staging/buildpack process before redeploying the application.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf restage attendees</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the application is running again, revisit or refresh the browser tab where you have the <em>attendees</em> application loaded:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/attendees-db.png" alt="attendees db">
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see from the information dialog, the application is now utilizing a MySql database via the <code>attendees-db</code> service.</p>
+</div>
+</li>
+<li>
+<p><strong>(OPTIONAL STEPS)</strong> If you have a MySql GUI tool handy and you are using a lab environment that has the necessary network access (ask your instructor), you can inspect the music database created. Otherwise, your instructor will demo via a Pivotal VPN connection.</p>
+</li>
+<li>
+<p>In your DB tool, create a new server connection and populate the properties with values from the URI in your <code>VCAP_SERVICES</code> environment variable (remember <code>cf env spring-muisc</code>!):</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_unbinding_a_service_code"><code>Unbinding a service</code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Next we&#8217;ll unbind our application from our MySql instance :</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf us attendees attendees-db</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you visit your application now, you&#8217;ll see that it still works.
+If you recall, environment variable changes (such as binding/unbinding of services) don&#8217;t actually take effect until a <em>restage</em> or <em>restart</em>.</p>
+</div>
+</li>
+<li>
+<p>And then do a restage:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf restage attendees</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the application is running again, revisit or refresh the browser tab where you have the <em>attendees</em> application loaded:</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_clean_up_code"><code>Clean Up</code></h3>
+<div class="paragraph">
+<p>Let&#8217;s clean up our application and services to make room for future labs.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete the <code>attendees</code> application:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf d attendees
+
+Really delete the app attendees?&gt; y
+Deleting app attendees in org oreilly-class / space instructor as mstine@pivotal.io...
+OK</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete the <code>attendees-db</code> service:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cf ds attendees-db
+
+Really delete the service attendees-db?&gt; y
+Deleting service attendees-db in org oreilly-class / space instructor as mstine@pivotal.io...
+OK</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Congratulations, you have pushed an application, scaled it, viewed its logs.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_demo_code"><code>Demo</code></h2>
+<div class="sectionbody">
+<video width="320" height="240" controls>
+  <source src="../images/lab103.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. In this case, we could accomplish the same goal by only <em>restarting</em> the application via <code>cf restart attendees</code>. A <em>restage</em> is generally recommended because Cloud Foundry buildpacks also have access to injected environment variables and can install or configure things differently based on their values.
+</div>
+</div>
+
+					</section>
+				</article>
+			</main>
+		</div> 
+	</div> 
+</div>
+
+		
+
+
+
+
+<hr />
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<p class="doc-footer-em"><a href="#">Back to TOP</a></p>
+		</div>
+	</div>
+
+</div> 
+          
+<footer class="doc-footer">
+        <span>Last Updated on  2016-03-23 19:58:14 -0400 EDT  </span>
+	
+	<p>Copyright (c) 2015, Pivotal; All rights reserved.</p>
+</footer>
+
+
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+		<script>
+			var $event = $.event,
+			$special,
+			resizeTimeout;
+			$special = $event.special.debouncedresize = {
+				setup: function() {
+					$( this ).on( "resize", $special.handler );
+				},
+				teardown: function() {
+					$( this ).off( "resize", $special.handler );
+				},
+				handler: function( event, execAsap ) {
+					var context = this,
+						args = arguments,
+						dispatch = function() {
+							event.type = "debouncedresize";
+							$event.dispatch.apply( context, args );
+						};
+					if ( resizeTimeout ) {
+						clearTimeout( resizeTimeout );
+					}
+					execAsap ?
+						dispatch() :
+						resizeTimeout = setTimeout( dispatch, $special.threshold );
+				},
+				threshold: 250
+			};
+			var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+			$.fn.imagesLoaded = function( callback ) {
+				var $this = this,
+					deferred = $.isFunction($.Deferred) ? $.Deferred() : 0,
+					hasNotify = $.isFunction(deferred.notify),
+					$images = $this.find('img').add( $this.filter('img') ),
+					loaded = [],
+					proper = [],
+					broken = [];
+				if ($.isPlainObject(callback)) {
+					$.each(callback, function (key, value) {
+						if (key === 'callback') {
+							callback = value;
+						} else if (deferred) {
+							deferred[key](value);
+						}
+					});
+				}
+				function doneLoading() {
+					var $proper = $(proper),
+						$broken = $(broken);
+					if ( deferred ) {
+						if ( broken.length ) {
+							deferred.reject( $images, $proper, $broken );
+						} else {
+							deferred.resolve( $images );
+						}
+					}
+					if ( $.isFunction( callback ) ) {
+						callback.call( $this, $images, $proper, $broken );
+					}
+				}
+				function imgLoaded( img, isBroken ) {
+					if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
+						return;
+					}
+					loaded.push( img );
+					if ( isBroken ) {
+						broken.push( img );
+					} else {
+						proper.push( img );
+					}
+					$.data( img, 'imagesLoaded', { isBroken: isBroken, src: img.src } );
+					if ( hasNotify ) {
+						deferred.notifyWith( $(img), [ isBroken, $images, $(proper), $(broken) ] );
+					}
+					if ( $images.length === loaded.length ){
+						setTimeout( doneLoading );
+						$images.unbind( '.imagesLoaded' );
+					}
+				}
+				if ( !$images.length ) {
+					doneLoading();
+				} else {
+					$images.bind( 'load.imagesLoaded error.imagesLoaded', function( event ){
+						imgLoaded( event.target, event.type === 'error' );
+					}).each( function( i, el ) {
+						var src = el.src;
+						var cached = $.data( el, 'imagesLoaded' );
+						if ( cached && cached.src === src ) {
+							imgLoaded( el, cached.isBroken );
+							return;
+						}
+						if ( el.complete && el.naturalWidth !== undefined ) {
+							imgLoaded( el, el.naturalWidth === 0 || el.naturalHeight === 0 );
+							return;
+						}
+						if ( el.readyState || el.complete ) {
+							el.src = BLANK;
+							el.src = src;
+						}
+					});
+				}
+				return deferred ? deferred.promise( $this ) : $this;
+			};
+			var Grid = (function() {
+				var $grid = $( '#og-grid' ),
+					$items = $grid.children( 'li' ),
+					current = -1,
+					previewPos = -1,
+					scrollExtra = 0,
+					marginExpanded = 10,
+					$window = $( window ), winsize,
+					$body = $( 'html, body' ),
+					transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					support = Modernizr.csstransitions,
+					settings = {
+						minHeight : 500,
+						speed : 350,
+						easing : 'ease'
+					};
+				function init( config ) {
+					
+					settings = $.extend( true, {}, settings, config );
+					$grid.imagesLoaded( function() {
+						saveItemInfo( true );
+						getWinSize();
+						initEvents();
+					} );
+				}
+				function addItems( $newitems ) {
+					$items = $items.add( $newitems );
+					$newitems.each( function() {
+						var $item = $( this );
+						$item.data( {
+							offsetTop : $item.offset().top,
+							height : $item.height()
+						} );
+					} );
+					initItemsEvents( $newitems );
+				}
+				function saveItemInfo( saveheight ) {
+					$items.each( function() {
+						var $item = $( this );
+						$item.data( 'offsetTop', $item.offset().top );
+						if( saveheight ) {
+							$item.data( 'height', $item.height() );
+						}
+					} );
+				}
+				function initEvents() {
+					
+					initItemsEvents( $items );
+					
+					$window.on( 'debouncedresize', function() {
+						
+						scrollExtra = 0;
+						previewPos = -1;
+						saveItemInfo();
+						getWinSize();
+						var preview = $.data( this, 'preview' );
+						if( typeof preview != 'undefined' ) {
+							hidePreview();
+						}
+					} );
+				}
+				function initItemsEvents( $items ) {
+					$items.on( 'click', 'span.og-close', function() {
+						hidePreview();
+						return false;
+					} ).children( 'a' ).on( 'click', function(e) {
+						var $item = $( this ).parent();
+						current === $item.index() ? hidePreview() : showPreview( $item );
+						return false;
+					} );
+				}
+				function getWinSize() {
+					winsize = { width : $window.width(), height : $window.height() };
+				}
+				function showPreview( $item ) {
+					var preview = $.data( this, 'preview' ),
+						position = $item.data( 'offsetTop' );
+					scrollExtra = 0;
+					if( typeof preview != 'undefined' ) {
+						if( previewPos !== position ) {
+							if( position > previewPos ) {
+								scrollExtra = preview.height;
+							}
+							hidePreview();
+						}
+						else {
+							preview.update( $item );
+							return false;
+						}
+						
+					}
+					previewPos = position;
+					preview = $.data( this, 'preview', new Preview( $item ) );
+					preview.open();
+				}
+				function hidePreview() {
+					current = -1;
+					var preview = $.data( this, 'preview' );
+					preview.close();
+					$.removeData( this, 'preview' );
+				}
+				function Preview( $item ) {
+					this.$item = $item;
+					this.expandedIdx = this.$item.index();
+					this.create();
+					this.update();
+				}
+				Preview.prototype = {
+					create : function() {
+						this.$title = $( '<h3></h3>' );
+						this.$description = $( '<p></p>' );
+						this.$href = $( '<a href="#"></a>' );
+						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+						this.$loading = $( '<div class="og-loading"></div>' );
+						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+						this.$closePreview = $( '<span class="og-close"></span>' );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
+						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
+						this.$item.append( this.getEl() );
+						if( support ) {
+							this.setTransition();
+						}
+					},
+					update : function( $item ) {
+						if( $item ) {
+							this.$item = $item;
+						}
+						
+						if( current !== -1 ) {
+							var $currentItem = $items.eq( current );
+							$currentItem.removeClass( 'og-expanded' );
+							this.$item.addClass( 'og-expanded' );
+							this.positionPreview();
+						}
+						current = this.$item.index();
+						var $itemEl = this.$item.children( 'a' ),
+							eldata = {
+								href : $itemEl.attr( 'href' ),
+								largesrc : $itemEl.data( 'largesrc' ),
+								title : $itemEl.data( 'title' ),
+								description : $itemEl.data( 'description' )
+							};
+						this.$title.html( eldata.title );
+						this.$description.html( eldata.description );
+						this.$href.attr( 'href', eldata.href );
+						var self = this;
+						
+						if( typeof self.$largeImg != 'undefined' ) {
+							self.$largeImg.remove();
+						}
+						if( self.$fullimage.is( ':visible' ) ) {
+							this.$loading.show();
+							$( '<img/>' ).load( function() {
+								var $img = $( this );
+								if( $img.attr( 'src' ) === self.$item.children('a').data( 'largesrc' ) ) {
+									self.$loading.hide();
+									self.$fullimage.find( 'img' ).remove();
+									self.$largeImg = $img.fadeIn( 350 );
+									self.$fullimage.append( self.$largeImg );
+								}
+							} ).attr( 'src', eldata.largesrc );	
+						}
+					},
+					open : function() {
+						setTimeout( $.proxy( function() {	
+							this.setHeights();
+							this.positionPreview();
+						}, this ), 25 );
+					},
+					close : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									$( this ).off( transEndEventName );
+								}
+								self.$item.removeClass( 'og-expanded' );
+								self.$previewEl.remove();
+							};
+						setTimeout( $.proxy( function() {
+							if( typeof this.$largeImg !== 'undefined' ) {
+								this.$largeImg.fadeOut( 'fast' );
+							}
+							this.$previewEl.css( 'height', 0 );
+							var $expandedItem = $items.eq( this.expandedIdx );
+							$expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
+							if( !support ) {
+								onEndFn.call();
+							}
+						}, this ), 25 );
+						
+						return false;
+					},
+					calcHeight : function() {
+						var heightPreview = winsize.height - this.$item.data( 'height' ) - marginExpanded,
+							itemHeight = winsize.height;
+						if( heightPreview < settings.minHeight ) {
+							heightPreview = settings.minHeight;
+							itemHeight = settings.minHeight + this.$item.data( 'height' ) + marginExpanded;
+						}
+						this.height = heightPreview;
+						this.itemHeight = itemHeight;
+					},
+					setHeights : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									self.$item.off( transEndEventName );
+								}
+								self.$item.addClass( 'og-expanded' );
+							};
+						this.calcHeight();
+						this.$previewEl.css( 'height', this.height );
+						this.$item.css( 'height', this.itemHeight ).on( transEndEventName, onEndFn );
+						if( !support ) {
+							onEndFn.call();
+						}
+					},
+					positionPreview : function() {
+						var position = this.$item.data( 'offsetTop' ),
+							previewOffsetT = this.$previewEl.offset().top - scrollExtra,
+							scrollVal = this.height + this.$item.data( 'height' ) + marginExpanded <= winsize.height ? position : this.height < winsize.height ? previewOffsetT - ( winsize.height - this.height ) : previewOffsetT;
+						
+						$body.animate( { scrollTop : scrollVal }, settings.speed );
+					},
+					setTransition  : function() {
+						this.$previewEl.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+						this.$item.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+					},
+					getEl : function() {
+						return this.$previewEl;
+					}
+				}
+				return { 
+					init : init,
+					addItems : addItems
+				};
+			})();
+		</script>
+		<script>
+			$(function() {
+				Grid.init();
+			});
+		</script>
+</body>
+</html>
+

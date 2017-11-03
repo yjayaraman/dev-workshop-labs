@@ -26,7 +26,7 @@ Approximate time: 30 minutes
 
 . Check to see if you have a CLI already installed. Open a terminal/command window and type `cf --version`. If you see that you have an installed version of 6.x or greater, you can skip the install.
 
-. Go to https://console.run.pivotal.io/tools. Download and run the installer for your platform. Optionally you can download it from https://github.com/cloudfoundry/cli/releases 
+. `Need Admin Access on Windows` Go to https://console.run.pivotal.io/tools. Download and run the installer for your platform. Optionally you can download it from https://github.com/cloudfoundry/cli/releases 
 
 . Verify your install by opening a terminal/command window and typing `cf --version`. You now have a Cloud Foundry client that can communicate with any Cloud Foundry installation.
 
@@ -36,6 +36,10 @@ Approximate time: 30 minutes
 . Type `cf help login`. Use this approach whenever you need a refresher on any of the CLI commands. Because login has an alias, you could have also have typed cf help l.
 
 ### `Log into *CF environment* with the CLI`
+[NOTE]
+If you are on a network that requires a proxy, follow the https://docs.cloudfoundry.org/cf-cli/http-proxy.html[instructions]
+
+
 . Use the CLI’s cf login command to log in to your *CF* account (you may have to logout first). 
 
 . There are 25 accounts created for this workshop. Choose one account per participant from user[1-25]@raytheon.com. Password is `password`
@@ -63,12 +67,6 @@ API endpoint:   https://api.run.haas-80.pez.pivotal.io (API version: 2.58.0)
 User:           user1@raytheon.com
 Org:            lab-org1
 Space:          development
-----
-
-[NOTE]
-If you are on a network that requires a proxy, set the proxy as an environment variable:
-----
-export HTTP_PROXY={HTTP_PROXY}
 ----
 
 

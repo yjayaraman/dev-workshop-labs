@@ -1,0 +1,84 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab100"
+type = "lab"
++++
+
+## Lab 2 - Pushing Your First ASP.NET Framework Application
+
+## `Goal`
+--
+In this lab, we'll do the following::
+- We will deploy a simple ASP .NET app
+
+
+Approximate time: 5 minutes
+--
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/dotnet/pcf-dotnet-environment-viewer/ViewEnvironment/`.
+
+. Depends on https://network.pivotal.io/products/bosh-release-for-windows[BOSH Release for Windows] on Pivotal Network
+. https://github.com/cloudfoundry-incubator/hwc-buildpack[Hostable Web Core Buildpack]
+
+[abstract]
+--
+In this lab we will push a pre-built ASP.NET MVC application to Cloud Foundry. 
+
+We on the .NET team for Cloud Foundry has had support for .NET applications in CF! as early as November 2015, this support for Windows applications is available since Pivotal Cloud Foundry (PCF) 1.6, and is completely open source and available within the https://www.cloudfoundry.org[Cloud Foundry Foundation]
+
+You’ll forgive .NET developers for being slower than others to jump on the cloud bandwagon. AWS started off with a Linux and OSS heavy lineup of cloud services before eventually embracing Windows and the .NET runtime. Google just added Windows images to Google Compute Engine in 2015. Platform-as-a-Service pioneers like Heroku and Engine Yard went big on Ruby and never added support for .NET applications.
+
+The cloud hasn’t been a particularly friendly place for .NET developers like me. But now, the market has finally come around, and developers have legitimate choices. It’s exciting to see Pivotal at the forefront of delivering a cloud-agnostic, battle-tested platform for running .NET applications that power some of the largest companies in the world. We’re always improving things, and there are five major advancements we’ve made in partnership with Microsoft over the past few months that I’d like to share with you.
+
+We’ve improved how you build, deploy, host, and operate .NET apps. Don’t worry, you can use any one of the capabilities below by itself, but we’ve also tried to ensure that .NET developers have an excellent end-to-end experience. Bring cloud native patterns into your .NET code with Steeltoe, consistently deploy ASP.NET Core apps using the new buildpack, run applications in Windows Server 2016 containers, take advantage of the Microsoft cloud by running Pivotal Cloud Foundry on Microsoft Azure, and simplify Windows lifecycle operations using BOSH.
+
+--
+
+## `Exercise`  
+
+
+=== `Push!`
+
+. From command line! Change to the _pre-built_ sample application directory:
++
+----
+$ cd $COURSE_HOME/dotnet/pcf-dotnet-environment-viewer/ViewEnvironment
+----
+
+. Push the application!
++
+----
+$ cf push attendees -p attendees.jar --random-route
+----
++
+You should see output similar to the previous exercise
+
+=== `Interact with App from CF CLI`
+
+. Get information about the currently deployed application using CLI apps command:
++
+----
+> cf apps
+----
++
+Note the application name for next steps
+
+. Get information about running instances, memory, CPU, and other statistics using CLI instances command
++
+----
+> cf app env
+----
+
+. Stop the deployed application using the CLI
++
+----
+> cf stop env
+----
+
+. Delete the deployed application using the CLI
++
+----
+> cf delete env
+----

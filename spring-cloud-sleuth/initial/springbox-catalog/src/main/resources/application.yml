@@ -1,0 +1,12 @@
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+
+greeting: Hello World
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop

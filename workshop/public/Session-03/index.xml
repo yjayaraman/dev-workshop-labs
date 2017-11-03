@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Session-03s on Raytheon Pivotal Workshops</title>
+    <link>http://raytheon.cfapps.io/session-03/</link>
+    <description>Recent content in Session-03s on Raytheon Pivotal Workshops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2015, Pivotal; All rights reserved.</copyright>
+    
+	<atom:link href="http://raytheon.cfapps.io/session-03/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab07/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab07/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</guid>
+      <description>The MIT License (MIT) Copyright Jörn Zaefferer
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab07/lab_07/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab07/lab_07/</guid>
+      <description>In this lab we will continue to add functionality to the Fortune Teller application. We will explore how to use the ASP.NET Core Configuration services and how to add the Spring Cloud Config Server as a source of configuration data using the Steeltoe Config Server provider.
+ If you started with the FortuneTeller.sln, and completed Lab06, the app in its current state is still not fully functional:
+  The Fortune Teller Service uses a backend in-memory datastore to hold Fortunes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab08/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab08/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</guid>
+      <description>The MIT License (MIT) Copyright Jörn Zaefferer
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab08/lab_08/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab08/lab_08/</guid>
+      <description>In this lab we will continue to add functionality to the Fortune Teller application. We will explore how to use Netflix Eureka for service registration and discovery using the Steeltoe Discovery client.
+ If you started with the FortuneTeller.sln, and completed Lab 7, you have an app that is still not where we would like it to be:
+  The Fortune Teller Service uses a backend in-memory datastore to hold Fortunes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab09/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab09/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</guid>
+      <description>The MIT License (MIT) Copyright Jörn Zaefferer
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab09/lab_09/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab09/lab_09/</guid>
+      <description>In this lab we will continue to add functionality to the Fortune Teller application. We will explore some of the existing horizontal scaling issues with the app and how Steeltoe connectors and data protection providers can help solve those issues.
+ If you started with the FortuneTeller.sln, and completed Lab 8, you have an app that is still not where we would like it to be:
+  The Fortune Teller Service can not scale horizontally, as it uses a backend in-memory datastore to hold Fortunes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-03/lab10/lab_10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-03/lab10/lab_10/</guid>
+      <description>Coming Soon!
+   </description>
+    </item>
+    
+  </channel>
+</rss>

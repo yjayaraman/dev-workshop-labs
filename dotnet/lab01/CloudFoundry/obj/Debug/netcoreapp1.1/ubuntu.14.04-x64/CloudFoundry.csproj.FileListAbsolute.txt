@@ -1,0 +1,13 @@
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/libhostpolicy.so
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/libhostfxr.so
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.deps.json
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.runtimeconfig.json
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.runtimeconfig.dev.json
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.dll
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/bin/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.pdb
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/obj/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.csproj.CoreCompileInputs.cache
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/obj/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.AssemblyInfoInputs.cache
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/obj/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.AssemblyInfo.cs
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/obj/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.dll
+/Users/yjayaraman/projects/dev-workshop-labs/dotnet/lab01/CloudFoundry/obj/Debug/netcoreapp1.1/ubuntu.14.04-x64/CloudFoundry.pdb

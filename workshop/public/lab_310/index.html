@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Raytheon Pivotal Workshops">
+		<link rel="icon" href="/favicon.ico">
+		<title>Lab06 - Raytheon Pivotal Workshops</title>
+		<link rel="stylesheet" href="/css/highlight.js.min.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="/css/pui-v2.0.0/pivotal-ui.css">
+		<link rel="stylesheet" href="/css/theme.css">
+		<link rel="stylesheet" href="/css/component.css">
+
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/bootie-docs.css">
+		<script src="http://raytheon.cfapps.io/js/modernizr.custom.js"></script>
+
+		
+		<style type="text/css">
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+		</style>
+	</head>
+
+<body role="document">
+	
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top  ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav navbar-brand">
+						
+							<img class="nav pivotal-logo" src="/Pivotal_Teal.png"/>
+						
+				</div>
+				<a class="navbar-brand navbar-txt" href="/">Raytheon Pivotal Workshops </a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+			
+				
+				
+					
+					<li ><a class="navbar-txt" href="/lab_requirements">Lab_requirements</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day1">Billerica_day1</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day2">Billerica_day2</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day3">Billerica_day3</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/cloud_tig">Cloud_tig</a></li>
+				
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a></li>
+                     
+                        <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://www.git-scm.com">Git</a></li>
+                     
+                        <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a></li>
+                     
+                        <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a></li>
+                     
+                        <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a></li>
+                     
+                        <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a></li>
+                     
+					</ul>
+				</li>
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a></li>
+                     
+                        <li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a></li>
+                     
+                        <li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a></li>
+                     
+                        <li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a></li>
+                     
+					</ul>
+				</li>
+			
+				
+                        
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<div class="container" style="width:95%; padding:5">
+	<div class="row">
+
+	    		
+		<div class="doc-sidebar" style="width:30%; margin-top:0; float:right; padding:10px;">
+			<div class="sidebar-module">
+				
+		    	<div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+		    	<h4 class="type-brand-3">Books</h4>
+		    	<ul class="list-unstyled">
+		    	
+		    	<li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a><p></p></li>	
+		    	
+		    	</ul>
+		  	</div>
+                        <div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+                        <h4 class="type-brand-3">Resources</h4>
+                        <ul class="list-unstyled">
+                        
+                            <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a><p></p></li>
+                        
+                            <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://www.git-scm.com">Git</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a><p></p></li>
+                        
+                        </ul>
+                        </div>
+			</div>
+		</div>
+		
+
+
+		<div class="col-sm-8 doc-main" style="width:70%; float:left; padding:30px;">
+			<main role="main">
+				<article>
+					<a id="title"></a>
+					<div class="doc-entry-meta">
+					</div>
+					<section>
+						<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab we&#8217;ll utilize Spring RestDocs to document a fully-functional hypermedia-driven RESTful web service.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The completed code for this lab can be found at <code>$COURSE_HOME/spring-restdocs/complete/cities</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_initializing_the_application">Initializing the Application</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change to the lab directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd $COURSE_HOME/spring-restdocs/initial/cities</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Optionally generate project files for your favorite IDE by running <code>./gradlew idea</code> or <code>./gradlew eclipse</code>. Then open the project in your editor or IDE of choice.</p>
+</li>
+<li>
+<p>Add a runtime dependency on the <a href="http://hsqldb.org/">HyperSQL in-memory database</a> to <code>build.gradle</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
+    // ...
+    runtime("org.hsqldb:hsqldb")
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the package <code>org.example.cities.domain</code> and in that package create the class <code>City</code>. Into that file you can paste the following source code, which represents cities based on postal codes, global coordinates, etc:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Entity
+@Table(name="city")
+public class City implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String county;
+
+    @Column(nullable = false)
+    private String stateCode;
+
+    @Column(nullable = false)
+    private String postalCode;
+
+    @Column
+    private String latitude;
+
+    @Column
+    private String longitude;
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public String getPostalCode() { return postalCode; }
+
+    public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
+
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
+
+    public String getStateCode() { return stateCode; }
+
+    public void setStateCode(String stateCode) { this.stateCode = stateCode; }
+
+    public String getCounty() { return county; }
+
+    public void setCounty(String county) { this.county = county; }
+
+    public String getLatitude() { return latitude; }
+
+    public void setLatitude(String latitude) { this.latitude = latitude; }
+
+    public String getLongitude() { return longitude; }
+
+    public void setLongitude(String longitude) { this.longitude = longitude; }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that we&#8217;re using JPA annotations on the class and its fields. You&#8217;ll need to use your IDE&#8217;s features to add the appropriate import statements.</p>
+</div>
+</li>
+<li>
+<p>Create the package <code>org.example.cities.repositories</code> and in that package create the interface <code>CityRepository</code>. Paste the following code and add appropriate imports:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RepositoryRestResource(collectionResourceRel = "cities", path = "cities")
+public interface CityRepository extends PagingAndSortingRepository&lt;City, Long&gt; {
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add JPA and REST Repository support to the <code>org.example.cities.Application</code> class that was generated by Spring Initializr.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@SpringBootApplication
+@EnableJpaRepositories // &lt;---- Add this
+@Import(RepositoryRestMvcConfiguration.class) // &lt;---- And this
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ ./gradlew assemble</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ java -jar build/libs/cities-0.0.1-SNAPSHOT.jar</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Access the application using <code>curl</code>. You&#8217;ll see that the primary endpoint automatically exposes the ability to page, size, and sort the response JSON.</p>
+<div class="paragraph">
+<p>So what have you done? Created four small classes and one build file, resulting in a fully-functional REST microservice. The application&#8217;s <code>DataSource</code> is created automatically by Spring Boot using the in-memory database because no other <code>DataSource</code> was detected in the project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl -i localhost:8080/cities
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+X-Application-Context: application
+Content-Type: application/hal+json
+Transfer-Encoding: chunked
+Date: Tue, 27 May 2014 19:34:45 GMT
+
+{
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/cities{?page,size,sort}",
+      "templated" : true
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 0,
+    "totalPages" : 0,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we&#8217;ll import some data.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_importing_data">Importing Data</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add this <a href="https://github.com/cf-platform-eng/spring-boot-cities/blob/master/cities-service/src/main/resources/import.sql">import.sql file</a> to <code>src/main/resources</code>. This is a rather large dataset containing all of the postal codes in the United States and its territories. This file will automatically be picked up by Hibernate and imported into the in-memory database.</p>
+</li>
+<li>
+<p>Build the application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ ./gradlew assemble</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ java -jar build/libs/cities-0.0.1-SNAPSHOT.jar</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Access the application again using <code>curl</code>. Notice the appropriate hypermedia is included for <code>next</code>, <code>previous</code>, and <code>self</code>. You can also select pages and page size by utilizing <code>?size=n&amp;page=n</code> on the URL string. Finally, you can sort the data utilizing <code>?sort=fieldName</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl -i localhost:8080/cities
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+X-Application-Context: application
+Content-Type: application/hal+json
+Transfer-Encoding: chunked
+Date: Tue, 27 May 2014 19:59:58 GMT
+
+{
+  "_links" : {
+    "next" : {
+      "href" : "http://localhost:8080/cities?page=1&amp;size=20"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/cities{?page,size,sort}",
+      "templated" : true
+    }
+  },
+  "_embedded" : {
+    "cities" : [ {
+      "name" : "HOLTSVILLE",
+      "county" : "SUFFOLK",
+      "stateCode" : "NY",
+      "postalCode" : "00501",
+      "latitude" : "+40.922326",
+      "longitude" : "-072.637078",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/1"
+        }
+      }
+    },
+
+    // ...
+
+    {
+      "name" : "CASTANER",
+      "county" : "LARES",
+      "stateCode" : "PR",
+      "postalCode" : "00631",
+      "latitude" : "+18.269187",
+      "longitude" : "-066.864993",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/20"
+        }
+      }
+    } ]
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 42741,
+    "totalPages" : 2138,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Try the following <code>curl</code> statements to see how the application behaves:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl -i "localhost:8080/cities?size=5"
+$ curl -i "localhost:8080/cities?size=5&amp;page=3"
+$ curl -i "localhost:8080/cities?sort=postalCode,desc"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we&#8217;ll add searching capabilities.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_search">Adding Search</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Let&#8217;s add some additional finder methods to <code>CityRepository</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RestResource(path = "name", rel = "name")
+Page&lt;City&gt; findByNameIgnoreCase(@Param("q") String name, Pageable pageable);
+
+@RestResource(path = "nameContains", rel = "nameContains")
+Page&lt;City&gt; findByNameContainsIgnoreCase(@Param("q") String name, Pageable pageable);
+
+@RestResource(path = "state", rel = "state")
+Page&lt;City&gt; findByStateCodeIgnoreCase(@Param("q") String stateCode, Pageable pageable);
+
+@RestResource(path = "postalCode", rel = "postalCode")
+Page&lt;City&gt; findByPostalCode(@Param("q") String postalCode, Pageable pageable);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ ./gradlew assemble</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ java -jar build/libs/cities-0.0.1-SNAPSHOT.jar</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Access the application again using <code>curl</code>. Notice that hypermedia for a new <code>search</code> endpoint has appeared.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl -i "localhost:8080/cities"
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+X-Application-Context: application
+Content-Type: application/hal+json
+Transfer-Encoding: chunked
+Date: Tue, 27 May 2014 20:33:52 GMT
+
+{
+  "_links" : {
+    "next" : {
+      "href" : "http://localhost:8080/cities?page=1&amp;size=20"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/cities{?page,size,sort}",
+      "templated" : true
+    },
+    "search" : {
+      "href" : "http://localhost:8080/cities/search"
+    }
+},
+// (Remainder omitted...)</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Access the new <code>search</code> endpoint using <code>curl</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl -i "localhost:8080/cities/search"
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+X-Application-Context: application
+Content-Type: application/hal+json
+Transfer-Encoding: chunked
+Date: Tue, 27 May 2014 20:38:32 GMT
+
+{
+  "_links" : {
+    "postalCode" : {
+      "href" : "http://localhost:8080/cities/search/postalCode{?q,page,size,sort}",
+      "templated" : true
+    },
+    "state" : {
+      "href" : "http://localhost:8080/cities/search/state{?q,page,size,sort}",
+      "templated" : true
+    },
+    "name" : {
+      "href" : "http://localhost:8080/cities/search/name{?q,page,size,sort}",
+      "templated" : true
+    },
+    "nameContains" : {
+      "href" : "http://localhost:8080/cities/search/nameContains{?q,page,size,sort}",
+      "templated" : true
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that we now have new search endpoints for each of the finders that we added.</p>
+</div>
+</li>
+<li>
+<p>Try a few of these endpoints. Feel free to substitute your own values for the parameters.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl -i "http://localhost:8080/cities/search/postalCode?q=75202"
+$ curl -i "http://localhost:8080/cities/search/name?q=Boston"
+$ curl -i "http://localhost:8080/cities/search/nameContains?q=Fort&amp;size=1"</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+					</section>
+				</article>
+			</main>
+		</div> 
+	</div> 
+</div>
+
+		
+
+
+
+
+<hr />
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<p class="doc-footer-em"><a href="#">Back to TOP</a></p>
+		</div>
+	</div>
+
+</div> 
+          
+<footer class="doc-footer">
+        <span>Last Updated on  2016-03-23 19:58:14 -0400 EDT  </span>
+	
+	<p>Copyright (c) 2015, Pivotal; All rights reserved.</p>
+</footer>
+
+
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+		<script>
+			var $event = $.event,
+			$special,
+			resizeTimeout;
+			$special = $event.special.debouncedresize = {
+				setup: function() {
+					$( this ).on( "resize", $special.handler );
+				},
+				teardown: function() {
+					$( this ).off( "resize", $special.handler );
+				},
+				handler: function( event, execAsap ) {
+					var context = this,
+						args = arguments,
+						dispatch = function() {
+							event.type = "debouncedresize";
+							$event.dispatch.apply( context, args );
+						};
+					if ( resizeTimeout ) {
+						clearTimeout( resizeTimeout );
+					}
+					execAsap ?
+						dispatch() :
+						resizeTimeout = setTimeout( dispatch, $special.threshold );
+				},
+				threshold: 250
+			};
+			var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+			$.fn.imagesLoaded = function( callback ) {
+				var $this = this,
+					deferred = $.isFunction($.Deferred) ? $.Deferred() : 0,
+					hasNotify = $.isFunction(deferred.notify),
+					$images = $this.find('img').add( $this.filter('img') ),
+					loaded = [],
+					proper = [],
+					broken = [];
+				if ($.isPlainObject(callback)) {
+					$.each(callback, function (key, value) {
+						if (key === 'callback') {
+							callback = value;
+						} else if (deferred) {
+							deferred[key](value);
+						}
+					});
+				}
+				function doneLoading() {
+					var $proper = $(proper),
+						$broken = $(broken);
+					if ( deferred ) {
+						if ( broken.length ) {
+							deferred.reject( $images, $proper, $broken );
+						} else {
+							deferred.resolve( $images );
+						}
+					}
+					if ( $.isFunction( callback ) ) {
+						callback.call( $this, $images, $proper, $broken );
+					}
+				}
+				function imgLoaded( img, isBroken ) {
+					if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
+						return;
+					}
+					loaded.push( img );
+					if ( isBroken ) {
+						broken.push( img );
+					} else {
+						proper.push( img );
+					}
+					$.data( img, 'imagesLoaded', { isBroken: isBroken, src: img.src } );
+					if ( hasNotify ) {
+						deferred.notifyWith( $(img), [ isBroken, $images, $(proper), $(broken) ] );
+					}
+					if ( $images.length === loaded.length ){
+						setTimeout( doneLoading );
+						$images.unbind( '.imagesLoaded' );
+					}
+				}
+				if ( !$images.length ) {
+					doneLoading();
+				} else {
+					$images.bind( 'load.imagesLoaded error.imagesLoaded', function( event ){
+						imgLoaded( event.target, event.type === 'error' );
+					}).each( function( i, el ) {
+						var src = el.src;
+						var cached = $.data( el, 'imagesLoaded' );
+						if ( cached && cached.src === src ) {
+							imgLoaded( el, cached.isBroken );
+							return;
+						}
+						if ( el.complete && el.naturalWidth !== undefined ) {
+							imgLoaded( el, el.naturalWidth === 0 || el.naturalHeight === 0 );
+							return;
+						}
+						if ( el.readyState || el.complete ) {
+							el.src = BLANK;
+							el.src = src;
+						}
+					});
+				}
+				return deferred ? deferred.promise( $this ) : $this;
+			};
+			var Grid = (function() {
+				var $grid = $( '#og-grid' ),
+					$items = $grid.children( 'li' ),
+					current = -1,
+					previewPos = -1,
+					scrollExtra = 0,
+					marginExpanded = 10,
+					$window = $( window ), winsize,
+					$body = $( 'html, body' ),
+					transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					support = Modernizr.csstransitions,
+					settings = {
+						minHeight : 500,
+						speed : 350,
+						easing : 'ease'
+					};
+				function init( config ) {
+					
+					settings = $.extend( true, {}, settings, config );
+					$grid.imagesLoaded( function() {
+						saveItemInfo( true );
+						getWinSize();
+						initEvents();
+					} );
+				}
+				function addItems( $newitems ) {
+					$items = $items.add( $newitems );
+					$newitems.each( function() {
+						var $item = $( this );
+						$item.data( {
+							offsetTop : $item.offset().top,
+							height : $item.height()
+						} );
+					} );
+					initItemsEvents( $newitems );
+				}
+				function saveItemInfo( saveheight ) {
+					$items.each( function() {
+						var $item = $( this );
+						$item.data( 'offsetTop', $item.offset().top );
+						if( saveheight ) {
+							$item.data( 'height', $item.height() );
+						}
+					} );
+				}
+				function initEvents() {
+					
+					initItemsEvents( $items );
+					
+					$window.on( 'debouncedresize', function() {
+						
+						scrollExtra = 0;
+						previewPos = -1;
+						saveItemInfo();
+						getWinSize();
+						var preview = $.data( this, 'preview' );
+						if( typeof preview != 'undefined' ) {
+							hidePreview();
+						}
+					} );
+				}
+				function initItemsEvents( $items ) {
+					$items.on( 'click', 'span.og-close', function() {
+						hidePreview();
+						return false;
+					} ).children( 'a' ).on( 'click', function(e) {
+						var $item = $( this ).parent();
+						current === $item.index() ? hidePreview() : showPreview( $item );
+						return false;
+					} );
+				}
+				function getWinSize() {
+					winsize = { width : $window.width(), height : $window.height() };
+				}
+				function showPreview( $item ) {
+					var preview = $.data( this, 'preview' ),
+						position = $item.data( 'offsetTop' );
+					scrollExtra = 0;
+					if( typeof preview != 'undefined' ) {
+						if( previewPos !== position ) {
+							if( position > previewPos ) {
+								scrollExtra = preview.height;
+							}
+							hidePreview();
+						}
+						else {
+							preview.update( $item );
+							return false;
+						}
+						
+					}
+					previewPos = position;
+					preview = $.data( this, 'preview', new Preview( $item ) );
+					preview.open();
+				}
+				function hidePreview() {
+					current = -1;
+					var preview = $.data( this, 'preview' );
+					preview.close();
+					$.removeData( this, 'preview' );
+				}
+				function Preview( $item ) {
+					this.$item = $item;
+					this.expandedIdx = this.$item.index();
+					this.create();
+					this.update();
+				}
+				Preview.prototype = {
+					create : function() {
+						this.$title = $( '<h3></h3>' );
+						this.$description = $( '<p></p>' );
+						this.$href = $( '<a href="#"></a>' );
+						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+						this.$loading = $( '<div class="og-loading"></div>' );
+						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+						this.$closePreview = $( '<span class="og-close"></span>' );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
+						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
+						this.$item.append( this.getEl() );
+						if( support ) {
+							this.setTransition();
+						}
+					},
+					update : function( $item ) {
+						if( $item ) {
+							this.$item = $item;
+						}
+						
+						if( current !== -1 ) {
+							var $currentItem = $items.eq( current );
+							$currentItem.removeClass( 'og-expanded' );
+							this.$item.addClass( 'og-expanded' );
+							this.positionPreview();
+						}
+						current = this.$item.index();
+						var $itemEl = this.$item.children( 'a' ),
+							eldata = {
+								href : $itemEl.attr( 'href' ),
+								largesrc : $itemEl.data( 'largesrc' ),
+								title : $itemEl.data( 'title' ),
+								description : $itemEl.data( 'description' )
+							};
+						this.$title.html( eldata.title );
+						this.$description.html( eldata.description );
+						this.$href.attr( 'href', eldata.href );
+						var self = this;
+						
+						if( typeof self.$largeImg != 'undefined' ) {
+							self.$largeImg.remove();
+						}
+						if( self.$fullimage.is( ':visible' ) ) {
+							this.$loading.show();
+							$( '<img/>' ).load( function() {
+								var $img = $( this );
+								if( $img.attr( 'src' ) === self.$item.children('a').data( 'largesrc' ) ) {
+									self.$loading.hide();
+									self.$fullimage.find( 'img' ).remove();
+									self.$largeImg = $img.fadeIn( 350 );
+									self.$fullimage.append( self.$largeImg );
+								}
+							} ).attr( 'src', eldata.largesrc );	
+						}
+					},
+					open : function() {
+						setTimeout( $.proxy( function() {	
+							this.setHeights();
+							this.positionPreview();
+						}, this ), 25 );
+					},
+					close : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									$( this ).off( transEndEventName );
+								}
+								self.$item.removeClass( 'og-expanded' );
+								self.$previewEl.remove();
+							};
+						setTimeout( $.proxy( function() {
+							if( typeof this.$largeImg !== 'undefined' ) {
+								this.$largeImg.fadeOut( 'fast' );
+							}
+							this.$previewEl.css( 'height', 0 );
+							var $expandedItem = $items.eq( this.expandedIdx );
+							$expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
+							if( !support ) {
+								onEndFn.call();
+							}
+						}, this ), 25 );
+						
+						return false;
+					},
+					calcHeight : function() {
+						var heightPreview = winsize.height - this.$item.data( 'height' ) - marginExpanded,
+							itemHeight = winsize.height;
+						if( heightPreview < settings.minHeight ) {
+							heightPreview = settings.minHeight;
+							itemHeight = settings.minHeight + this.$item.data( 'height' ) + marginExpanded;
+						}
+						this.height = heightPreview;
+						this.itemHeight = itemHeight;
+					},
+					setHeights : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									self.$item.off( transEndEventName );
+								}
+								self.$item.addClass( 'og-expanded' );
+							};
+						this.calcHeight();
+						this.$previewEl.css( 'height', this.height );
+						this.$item.css( 'height', this.itemHeight ).on( transEndEventName, onEndFn );
+						if( !support ) {
+							onEndFn.call();
+						}
+					},
+					positionPreview : function() {
+						var position = this.$item.data( 'offsetTop' ),
+							previewOffsetT = this.$previewEl.offset().top - scrollExtra,
+							scrollVal = this.height + this.$item.data( 'height' ) + marginExpanded <= winsize.height ? position : this.height < winsize.height ? previewOffsetT - ( winsize.height - this.height ) : previewOffsetT;
+						
+						$body.animate( { scrollTop : scrollVal }, settings.speed );
+					},
+					setTransition  : function() {
+						this.$previewEl.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+						this.$item.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+					},
+					getEl : function() {
+						return this.$previewEl;
+					}
+				}
+				return { 
+					init : init,
+					addItems : addItems
+				};
+			})();
+		</script>
+		<script>
+			$(function() {
+				Grid.init();
+			});
+		</script>
+</body>
+</html>
+

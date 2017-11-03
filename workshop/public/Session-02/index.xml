@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Session-02s on Raytheon Pivotal Workshops</title>
+    <link>http://raytheon.cfapps.io/session-02/</link>
+    <description>Recent content in Session-02s on Raytheon Pivotal Workshops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2015, Pivotal; All rights reserved.</copyright>
+    
+	<atom:link href="http://raytheon.cfapps.io/session-02/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-02/lab05/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-02/lab05/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</guid>
+      <description>The MIT License (MIT) Copyright Jörn Zaefferer
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-02/lab05/lab_05/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-02/lab05/lab_05/</guid>
+      <description>In this lab we will become comfortable with running ASP.NET Core Web applications locally on our PC and publishing and deploying them to Cloud Foundry.
+ We will be using a Fortune Teller micro-services based application as our sample. The app consists of a Fortune Teller Service which provides a REST API to serve up Fortunes and a Fortune Teller UI that can be used to display the Fortunes. In its current state, this app is not fully functional.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-02/lab06/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-02/lab06/fortune-teller-ui/wwwroot/lib/jquery-validation/license/</guid>
+      <description>The MIT License (MIT) Copyright Jörn Zaefferer
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/session-02/lab06/lab_06/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/session-02/lab06/lab_06/</guid>
+      <description>Starting with this lab we will begin the process of creating a fully functional Fortune Teller application which uses several of the Steeltoe components. You have two paths you can follow when doing the rest of the labs for the workshop:
+  For each lab, open up and work with finished code. With this path you won&amp;#8217;t be writing any new code, instead, you will just be reviewing and running already completed lab code.</description>
+    </item>
+    
+  </channel>
+</rss>

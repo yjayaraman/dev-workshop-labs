@@ -1,7 +1,7 @@
 # Site settings
-baseurl = "http://nuance.cfapps.io/"
+baseurl = "http://raytheon.cfapps.io/"
 languageCode = "en-us"
-title = "Nuance Portal"
+title = "Raytheon Pivotal Workshops"
 theme = "hugo-theme-multi-page-lab"
 copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
 
@@ -13,20 +13,14 @@ copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
         # To provide some metadata for search engines feel free to add a few
         # information about you and your website.
     name = "Yadhav Jayaraman"
-    date = ""
-    venue = "Nuance, 1500 Rue University #935, Montréal, QC"
-    dates = "Nov 22-23"
-    customer_logo="nuance.png"
-    mainMenu = [ "workshop_day1", "workshop_day2", "lab_requirements"]
+    date = "2017-04-19T06:57:47Z-04:00"
+    venue = "WEBEX: https://pivotal.webex.com/join/yjayaraman <br> Venue:TBD"
+    dates = "Next Workshop: Nov 6-8, Billercia" 
+    customer_logo="raytheon.png"
+    mainMenu = ["lab_requirements", "billerica_day1", "billerica_day2", "billerica_day3", "cloud_tig"]
     noCategoryLink = true
     #feedbackLink = "https://docs.google.com/forms/d/1KG88z2eWfG2Rx0guENzKgzeu6VlMjhRyW2PiJoCbtxI/viewform?entry.1504550910&entry.108151957&entry.1907066466=Liberty+Mutual&entry.1934264208&entry.2083454847&entry.1484855815&entry.1880096690&entry.879050699"
 
-
-    [[params.instructors]]
-        name = "Mark Fynes"
-        title = "Platform Architect"
-        org = "Pivotal."
-        email = "tfynes@pivotal.io"
 
     [[params.instructors]]
         name = "Yadhav Jayaraman"
