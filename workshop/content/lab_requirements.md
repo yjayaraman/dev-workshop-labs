@@ -13,7 +13,7 @@ title = "Lab Requirements"
 2. Internet Access. Internet access is required to take this course.  
 
 3. Java Developers
-  1. Installation of [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+  1. Installation of [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Open a terminal/command window and type `java -version`
 
   2. `Optional (but recommended)` Install [STS](https://spring.io/tools) 
 

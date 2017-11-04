@@ -115,6 +115,10 @@
         [[days.sessions.exercises]]
             title = "_.Cloud Native Architectures_"
 
+            [[days.sessions.exercises.labs]]
+                title = "Cloud Native Architecture - Overview"
+                slides = "/slides/general/CloudNativeArchitectures.pptx"
+
         [[days.sessions.exercises]]
             title = "_.NET Core_"
             
