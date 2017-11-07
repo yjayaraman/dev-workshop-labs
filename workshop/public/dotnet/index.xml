@@ -136,6 +136,42 @@
     </item>
     
     <item>
+      <title>Lab205</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_205/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_205/</guid>
+      <description>Lab 10 - Running existing legacy IIS apps   Goal The goals for this lab are to:
+  Get a legacy dotnet app and port it to Cloud Foundry
+   Approximate time: 1 hour
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnettx/lab05/.      The next series of labs will walk you through a typical challange of taking an existing application, getting it to run on a Cloud Foundry, and will teach you the skills necesary to modernize it in an iterative way.</description>
+    </item>
+    
+    <item>
+      <title>Lab205</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_206/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_206/</guid>
+      <description>Lab 12 - Database management with Flyway   Goal The goals for this lab are to:
+  Get a legacy dotnet app and port it to Cloud Foundry
+   Approximate time: 1 hour
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnettx/lab06/.      Most applications have to deal with data using some sort of persistence medium.</description>
+    </item>
+    
+    <item>
+      <title>Lab206</title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_207/</link>
+      <pubDate>Wed, 23 Mar 2016 19:58:14 -0400</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_207/</guid>
+      <description>Lab 13 - Removing dependence on file configuration   Goal The goals for this lab are to:
+  Remove dependence on file configuration
+   Approximate time: 15 mins
+     Note  The completed code for this lab can be found at $COURSE_HOME/dotnettx/lab06/.      As you saw, we had to tweak the web.config after we published in order to make environment specific config adjustments - in this case the URL of the backend.</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>http://raytheon.cfapps.io/dotnet/lab_110/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -143,6 +179,15 @@
       <guid>http://raytheon.cfapps.io/dotnet/lab_110/</guid>
       <description>Coming Soon!
    </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://raytheon.cfapps.io/dotnet/lab_208/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://raytheon.cfapps.io/dotnet/lab_208/</guid>
+      <description>So far our application has been built using using some legacy stacks mainly WCF &amp;amp; WebForms. As the industry marches forward, WCF has really fallen out of style. With the arrival of .NET Core, it has been announced that WCF Services are not supported on the new stack. As a standard, REST based services built on top of WebAPI has replaced WCF based SOAP services as the new standard. In this demo we&amp;#8217;re going to build a brand new shiny backend using .</description>
     </item>
     
   </channel>

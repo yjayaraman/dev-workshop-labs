@@ -193,6 +193,21 @@
   </url>
   
   <url>
+    <loc>http://raytheon.cfapps.io/dotnet/lab_205/</loc>
+    <lastmod>2016-03-23T19:58:14-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://raytheon.cfapps.io/dotnet/lab_206/</loc>
+    <lastmod>2016-03-23T19:58:14-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://raytheon.cfapps.io/dotnet/lab_207/</loc>
+    <lastmod>2016-03-23T19:58:14-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://raytheon.cfapps.io/lab_401/</loc>
     <lastmod>2016-03-23T19:58:14-04:00</lastmod>
   </url>
@@ -263,6 +278,10 @@
   
   <url>
     <loc>http://raytheon.cfapps.io/dotnet/lab_110/</loc>
+  </url>
+  
+  <url>
+    <loc>http://raytheon.cfapps.io/dotnet/lab_208/</loc>
   </url>
   
   <url>

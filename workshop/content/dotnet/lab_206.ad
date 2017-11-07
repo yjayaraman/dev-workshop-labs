@@ -1,0 +1,288 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab205"
+type = "lab"
++++
+
+## Lab 12 - Database management with Flyway
+
+## `Goal`
+--
+The goals for this lab are to:
+
+. Get a legacy dotnet app and port it to Cloud Foundry
+
+Approximate time: 1 hour
+--
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/dotnettx/lab06/`.
+
+
+[abstract]
+--
+Most applications have to deal with data using some sort of persistence medium. While there is a huge number of different types of database, relational SQL based databases such as MySQL, SQL Server, Postgress are the most common choice for many business applications. Most relational databases require that we define a schema of our data via DDL. Just like applications, databases change and evolve; however, unlike applications they require special considerations on how we control changes to them. With stateless applications we can simply throw away an old release artifact, substitute it with a new one and call it a day. With database, all changes have to be incremental as we need to ensure existing data stored in old schema can be applied to the new. 
+
+The most robust way to control changes to the schema is through concept of `Schema Migration`, consisting of incremental scripts that *must* be run in exact order. The database maintains a special "migrations" table that keeps track of which migrations have been applied to the database. A special migration tool is able to determine the current version of the database, and apply any new migrations to it in order.
+
+
+--
+==== Prereqisities 
+- https://dev.mysql.com/downloads/file/?id=471342[MySQL] - to run database locally
+- https://www.heidisql.com/downloads/releases/HeidiSQL_9.4_Portable.zip[HeidiSQL] - MySQL IDE
+- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.2.0/flyway-commandline-4.2.0-windows-x64.zip[FlywayDb Console]
+
+
+== Setting up local environment
+We're are going to connect database to our Fortunes application so it works end to end. Let's setup local environment first.
+
+. Unzip MySQL into a folder on your computer
+. Unzip HeidiSQL into a folder on your computer
+. Unzip FlywayDB into `$COURSE_HOME/dotnettx/lab06` (final folder structure should end up `$COURSE_HOME/dotnettx/lab06\flyway-4.2.0\`)
+. Start local MySQL by launching `<mysql>\bin\mysqld.exe`
+. Start HeidiSql by launching `heidisql.exe`
+. Connect to local database. Default settings for MySQL are as following:
++ 
+image::/images/heidisql-connect.png[Connect]
+. Right click on *Local* in treeview on the left, and select _Create New_ > _Database_. Name it *"Fortunes"*.
+
+== Preparing Migrations
+Take a moment to examine a database dump that came with our legacy application inside the `\FortuneTeller\Database` folder. Our goal is to create a local database using this script. For this demo we will be using a popular tool called https://flywaydb.org/[FlywayDb] that will manage database migrations for us. FlywayDB works by taking a local collection of *named* SQL scripts and applying them in order on to the target database. The filename of each script takes form similar to `V01__NameOfMigration`, where the first part of the filename designates the version of the database after the script is applied. Each migration builds up the database from previous version - to get from version 1 to version 5 all migrations in between have to be applied in order. FlywayDB will manage this automatically and ensure that each script is run *only once*. 
+
+Let's configure FlywayDB to target our local database:
+
+. Open `<flywaydb>\conf\flyway.conf` in a text editor
+. Set the following values from default settings. Make sure to uncomment them (remove #):
+** `flyway.url=jdbc:mysql://localhost:3306/fortunes`
+** `flyway.user=root`
+** `flyway.password=`
+. Save and close the config file
+
+Now lets create our migrations. 
+
+. Inside `<flywaydb>\sql\` create a new file called `V1__InitialSchema.sql` _(notice the double underscore)_
+. From `\FortuneTeller\Database\FortunesDatabase.sql` copy the everything into the file we created in previous step up to the *INSERT* statements. Do not include the INSERT statements just yet - we're just focusing on the schema for now and not the data. Your file should now look as following:
+
++
+[source,sql]
+----
+CREATE TABLE IF NOT EXISTS `fortunecookies` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Cookie` longtext,
+  `Language` longtext,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+----
+
+== Migrating database
+Now lets try use FlywayDb to apply our migrations to the database
+
+. From command line, change into FlywayDb folder
+. Confirm that we're ready to apply migrations:
++
+----
+> flyway info
+----
+You should see output similiar to the following:
++
+----
+Flyway 4.2.0 by Boxfuse
+
+Database: jdbc:mysql://localhost:3306/fortunes (MySQL 5.7)
+
++---------+--------------+---------------------+---------+
+| Version | Description  | Installed on        | State   |
++---------+--------------+---------------------+---------+
+| 1       | IntialSchema |                     | Pending |
++---------+--------------+---------------------+---------+
+----
+We can see that it detected our migration script but it's `Pending`, meaning it hasn't been applied to our database. Let's do that now:
+
++
+----
+> flyway migrate
+----
+We should see output the following:
++
+----
+Flyway 4.2.0 by Boxfuse
+
+Database: jdbc:mysql://localhost:3306/fortunes (MySQL 5.7)
+Successfully validated 1 migration (execution time 00:00.006s)
+Creating Metadata table: `fortunes`.`schema_version`
+Current version of schema `fortunes`: << Empty Schema >>
+Migrating schema `fortunes` to version 1 - IntialSchema
+Successfully applied 1 migration to schema `fortunes` (execution time 00:00.123s).
+----
+
+At this point our database has been successfully populated with schema. Go ahead and try to issue `flyway migrate` command again. Notice how this time it detects that database is already at the correct version takes no action. Lets take a look at how our database looks now. 
+
+. Switch to HeidiSQL and refresh `fortunes` database (click on database name -> F5)
+. Notice how we have two tables in our database: `fortunecookies` and `schema_version`. 
+. Click on schema_version, and click the *Data* tab on the right side. 
+.. Examine the output of the results. This is how FlywayDB keeps track of which migrations have been applied to our database
+.. Notice that each migration has a checksum. *A migration script is immutable - it cannot be changed after it has been applied*. FlywayDB will throw errors if you try to change scripts that have already been applied.
+
+== Creating additional migrations
+Our database is currently empty of any data, lets create a second migration that will seed it with data. _Keep in mind that using migrations to add data should be used generally to seed "static" records to our database, that are considered permanent, or a small number of semi-permanent records._
+
+. Create a new file in `<flywaydb>\sql` called `V2__Seed`
+. Copy the INSERT statements from `\FortuneTeller\Database\FortunesDatabase.sql` into the file we just created
+. Use FlywayDB to apply the new migration
++
+----
+> flyway migrate
+----
+Notice how FlywayDB detected that we have new unapplied migrations, and applied them to our database.
+
+== Connecting FortunesBackend to the database
+Lets open up our Fortunes solution in Visual Studio (Alternatively use Completed folder of last lab as starting point).
+. Ensure that we have both FortunesForms & FortunesBackend set as startup projects
+
+.. Right click on Solution in Solution Explorer > Properties
+.. Set startup to `Multiple startup projects` and ensure that both of the above projects are set to *Start*
+. Start our application (F5)
+. Click the button. We should now be able to retrieve the cookies from the database. We have successfully launched our legacy app end to end locally. 
+
+*High Five!!!*
+
+== Using FlywayDB with Cloud Foundry
+Up until now we've been doing all this on local environment. Our goal is to create a database in Cloud Foundry, apply our migration scripts to it, and connect our FortunesBackend project to talk to this database.
+
+FlywayDB is actually a Java application. While we could `push` FlywayDB console we downloaded as an app to Cloud Foundry, we would have to manually edit the config for it to setup the connection string for our database. This would be cumbersome and require additional steps every time we move the code to a different space. fortunately there is a better way. When working with Java apps, FlywayDB can be integrated directly into your application codebase as a dependency (similar to how _NuGet_ works) and apply migrations bundled with your app as part of the startup code. Using another dependency called Spring Cloud Connectors allows us to automatically detect the VCAP_SERVICES, extract MySQL connection string and have it passed to FlywayDb. (We will explore similar connector functionally available for .NET using SteelToe in subsequent demos). Best part is that this application does not have any code - just dependency configuration (think `packages.config` in .NET world).
+
+For this demo we have included this application already precompiled and packaged for you to push to PCF. The only thing left for us to do is include our migration scripts along with it. Let's do that now.
+
+. Open `$COURSE_HOME/dotnettx/lab06/FlywayMigrator` folder
+. Rename `flyway-migrator-1.5.6.RELEASE.jar` to `.zip` extension. _If you have Windows Explorer set to hide file extensions, you can do it from command line using this command: `rename flyway-migrator-1.5.6.RELEASE.jar flyway-migrator-1.5.6.RELEASE.zip`.
+. Copy our `sql` folder with our migrations from FlywayDB and paste it as subfolder *inside* the zip archive in this folder `\flyway-migrator-1.5.6.RELEASE.zip\BOOT-INF\classes`. _You are not unzipping - you're adding extra files to the archive._
+.. Copy `sql` folder into memory via Ctrl+C
+.. Right click on our zip file -> Open With -> Windows Explorer
+.. Navigate to the `flyway-migrator-1.5.6.RELEASE.zip\BOOT-INF\classes` path
+.. Paste our `sql` folder here (Ctrl+V)
+
+
+. Create a new service for MySQL database in Cloud Foundry and call it *fortunesdb*
++
+----
+> cf create-service p-mysql 100mb fortunesdb
+----
+. Deploy our migrator app to PCF
+.. Ensure that your command line is set to the folder with the `$COURSE_HOME/dotnettx/lab06/FlywayMigrator` folder
++
+----
+> cf push flyway -p flyway-migrator-1.5.6.RELEASE.zip --random-route --no-start
+----
+.. Notice we used `random-route` because other people may have `flyway` hostname already used. 
+.. Notice the use of `no-start`. Because the app requires a database binding it would fail if we tried starting it before creating the binding
+. Bind our database to our app
++
+----
+> cf bind-service flyway fortunesdb
+----
+. Start the app
++
+----
+> cf start flyway
+----
+. Check the logs
++
+----
+> cf logs flyway --recent
+----
+Notice logs that deal with Flyway:
++
+----
+Flyway 4.2.0 by Boxfuse
+maxIdle is larger than maxActive, setting maxIdle to: 4
+Database: jdbc:mysql://10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48?user=iG16WYFCqJpJXuhC&password=8JAvGrrsF4gGEMhx (MySQL 5.5)
+Successfully validated 2 migrations (execution time 00:00.020s)
+Creating Metadata table: `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48`.`schema_version`
+Current version of schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48`: << Empty Schema >>
+Migrating schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48` to version 1 - IntialSchema
+Migrating schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48` to version 2 - Seed
+Successfully applied 2 migrations to schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48` (execution time 00:00.374s).
+----
+
+We can also confirm the migrations by going to the URL of our deployed app at `/flyway` address (example _http://flyway-corned-springiness.apps.pcf.space/flyway_). 
+
+== Working with database directly 
+As you may have noticed from the above logs, the database is actually is sitting on a private IP, which you probably don't have a way of connecting to directly. What if we wanted to run a few ad-hoc queries to diagnose the database directly on PCF?
+
+Our little migrator app included another package dependency called `h2-console`. Lets try it. 
+
+. Go to your deployed app url at `/h2-console` endpoint. 
+. Switch Saved Settings to to `Generic MySQL`
+. Set JDBC URL to the one you got from logs from previous step (example: `jdbc:mysql://10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48`).
+.. If you can't get it from the logs, you can alternatively get it by issuing `cf env flyway` command.
+. Set username and password which you can grab from the same jdbc url
+. Click connect
+. Try running some queries. You can even use Auto complete!
++
+image::/images/h2-console.png[]
+
+. Shutdown the app after you're done with it - there's no point to have it running
+
+----
+> cf stop flyway
+----
+
+== Connecting FortunesBackend to database on Cloud Foundry
+The final step is to get our Fortunes talking to the database we just created on Cloud Foundry. 
+
+. Lets bind it to our backend first
++
+----
+> cf bind-service FortunesBackend fortunesdb
+----
+. Grab the connection string
++
+----
+> cf env FortunesBackend
+----
+Look for connection string in VCAP_SERVICES
++
+----
+ "VCAP_SERVICES": {
+  "p-mysql": [
+   {
+    "credentials": {
+     "hostname": "10.0.4.164",
+     "jdbcUrl": "jdbc:mysql://10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48?user=UZRG4N6L87DlxzC3\u0026password=FGPOkER01tHDL4kJ",
+     "name": "cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48",
+     "password": "FGPOkER01tHDL4kJ",
+     "port": 3306,
+     "uri": "mysql://UZRG4N6L87DlxzC3:FGPOkER01tHDL4kJ@10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48?reconnect=true",
+     "username": "UZRG4N6L87DlxzC3"
+    },
+    "label": "p-mysql",
+    "name": "fortunesdb",
+    "plan": "100mb",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "mysql",
+     "relational"
+    ],
+    "volume_mounts": []
+   }
+ }
+  
+----
+
+
+. Open up the web.config for FortunesBackend in the publish folder in a text editor (`\FortuneTeller\publish\FortunesBackend\`)
+. Change the connectionString to the values found in the previous step:
+.. Set `server` to `hostname` (_10.0.4.164_)
+.. Set `user` to `username` (_UZRG4N6L87DlxzC3_)
+.. Set `password` to `password` (_FGPOkER01tHDL4kJ_)
+.. Set `database` to `name` (_cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48_)
+. Save the file
+. Push our backend to PCF. Ensure that you're command line is set to the `\FortuneTeller\publish\FortunesBackend\` folder
++
+----
+> cf push
+----
+
+Visit our FortuneForms application again. If you forgot the URL, check via `cf apps` command. It should now work as expected when we click the button!

@@ -1,0 +1,151 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab205"
+type = "lab"
++++
+
+## Lab 10 - Running existing legacy IIS apps
+
+## `Goal`
+--
+The goals for this lab are to:
+
+. Get a legacy dotnet app and port it to Cloud Foundry
+
+Approximate time: 1 hour
+--
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/dotnettx/lab05/`.
+
+[abstract]
+--
+The next series of labs will walk you through a typical challange of taking an existing application, getting it to run on a Cloud Foundry, and will teach you the skills necesary to modernize it in an iterative way. While working with old codebase is usually considered a chore by the developer doing, the technology usually moves ahead faster then the lifespan of a particular business applicaiton. It is therefore vital that the developers posses the skills necessary not only to deal with existing code bases when moving the paradigm towards running apps in the cloud, but also how to improve the quality of the codebase over time rather than a shotgun all-or-nothing approach.
+
+In this lab we will be taking an existing legacy application and getting it to run on PCF.  The application we will be using is a Fortune Teller app, which will serve up random quotes at the press of a button. From an architectual point of view the app consists of a typical client server with ASP.NET WebForms front end talking to WCF backend. The WCF backend talks to a MySQL database which stores the quotes, and uses raw ADO.NET to interact with the database. The code base can be considered obsolete by todays coding standard, but is still incredibly common in many enterprises application portfolios.
+
+Before starting the lab, please make sure that you have the necessary requirements for running the workshop
+--
+
+
+== Open Visual Studio Solution
+. Start Visual Studio and open the solution/folder  _Workshop/FortuneTeller/FortuneTeller.sln_
+.. Examine the project structure. 
+... _FortunesForms_ is our front end and is a ASP.NET WebForms application. 
+... _FortunesBackend_ is our server side component
+... _FortunesCommon_ stores shared common code. Examine the structure of ICookieService and FortuneCookie
+.. Notice that the projects are targeting .NET Framework 4.5.2 and in their current structure require IIS in order to run
+
+== Build and verify
+As we strive to optimize developer workflow it is *essential* to strive to maintain as close of parity between environments as possible. This way you minimize the number of factors that can affect the stability and behavior of code as it is promoted between environments. We going to ensure that we can run the app locallly before we try deploying it. We're not going to focus on database just yet as this will be covered in the next lab, but we will ensure that our client and server can communicate with each other.
+
+Lets configure our solution to launch both backend and UI when we start the debug session. 
+
+. Right click on Solution -> Properties. Change _Startup Project_ to _Multiple startup projects_ and set _FortunesForms_ and _FortunesBackend_ to _Start_ action.
+. Go ahead and launch the application (F5).
+. Navigate to `http://localhost:55962/` and we should be greeted with the main screen of the application. If you try to click the _Show me my Fortune_ button we are going to get an error, and this is to be expected as we have not connected the database yet.
+
+== Preparing for deployment to Pivotal Cloud Foundry
+
+Since we will be doing multiple deployments to Cloud Foundry, lets make our job easier by creating a `manifest.yml` file. While manifest is not required to deploy to Cloud Foundry, it allows us to preconfigure a lot of settings that would otherwise have to be specified every time as arguments into `cf.exe` when we push. 
+
+. Under FortunesBackend, create a new file called `manfist.yml`. (In Solution Explorer, right click on FortunesBackend project -> add new item -> General -> Text File)
+. Paste the following as content
++
+.manifest.yml 
+----
+---
+applications:
+- name: FortunesBackend
+  host: FortunesBackendSTUDENTID
+  memory: 512M
+  stack: windows2012R2
+  health-check-type: http
+  buildpack: hwc_buildpack
+----
+. Modify `host` replacing `STUDENTID` with your assigned number.
+. Notice the following:
+.. `name`: We are going to name our apps FortunesBackend
+.. `host`: We are going to give it a hostname of FortunesBackend + your student id. Because everyone will be deploying the same app into the space, we want to make sure there are no URL collisions. 
+.. `memory`: Limit it to 512M as the default is 1G. This is a small app, so lets only use what the app actually needs
+.. `stack`: This instructs cloud foundry on which operating system to deploy the code. In this case it's IIS based app, so it has to go on windows. (You can check which stacks are available by issuing `cf stacks` command)
+.. `health-check-type`: Cloud foundry will monitor your app after it's started to ensure it's healthy and running. `http` health check will make cloud foundry periodically hit the app and ensure it returns HTTP 200 (Ok). Other possible values are `none`, `port` and `process`.
+.. `buildpack`: While cloud foundry can auto detect the buildpack, this usually takes extra time. We're going to explicitly specify the `hwc_buildpack` which will introduce the required dependencies and launch the app as an IIS hosted app.
+. In solution explorer, click on 
+
+We're going to use the standard .NET publish feature in order to compile the code and include only the files necessary to run the app. The default settings will use a preconfigured publish profile that will put our web application in a neat _publish_ folder at the solution level. If you're not familiar with publish profiles, expand solution and examine Properties > PublishProfiles > FolderProfile.pubxml.
+
+. Right click on _FortunesBackend_ project and select _Publish_. Notice the target location uses our preconfigured publish profile.
+. Perform the same instructions as above but for _FortunesForms_. Don't forget to adjust the `manifest.yml` accordingly. Here's what it should look like:
+
++
+.manifest.yml
+----
+applications:
+- name: FortunesForms
+  host: FortunesFormsSTUDENTID
+  memory: 512M
+  stack: windows2012R2
+  health-check-type: http
+  buildpack: hwc_buildpack
+----
+
+image::/images/lab-05-publish.png[]
+
+
+
+We should now have 2 apps packaged as deployment artifacts ready to be pushed to PCF inside `/publish/` folder.
+
+== Pushing to Cloud Foundry
+We are going to publish both artifacts for _FortunesBackend_ and _FortunesForms_ as seperate apps into Pivotal Cloud Foundry. 
+
+. Drop into command line and change directory to  `publish\FortunesBackend` folder. 
+. Issue command `cf push`. Ensure that app pushed successfully
++
+----
+App FortunesBackend was started using this command `.cloudfoundry\hwc.exe`
+
+Showing health and status for app FortunesBackend in org student-1 / space development as admin...
+OK
+
+requested state: started
+instances: 1/1
+usage: 512M x 1 instances
+urls: FortunesBackend1.apps.pcf.space
+last uploaded: Mon Aug 21 19:09:52 UTC 2017
+stack: windows2012R2
+buildpack: hwc_buildpack
+
+     state     since                    cpu    memory           disk          details
+#0   running   2017-08-21 03:10:15 PM   0.0%   224.4M of 512M   19.5M of 1G
+----
+
+. Verify that the app is accessible by browsing to the URL. The default page is empty, but we should be able to navigate to the `/FortuneServiceWCF.svc` endpoint to ensure that the app is properly started.
+. Change directory  `publish\FortunesForms` folder
++
+----
+> cd ..\FortunesForms
+----
+
+. Adjust the Front End config file to point to the backend URL. Edit `\publish\FortunesForms\web.config` in text editor and change the path to the backend URL (see output of `cf push` command from step above). 
++
+.Replace 
+----
+<endpoint address="http://localhost:56279/FortuneServiceWCF.svc" binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICookieService" contract="FortunesCommon.ICookieService" name="FortuneServiceWcf" /> 
+----
+
++
+.with 
+----
+<endpoint address="http://REPLACE_ME_WITH_BACKENDURL/FortuneServiceWCF.svc" binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICookieService" contract="FortunesCommon.ICookieService" name="FortuneServiceWcf" /> 
+----
+. Push `FortunesForms` app using
++
+----
+> cf push
+----
+. Verify that we can access the app by going to our FortuneForms url. If you forgot the URL, you can always look it up with `cf app FortunesForms`. If we try to retrieve fortune by clicking the button on the UI, we should get the error that we can't communicate with MySQL (next step), but it does mean we can talk to backend successfully.
+
+image::/images/lab-05-nosqlconnection.png[]
+

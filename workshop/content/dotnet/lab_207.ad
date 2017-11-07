@@ -1,0 +1,229 @@
++++
+categories = ["general"]
+date = "2016-03-23T19:58:14-04:00"
+tags = ["document"]
+title = "Lab206"
+type = "lab"
++++
+
+## Lab 13 - Removing dependence on file configuration
+
+## `Goal`
+--
+The goals for this lab are to:
+
+. Remove dependence on file configuration
+
+Approximate time: 15 mins
+--
+
+NOTE: The completed code for this lab can be found at `$COURSE_HOME/dotnettx/lab06/`.
+
+
+
+[abstract]
+
+As you saw, we had to tweak the web.config after we published in order to make environment specific config adjustments - in this case the URL of the backend. For the longest time .NET have consolidated the configuration information for application inside `web.config` file (or `app.config` for non IIS hosted apps). While this sounds flexible enough in theory, in practice managing the configuration changes in web.config creates a number of challanges. 
+
+[abstract]
+
+When we build our code we generate a deployment artifact - something that will run on an a host server. *Deployment artifacts are supposed to be immutable - they do not change between environments*. Unfortunately web.config violates this concept, as it requires environment specific information to be stored as part of our artifact. Multiple methods exist that address this via config file transform or introduce different copies of config file based on environments, but they still require us to produce different copies of our build artifact.
+
+[abstract]
+
+ .NET Core introduces a new configuration framework to simplify config management. We can now define multiple sources of our config via providers and give them priority. Same values declared in multiple providers will be resolved based on provider presedence. This means we can bundle some default settings via `appsettings.json`, and overwrite them by including either an _additional_ file such as appsettings.prod.json, *or* overwrite them via environmental variables, *or* leverage external service to store our configuration such as *Spring Config Server*. We will explore Spring Config Server in later demos.
+
+When running apps on PCF, we can cleanly declare dependencies our apps have on external systems via service bindings. While there are many specific services in the marketplace, we can also use a special generic one called `User Provided Service Instance`. This service lets us define an arbitrary piece of information as a service and bind it to our applications, be it a connection string to an external database or a URL of a well known service or app. All service bindings attached to the app will be injected when the app starts using `VCAP_SERVICES` environmental variable in JSON format. 
+
+In this exercise we are going to refactor our app to loosen dependency on config file by leveraging _User Provided Service Instance_ to store the URL of our backend. This will allow our codebase to be deployed into any org/space where this service has been configured without tweaking with our artifacts before deployment, greatly simplifying the process. 
+
+We will be using Steeltoe library in order to help parse our the config changes from `VCAP_SERVICES` environmental variable when running on PCF. Steeltoe works in conjuction with ASP.NET Core configuration and Dependency Injection frameworks. Because ASP.NET Core is modular and compatible with .NET Framework, we can leverage portions of it to our legacy codebase that deal with these 2 specific tasks. Because ASP.NET core dependency injection does not support WebForms, we will be using Autofac dependency injection container to act as the glue between WebForms and ASP.NET Core DI.
+
+
+. Add _NuGet_ references to  _FortunesForms_ for `Steeltoe.Extensions.Configuration.CloudFoundry`, 
++
+.Package Manager Console
+----
+> Install-Package Steeltoe.Extensions.Configuration.CloudFoundry -Project FortunesForms
+> Install-Package Microsoft.Extensions.DependencyInjection -Project FortunesForms
+> Install-Package Autofac.Web -Project FortunesForms
+> Install-Package Autofac.Extensions.DependencyInjection -Project FortunesForms
+----
+
+. Modify `web.config` to enable Autofac to provide dependency injection for WebForms
++
+.Add the following inside `configuration > system.webServer` node
+[source,xml]
+----
+<modules>
+  <add
+    name="ContainerDisposal"
+    type="Autofac.Integration.Web.ContainerDisposalModule, Autofac.Integration.Web"
+    preCondition="managedHandler"/>
+  <add
+    name="PropertyInjection"
+    type="Autofac.Integration.Web.Forms.PropertyInjectionModule, Autofac.Integration.Web"
+    preCondition="managedHandler"/>
+</modules>
+----
+. Modify `Global.asax.cs` to look like the following:
++
+[source,c#]
+----
+using System;
+using System.Web;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Autofac.Integration.Web;
+using FortunesForms.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Steeltoe.Extensions.Configuration;
+
+namespace FortunesForms
+{
+    public class Global : HttpApplication, IContainerProviderAccessor
+    {
+        // Provider that holds the application container.
+        static IContainerProvider _containerProvider;
+        
+        // Instance property that will be used by Autofac HttpModules
+        // to resolve and inject dependencies.
+        public IContainerProvider ContainerProvider => _containerProvider;
+
+        protected void Application_Start(object sender, EventArgs e)
+        {
+            // create configuration with two providers. 
+            // registration order matters - Cloud Foundry is higher priority
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddCloudFoundry()
+                .Build();
+            // initialize ASP.NET Core DI service catalog
+            var services = new ServiceCollection();
+            // register cloud foundry config provider into the catalog via extension method
+            // this will allow us to resolve IOptionsSnapshot<CloudFoundryServicesOptions> 
+            // to access our User Provider Service
+            services.AddCloudFoundry(config);
+            // register our cookie client into the container
+            services.AddTransient<WcfCookieClient>();
+            
+            // intialize autofac container
+            var builder = new ContainerBuilder();
+            // import registrations from ASP.NET Core DI into Autofac
+            builder.Populate(services);
+            _containerProvider = new ContainerProvider(builder.Build());
+        }
+    }
+}
+----
+
+. Add new file `appsettings.json` to `FortunesForms` project
+. Paste the following into `appsettings.json`:
++
+[source,json]
+----
+{
+  "vcap": {
+    "services": {
+      "user-provided": [
+        {
+          "credentials": {
+            "url": "http://localhost:56279/FortuneServiceWCF.svc"
+          }
+        }
+      ]
+    }
+  }
+}
+----
+This will ensure that we have a default URL when running locally even if we don't have VCAP_SERVICES environmental variable set
+
+. Modify Cookies.aspx.cs to look like the following:
++
+[source,c#]
+----
+using FortunesForms.Services;
+using System;
+using System.Web.UI;
+
+namespace FortunesForms
+{
+    public partial class Cookies : Page
+    {
+        // will be populated by DI (Autofac)
+        public WcfCookieClient CookieService { get; set; }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            this.lblError.Visible = false;
+        }
+
+        protected async void btnGetCookie_OnClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var cookie = await CookieService.GetCookieAsync();
+                this.lblCookie.Text = cookie.Cookie;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                this.lblError.Text = $"Error has occured: {exception.Message}";
+                this.lblError.Visible = true;
+            }
+        }
+    }
+}
+----
+This will ensure that our service is coming from dependency injection
+
+. Modify `WcfCookieClient` class to use URI coming from configuration as following:
++
+[source,c#]
+----
+using System;
+using System.Linq;
+using System.ServiceModel;
+using System.Threading.Tasks;
+using FortunesCommon;
+using Microsoft.Extensions.Options;
+using Steeltoe.Extensions.Configuration.CloudFoundry;
+
+namespace FortunesForms.Services
+{
+    public class WcfCookieClient
+    {
+        private readonly IOptionsSnapshot<CloudFoundryServicesOptions> _cfServices;
+
+        public WcfCookieClient(IOptionsSnapshot<CloudFoundryServicesOptions> cfServices)
+        {
+            _cfServices = cfServices;
+        }
+
+        public async Task<FortuneCookie> GetCookieAsync()
+        {
+            var url = _cfServices.Value.Services
+                .Where(x => x.Name.Equals("FortunesBackend", StringComparison.InvariantCultureIgnoreCase) && x.Credentials.ContainsKey("url"))
+                .Select(x => x.Credentials["url"].Value)
+                .First();
+            var channelFactory = new ChannelFactory<ICookieService>("FortuneServiceWcf", new EndpointAddress(url));
+            return await channelFactory.CreateChannel().GetRandomCookieAsync();
+        }
+
+    }
+}
+----
+
+. Create a _User Provided Service Instance_ by issuing the following command
++
+----
+> cf cups FortunesBackend -p url
+----
+. When prompted, enter the full url of our backend service (grab the backend url if you forget it via `cf app FortunesBackend`)
++
+----
+url > http://FortunesBackend1.apps.pcf.space/FortuneServiceWCF.svc
+----
+. Lets publish and push our app as we did at the begining of the demo. **TODO: ADD STEPS**
+
+

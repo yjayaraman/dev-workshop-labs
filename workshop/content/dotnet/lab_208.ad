@@ -1,0 +1,164 @@
+= Modernize backend with ASP.NET Core & Steeltoe Connectors
+
+[abstract]
+So far our application has been built using using some legacy stacks mainly WCF & WebForms. As the industry marches forward, WCF has really fallen out of style. With the arrival of .NET Core, it has been announced that WCF Services are not supported on the new stack. As a standard, REST based services built on top of WebAPI has replaced WCF based SOAP services as the new standard. In this demo we're going to build a brand new shiny backend using .NET Core API that will be used as a replacement for our existing WCF backend.
+
+We will be also introducing Steeltoe Connectors that will significantly simplify how we connect and talk to the database.
+
+Lets start by opening our solution in Visual Studio.
+
+== Create new Web API project
+
+. Right click on Solution > Add > New Project. Under category *Web* select, *ASP.NET Core Web Application* and name it *FortunesBackendCore*.
+. Select Web API and click OK.
++
+image::..\..\common\images\create-web-api.png[]
+
+=== Quick tour of .NET ASP Core
+[abstract]
+If you're familiar with ASP.NET Core, you can skip to the next section
+
+ASP.NET Core introduces a number of changes from previous version. Lets go over a few main ones:
+
+. Embeded web server called Kestrel - your app no longer needs IIS in order to run
+. New configuration framework with multiple overlapping sources of config values. You're no longer tied to web.config, config values can come from settings file(s), console, environments, or external service. 
+. Built in dependency injection container
+. Preconfigured logging framework
+
+
+Lets go over our newly generated project
+
+===== Explore Program.cs
+
+. Notice how we construct a `WebHost` which will start an embeded web server. ASP.NET Core applications do not require an external web server such as IIS in order to run. There's an embeded web server called Kestrel which makes your application completely self contained. 
+. Notice the use of `CreateDefaultBuilder` extension method. This will configure the application for most common scenarios including use of Kestrel, dependency injection, logging.
+. Notice the use of `Startup` class to configure our application within the web server
+. Notice how WebHost is started using `Run()` which will prevent `Main` method from existing until web server is shut down.
+
+===== Explore Startup.cs
+. Notice that Configuration object is already constructed when this class is launched. It was configured earlier in WebHost builder
+. Notice `ConfigureServices` method. This is where you register your services for dependency injection. The `AddMvc()` method adds controllers found in the project to the container.
+. Notice the use of `Configure` method. It's called after `ConfigureServices` and is used to active specific features of our app before it starts running. You can add extra parameters to this method to inject services from the container if you need.
+
+===== Explore ValuesController.cs
+. Notice the use of `[Route]` attribute. This is a new way of configuring routing and is both easier to use, more modular and flexible then previous version.
+
+=== Using Steeltoe Connectors
+At this point you should be familiar on how Cloud Foundry delivers database credentials to your app in the form of VCAP_SERVICES environmental variable. Normally we would have to parse this variable to extract the relevant connection string information, then we would have to use it to initialize our DbConnection object that will actually access the database. Fortunetely we can skip right to the last step just by relying on a Steeltoe Connector for MySQL. It will automatically detect that there's a MySQL service bound to your app and will parse and construct MySqlConnection with your service container. 
+
+Lets set this up now.
+
+. Add NuGet reference for `Steeltoe.CloudFoundry.Connector.MySql`, `Steeltoe.Extensions.Configuration`, `Dapper`, and `MySql.Data`. You can do it from From Package Manager window. Make sure you have Default Project set to FortunesBackendCore
++
+----
+PM> Install-Package Steeltoe.CloudFoundry.Connector.MySql -Pre
+PM> Install-Package Steeltoe.Extensions.Configuration
+PM> Install-Package MySql.Data -Pre
+PM> Install-Package Dapper
+----
++
+If you haven't used Dapper, it will help us simplify writing queries against the database without going to a full ORM like Entity Framework. We'll explore using Entity Framework in subsequent demos. 
+
+. In `Program.cs` do the following:
+.. Add `using Steeltoe.Extensions.Configuration;` to the imports at the top
+.. Modify BuildWebHost to look as following:
++
+----
+WebHost.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration(builder => builder.AddCloudFoundry())
+    .UseStartup<Startup>()
+    .Build();
+----
+This will add Cloud Foundry as one of the configuration providers. `CreateDefaultBuilder` already adds `appsettings.json` as a first source, but because Cloud Foundry is registered after it will override any values that appear in appsettings.json.
+
+. In `Startup.cs` do the following:
+.. Add `using Steeltoe.CloudFoundry.Connector.MySql;` to the namespace imports
+.. Inside `ConfigureServices` method add `services.AddMySqlConnection(Configuration);`
+
+At this point we should be able to inject our MySqlConnection into our service classes which will be initialized by connection string from our consolidated Configuration object.
+
+Let's create a controller to handle the requests. 
+
+. Under `\Controller` folder in FortunesBackendCore, add a new class called `FortunesController`. 
+.. Right click on Controllers folder > New > Controller. 
+.. If prompted, select miniminal dependencies. 
+.. Select API Controller - Empty.
+. Set content to the following:
++
+[source,c#]
+----
+using System;
+using System.Threading.Tasks;
+using Dapper;
+using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
+using FortunesCommon;
+
+namespace FortunesBackendCore.Controllers
+{
+    [Produces("application/json")]
+    [Route("api/fortunes")]
+    public class FortunesController : Controller
+    {
+        private readonly MySqlConnection _connection;
+
+        
+        public FortunesController(MySqlConnection connection)
+        {
+            _connection = connection;
+        }
+
+        [HttpGet("random")]
+        public async Task<FortuneCookie> GetRandom()
+        {
+            var totalCookies = await  _connection.QueryFirstAsync<int>("SELECT COUNT(*) FROM fortunecookies");
+            var randomCookieNum = new Random().Next(0, totalCookies);
+            var cookie = await _connection.QueryFirstAsync<FortuneCookie>($"SELECT Id, Cookie FROM fortunecookies LIMIT {randomCookieNum}, 1");
+            return cookie;
+        }
+    }
+}
+----
+.. Notice the use of [Route] attribute at the class level to set the routing path
+.. Notice the use of [HttpGet] attribute to create an action mapping at /api/fortunes/random
+.. Notice the use of Dapper extension methods on `_connection` object to simplify querying and populating target object
+
+. Add reference to FortunesCommon project
+.. Right click on _Dependencies_ subfolder under FortunesBackendCore and select Add Reference.
+.. Add checkbox next to FortunesCommon and click OK
+
+Finally lets modify our `appsettings.json` to provide connection information when running it locally:
+
+
+[source,json]
+----
+{
+  "Logging": {
+    "IncludeScopes": false,
+    "Debug": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "Console": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    }
+  },
+  "mysql": {
+    "client": {
+      "server": "localhost",
+      "port": 3306,
+      "username": "root",
+      "database": "fortunes" ,
+      "sslmode": "none"
+    }
+  }
+}
+
+----
+
+Remember that the values in `appsettings.json` will be superseded by values coming from VCAP_SERVICES when running on Cloud Foundry because it's registered as a higher priority configuration provider.
+
+Lets try to run this now. Press F5 and browse to http://localhost:8080/api/fortunes/random. Our service should be serving up cookies.

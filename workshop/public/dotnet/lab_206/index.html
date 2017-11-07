@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Raytheon Pivotal Workshops">
+		<link rel="icon" href="/favicon.ico">
+		<title>Lab205 - Raytheon Pivotal Workshops</title>
+		<link rel="stylesheet" href="/css/highlight.js.min.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="/css/pui-v2.0.0/pivotal-ui.css">
+		<link rel="stylesheet" href="/css/theme.css">
+		<link rel="stylesheet" href="/css/component.css">
+
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/bootie-docs.css">
+		<script src="http://raytheon.cfapps.io/js/modernizr.custom.js"></script>
+
+		
+		<style type="text/css">
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+		</style>
+	</head>
+
+<body role="document">
+	
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top  ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav navbar-brand">
+						
+							<img class="nav pivotal-logo" src="/Pivotal_Teal.png"/>
+						
+				</div>
+				<a class="navbar-brand navbar-txt" href="/">Raytheon Pivotal Workshops </a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+			
+				
+				
+					
+					<li ><a class="navbar-txt" href="/lab_requirements">Lab_requirements</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day1">Billerica_day1</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day2">Billerica_day2</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/billerica_day3">Billerica_day3</a></li>
+				
+					
+					<li ><a class="navbar-txt" href="/cloud_tig">Cloud_tig</a></li>
+				
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a></li>
+                     
+                        <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a></li>
+                     
+                        <li><a target="_blank" href="https://www.git-scm.com">Git</a></li>
+                     
+                        <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a></li>
+                     
+                        <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a></li>
+                     
+                        <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a></li>
+                     
+                        <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a></li>
+                     
+                        <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a></li>
+                     
+                        <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a></li>
+                     
+					</ul>
+				</li>
+			
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					
+                        <li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a></li>
+                     
+                        <li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a></li>
+                     
+                        <li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a></li>
+                     
+                        <li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a></li>
+                     
+					</ul>
+				</li>
+			
+				
+                        
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<div class="container" style="width:95%; padding:5">
+	<div class="row">
+
+	    		
+		<div class="doc-sidebar" style="width:30%; margin-top:0; float:right; padding:10px;">
+			<div class="sidebar-module">
+				
+		    	<div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+		    	<h4 class="type-brand-3">Books</h4>
+		    	<ul class="list-unstyled">
+		    	
+		    	<li><a target="_blank" href="/books/Beyond_the_12-Factor_App_Pivotal.pdf">Beyond the 12-Factor App</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf">Migrating to Cloud Native Application Architectures</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf">Cloud Foundry The Cloud Native Platform</a><p></p></li>	
+		    	
+		    	<li><a target="_blank" href="http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646">Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry</a><p></p></li>	
+		    	
+		    	</ul>
+		  	</div>
+                        <div class="tag-box bg-dark-11" style="padding:10px; margin:20px;">
+                        <h4 class="type-brand-3">Resources</h4>
+                        <ul class="list-unstyled">
+                        
+                            <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx">All SpringOne Conference Videos</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction">Try PCF on your Local Workstation with PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction">Try PCF on the Public Cloud</a><p></p></li>
+                        
+                            <li><a target="_blank" href="/CorporateOverview.pdf">Pivotal Overview</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/products/pcfdev">PCF Dev</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf">PCF Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html">CF CLI Documentation</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://www.git-scm.com">Git</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://try.github.io/levels/1/challenges/1">Git Lessons</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://platform.spring.io/platform/">Spring Platform</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/docs">Spring Docs</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://start.spring.io/">Spring Initializer</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix">Spring Cloud at Netflix</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/blog/2015/07/14/microservices-with-spring">Microservices with Spring</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://spring.io/guides#tutorials">Spring Guides</a><p></p></li>
+                        
+                            <li><a target="_blank" href="https://network.pivotal.io/">Pivotal Network</a><p></p></li>
+                        
+                            <li><a target="_blank" href="http://docs.pivotal.io">Pivotal Documentation</a><p></p></li>
+                        
+                        </ul>
+                        </div>
+			</div>
+		</div>
+		
+
+
+		<div class="col-sm-8 doc-main" style="width:70%; float:left; padding:30px;">
+			<main role="main">
+				<article>
+					<a id="title"></a>
+					<div class="doc-entry-meta">
+					</div>
+					<section>
+						<div class="sect1">
+<h2 id="_lab_12_database_management_with_flyway">Lab 12 - Database management with Flyway</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_goal_code"><code>Goal</code></h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The goals for this lab are to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get a legacy dotnet app and port it to Cloud Foundry</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Approximate time: 1 hour</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The completed code for this lab can be found at <code>$COURSE_HOME/dotnettx/lab06/</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="quoteblock abstract">
+<blockquote>
+<div class="paragraph">
+<p>Most applications have to deal with data using some sort of persistence medium. While there is a huge number of different types of database, relational SQL based databases such as MySQL, SQL Server, Postgress are the most common choice for many business applications. Most relational databases require that we define a schema of our data via DDL. Just like applications, databases change and evolve; however, unlike applications they require special considerations on how we control changes to them. With stateless applications we can simply throw away an old release artifact, substitute it with a new one and call it a day. With database, all changes have to be incremental as we need to ensure existing data stored in old schema can be applied to the new.</p>
+</div>
+<div class="paragraph">
+<p>The most robust way to control changes to the schema is through concept of <code>Schema Migration</code>, consisting of incremental scripts that <strong>must</strong> be run in exact order. The database maintains a special "migrations" table that keeps track of which migrations have been applied to the database. A special migration tool is able to determine the current version of the database, and apply any new migrations to it in order.</p>
+</div>
+</blockquote>
+</div>
+<div class="sect3">
+<h4 id="_prereqisities">Prereqisities</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://dev.mysql.com/downloads/file/?id=471342">MySQL</a> - to run database locally</p>
+</li>
+<li>
+<p><a href="https://www.heidisql.com/downloads/releases/HeidiSQL_9.4_Portable.zip">HeidiSQL</a> - MySQL IDE</p>
+</li>
+<li>
+<p><a href="https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.2.0/flyway-commandline-4.2.0-windows-x64.zip">FlywayDb Console</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_up_local_environment">Setting up local environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;re are going to connect database to our Fortunes application so it works end to end. Let&#8217;s setup local environment first.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unzip MySQL into a folder on your computer</p>
+</li>
+<li>
+<p>Unzip HeidiSQL into a folder on your computer</p>
+</li>
+<li>
+<p>Unzip FlywayDB into <code>$COURSE_HOME/dotnettx/lab06</code> (final folder structure should end up <code>$COURSE_HOME/dotnettx/lab06\flyway-4.2.0\</code>)</p>
+</li>
+<li>
+<p>Start local MySQL by launching <code>&lt;mysql&gt;\bin\mysqld.exe</code></p>
+</li>
+<li>
+<p>Start HeidiSql by launching <code>heidisql.exe</code></p>
+</li>
+<li>
+<p>Connect to local database. Default settings for MySQL are as following:</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/heidisql-connect.png" alt="Connect">
+</div>
+</div>
+</li>
+<li>
+<p>Right click on <strong>Local</strong> in treeview on the left, and select <em>Create New</em> &gt; <em>Database</em>. Name it <strong>"Fortunes"</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preparing_migrations">Preparing Migrations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Take a moment to examine a database dump that came with our legacy application inside the <code>\FortuneTeller\Database</code> folder. Our goal is to create a local database using this script. For this demo we will be using a popular tool called <a href="https://flywaydb.org/">FlywayDb</a> that will manage database migrations for us. FlywayDB works by taking a local collection of <strong>named</strong> SQL scripts and applying them in order on to the target database. The filename of each script takes form similar to <code>V01__NameOfMigration</code>, where the first part of the filename designates the version of the database after the script is applied. Each migration builds up the database from previous version - to get from version 1 to version 5 all migrations in between have to be applied in order. FlywayDB will manage this automatically and ensure that each script is run <strong>only once</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s configure FlywayDB to target our local database:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <code>&lt;flywaydb&gt;\conf\flyway.conf</code> in a text editor</p>
+</li>
+<li>
+<p>Set the following values from default settings. Make sure to uncomment them (remove #):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>flyway.url=jdbc:mysql://localhost:3306/fortunes</code></p>
+</li>
+<li>
+<p><code>flyway.user=root</code></p>
+</li>
+<li>
+<p><code>flyway.password=</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Save and close the config file</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now lets create our migrations.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Inside <code>&lt;flywaydb&gt;\sql\</code> create a new file called <code>V1__InitialSchema.sql</code> <em>(notice the double underscore)</em></p>
+</li>
+<li>
+<p>From <code>\FortuneTeller\Database\FortunesDatabase.sql</code> copy the everything into the file we created in previous step up to the <strong>INSERT</strong> statements. Do not include the INSERT statements just yet - we&#8217;re just focusing on the schema for now and not the data. Your file should now look as following:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">CREATE TABLE IF NOT EXISTS `fortunecookies` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Cookie` longtext,
+  `Language` longtext,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_migrating_database">Migrating database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now lets try use FlywayDb to apply our migrations to the database</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From command line, change into FlywayDb folder</p>
+</li>
+<li>
+<p>Confirm that we&#8217;re ready to apply migrations:</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; flyway info</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see output similiar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Flyway 4.2.0 by Boxfuse
+
+Database: jdbc:mysql://localhost:3306/fortunes (MySQL 5.7)
+
++---------+--------------+---------------------+---------+
+| Version | Description  | Installed on        | State   |
++---------+--------------+---------------------+---------+
+| 1       | IntialSchema |                     | Pending |
++---------+--------------+---------------------+---------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can see that it detected our migration script but it&#8217;s <code>Pending</code>, meaning it hasn&#8217;t been applied to our database. Let&#8217;s do that now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; flyway migrate</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We should see output the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Flyway 4.2.0 by Boxfuse
+
+Database: jdbc:mysql://localhost:3306/fortunes (MySQL 5.7)
+Successfully validated 1 migration (execution time 00:00.006s)
+Creating Metadata table: `fortunes`.`schema_version`
+Current version of schema `fortunes`: &lt;&lt; Empty Schema &gt;&gt;
+Migrating schema `fortunes` to version 1 - IntialSchema
+Successfully applied 1 migration to schema `fortunes` (execution time 00:00.123s).</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>At this point our database has been successfully populated with schema. Go ahead and try to issue <code>flyway migrate</code> command again. Notice how this time it detects that database is already at the correct version takes no action. Lets take a look at how our database looks now.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switch to HeidiSQL and refresh <code>fortunes</code> database (click on database name &#8594; F5)</p>
+</li>
+<li>
+<p>Notice how we have two tables in our database: <code>fortunecookies</code> and <code>schema_version</code>.</p>
+</li>
+<li>
+<p>Click on schema_version, and click the <strong>Data</strong> tab on the right side.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Examine the output of the results. This is how FlywayDB keeps track of which migrations have been applied to our database</p>
+</li>
+<li>
+<p>Notice that each migration has a checksum. <strong>A migration script is immutable - it cannot be changed after it has been applied</strong>. FlywayDB will throw errors if you try to change scripts that have already been applied.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_additional_migrations">Creating additional migrations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our database is currently empty of any data, lets create a second migration that will seed it with data. <em>Keep in mind that using migrations to add data should be used generally to seed "static" records to our database, that are considered permanent, or a small number of semi-permanent records.</em></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new file in <code>&lt;flywaydb&gt;\sql</code> called <code>V2__Seed</code></p>
+</li>
+<li>
+<p>Copy the INSERT statements from <code>\FortuneTeller\Database\FortunesDatabase.sql</code> into the file we just created</p>
+</li>
+<li>
+<p>Use FlywayDB to apply the new migration</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; flyway migrate</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how FlywayDB detected that we have new unapplied migrations, and applied them to our database.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connecting_fortunesbackend_to_the_database">Connecting FortunesBackend to the database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lets open up our Fortunes solution in Visual Studio (Alternatively use Completed folder of last lab as starting point).
+. Ensure that we have both FortunesForms &amp; FortunesBackend set as startup projects</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Right click on Solution in Solution Explorer &gt; Properties</p>
+</li>
+<li>
+<p>Set startup to <code>Multiple startup projects</code> and ensure that both of the above projects are set to <strong>Start</strong></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start our application (F5)</p>
+</li>
+<li>
+<p>Click the button. We should now be able to retrieve the cookies from the database. We have successfully launched our legacy app end to end locally.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>High Five!!!</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_flywaydb_with_cloud_foundry">Using FlywayDB with Cloud Foundry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Up until now we&#8217;ve been doing all this on local environment. Our goal is to create a database in Cloud Foundry, apply our migration scripts to it, and connect our FortunesBackend project to talk to this database.</p>
+</div>
+<div class="paragraph">
+<p>FlywayDB is actually a Java application. While we could <code>push</code> FlywayDB console we downloaded as an app to Cloud Foundry, we would have to manually edit the config for it to setup the connection string for our database. This would be cumbersome and require additional steps every time we move the code to a different space. fortunately there is a better way. When working with Java apps, FlywayDB can be integrated directly into your application codebase as a dependency (similar to how <em>NuGet</em> works) and apply migrations bundled with your app as part of the startup code. Using another dependency called Spring Cloud Connectors allows us to automatically detect the VCAP_SERVICES, extract MySQL connection string and have it passed to FlywayDb. (We will explore similar connector functionally available for .NET using SteelToe in subsequent demos). Best part is that this application does not have any code - just dependency configuration (think <code>packages.config</code> in .NET world).</p>
+</div>
+<div class="paragraph">
+<p>For this demo we have included this application already precompiled and packaged for you to push to PCF. The only thing left for us to do is include our migration scripts along with it. Let&#8217;s do that now.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <code>$COURSE_HOME/dotnettx/lab06/FlywayMigrator</code> folder</p>
+</li>
+<li>
+<p>Rename <code>flyway-migrator-1.5.6.RELEASE.jar</code> to <code>.zip</code> extension. _If you have Windows Explorer set to hide file extensions, you can do it from command line using this command: <code>rename flyway-migrator-1.5.6.RELEASE.jar flyway-migrator-1.5.6.RELEASE.zip</code>.</p>
+</li>
+<li>
+<p>Copy our <code>sql</code> folder with our migrations from FlywayDB and paste it as subfolder <strong>inside</strong> the zip archive in this folder <code>\flyway-migrator-1.5.6.RELEASE.zip\BOOT-INF\classes</code>. <em>You are not unzipping - you&#8217;re adding extra files to the archive.</em></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Copy <code>sql</code> folder into memory via Ctrl+C</p>
+</li>
+<li>
+<p>Right click on our zip file &#8594; Open With &#8594; Windows Explorer</p>
+</li>
+<li>
+<p>Navigate to the <code>flyway-migrator-1.5.6.RELEASE.zip\BOOT-INF\classes</code> path</p>
+</li>
+<li>
+<p>Paste our <code>sql</code> folder here (Ctrl+V)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a new service for MySQL database in Cloud Foundry and call it <strong>fortunesdb</strong></p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf create-service p-mysql 100mb fortunesdb</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy our migrator app to PCF</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Ensure that your command line is set to the folder with the <code>$COURSE_HOME/dotnettx/lab06/FlywayMigrator</code> folder</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf push flyway -p flyway-migrator-1.5.6.RELEASE.zip --random-route --no-start</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Notice we used <code>random-route</code> because other people may have <code>flyway</code> hostname already used.</p>
+</li>
+<li>
+<p>Notice the use of <code>no-start</code>. Because the app requires a database binding it would fail if we tried starting it before creating the binding</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Bind our database to our app</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf bind-service flyway fortunesdb</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the app</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf start flyway</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Check the logs</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf logs flyway --recent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice logs that deal with Flyway:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Flyway 4.2.0 by Boxfuse
+maxIdle is larger than maxActive, setting maxIdle to: 4
+Database: jdbc:mysql://10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48?user=iG16WYFCqJpJXuhC&amp;password=8JAvGrrsF4gGEMhx (MySQL 5.5)
+Successfully validated 2 migrations (execution time 00:00.020s)
+Creating Metadata table: `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48`.`schema_version`
+Current version of schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48`: &lt;&lt; Empty Schema &gt;&gt;
+Migrating schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48` to version 1 - IntialSchema
+Migrating schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48` to version 2 - Seed
+Successfully applied 2 migrations to schema `cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48` (execution time 00:00.374s).</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We can also confirm the migrations by going to the URL of our deployed app at <code>/flyway</code> address (example <em><a href="http://flyway-corned-springiness.apps.pcf.space/flyway" class="bare">http://flyway-corned-springiness.apps.pcf.space/flyway</a></em>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_working_with_database_directly">Working with database directly</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As you may have noticed from the above logs, the database is actually is sitting on a private IP, which you probably don&#8217;t have a way of connecting to directly. What if we wanted to run a few ad-hoc queries to diagnose the database directly on PCF?</p>
+</div>
+<div class="paragraph">
+<p>Our little migrator app included another package dependency called <code>h2-console</code>. Lets try it.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to your deployed app url at <code>/h2-console</code> endpoint.</p>
+</li>
+<li>
+<p>Switch Saved Settings to to <code>Generic MySQL</code></p>
+</li>
+<li>
+<p>Set JDBC URL to the one you got from logs from previous step (example: <code>jdbc:mysql://10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48</code>).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you can&#8217;t get it from the logs, you can alternatively get it by issuing <code>cf env flyway</code> command.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Set username and password which you can grab from the same jdbc url</p>
+</li>
+<li>
+<p>Click connect</p>
+</li>
+<li>
+<p>Try running some queries. You can even use Auto complete!</p>
+<div class="imageblock">
+<div class="content">
+<img src="/images/h2-console.png" alt="h2 console">
+</div>
+</div>
+</li>
+<li>
+<p>Shutdown the app after you&#8217;re done with it - there&#8217;s no point to have it running</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf stop flyway</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connecting_fortunesbackend_to_database_on_cloud_foundry">Connecting FortunesBackend to database on Cloud Foundry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final step is to get our Fortunes talking to the database we just created on Cloud Foundry.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Lets bind it to our backend first</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf bind-service FortunesBackend fortunesdb</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Grab the connection string</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf env FortunesBackend</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Look for connection string in VCAP_SERVICES</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> "VCAP_SERVICES": {
+  "p-mysql": [
+   {
+    "credentials": {
+     "hostname": "10.0.4.164",
+     "jdbcUrl": "jdbc:mysql://10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48?user=UZRG4N6L87DlxzC3\u0026password=FGPOkER01tHDL4kJ",
+     "name": "cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48",
+     "password": "FGPOkER01tHDL4kJ",
+     "port": 3306,
+     "uri": "mysql://UZRG4N6L87DlxzC3:FGPOkER01tHDL4kJ@10.0.4.164:3306/cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48?reconnect=true",
+     "username": "UZRG4N6L87DlxzC3"
+    },
+    "label": "p-mysql",
+    "name": "fortunesdb",
+    "plan": "100mb",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "mysql",
+     "relational"
+    ],
+    "volume_mounts": []
+   }
+ }</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open up the web.config for FortunesBackend in the publish folder in a text editor (<code>\FortuneTeller\publish\FortunesBackend\</code>)</p>
+</li>
+<li>
+<p>Change the connectionString to the values found in the previous step:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Set <code>server</code> to <code>hostname</code> (<em>10.0.4.164</em>)</p>
+</li>
+<li>
+<p>Set <code>user</code> to <code>username</code> (<em>UZRG4N6L87DlxzC3</em>)</p>
+</li>
+<li>
+<p>Set <code>password</code> to <code>password</code> (<em>FGPOkER01tHDL4kJ</em>)</p>
+</li>
+<li>
+<p>Set <code>database</code> to <code>name</code> (<em>cf_cd4d977b_3b09_4288_a901_6ce72b5aaa48</em>)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Save the file</p>
+</li>
+<li>
+<p>Push our backend to PCF. Ensure that you&#8217;re command line is set to the <code>\FortuneTeller\publish\FortunesBackend\</code> folder</p>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; cf push</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Visit our FortuneForms application again. If you forgot the URL, check via <code>cf apps</code> command. It should now work as expected when we click the button!</p>
+</div>
+</div>
+</div>
+
+					</section>
+				</article>
+			</main>
+		</div> 
+	</div> 
+</div>
+
+		
+
+
+
+
+<hr />
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<p class="doc-footer-em"><a href="#">Back to TOP</a></p>
+		</div>
+	</div>
+
+</div> 
+          
+<footer class="doc-footer">
+        <span>Last Updated on  2016-03-23 19:58:14 -0400 EDT  </span>
+	
+	<p>Copyright (c) 2015, Pivotal; All rights reserved.</p>
+</footer>
+
+
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+		<script>
+			var $event = $.event,
+			$special,
+			resizeTimeout;
+			$special = $event.special.debouncedresize = {
+				setup: function() {
+					$( this ).on( "resize", $special.handler );
+				},
+				teardown: function() {
+					$( this ).off( "resize", $special.handler );
+				},
+				handler: function( event, execAsap ) {
+					var context = this,
+						args = arguments,
+						dispatch = function() {
+							event.type = "debouncedresize";
+							$event.dispatch.apply( context, args );
+						};
+					if ( resizeTimeout ) {
+						clearTimeout( resizeTimeout );
+					}
+					execAsap ?
+						dispatch() :
+						resizeTimeout = setTimeout( dispatch, $special.threshold );
+				},
+				threshold: 250
+			};
+			var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+			$.fn.imagesLoaded = function( callback ) {
+				var $this = this,
+					deferred = $.isFunction($.Deferred) ? $.Deferred() : 0,
+					hasNotify = $.isFunction(deferred.notify),
+					$images = $this.find('img').add( $this.filter('img') ),
+					loaded = [],
+					proper = [],
+					broken = [];
+				if ($.isPlainObject(callback)) {
+					$.each(callback, function (key, value) {
+						if (key === 'callback') {
+							callback = value;
+						} else if (deferred) {
+							deferred[key](value);
+						}
+					});
+				}
+				function doneLoading() {
+					var $proper = $(proper),
+						$broken = $(broken);
+					if ( deferred ) {
+						if ( broken.length ) {
+							deferred.reject( $images, $proper, $broken );
+						} else {
+							deferred.resolve( $images );
+						}
+					}
+					if ( $.isFunction( callback ) ) {
+						callback.call( $this, $images, $proper, $broken );
+					}
+				}
+				function imgLoaded( img, isBroken ) {
+					if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
+						return;
+					}
+					loaded.push( img );
+					if ( isBroken ) {
+						broken.push( img );
+					} else {
+						proper.push( img );
+					}
+					$.data( img, 'imagesLoaded', { isBroken: isBroken, src: img.src } );
+					if ( hasNotify ) {
+						deferred.notifyWith( $(img), [ isBroken, $images, $(proper), $(broken) ] );
+					}
+					if ( $images.length === loaded.length ){
+						setTimeout( doneLoading );
+						$images.unbind( '.imagesLoaded' );
+					}
+				}
+				if ( !$images.length ) {
+					doneLoading();
+				} else {
+					$images.bind( 'load.imagesLoaded error.imagesLoaded', function( event ){
+						imgLoaded( event.target, event.type === 'error' );
+					}).each( function( i, el ) {
+						var src = el.src;
+						var cached = $.data( el, 'imagesLoaded' );
+						if ( cached && cached.src === src ) {
+							imgLoaded( el, cached.isBroken );
+							return;
+						}
+						if ( el.complete && el.naturalWidth !== undefined ) {
+							imgLoaded( el, el.naturalWidth === 0 || el.naturalHeight === 0 );
+							return;
+						}
+						if ( el.readyState || el.complete ) {
+							el.src = BLANK;
+							el.src = src;
+						}
+					});
+				}
+				return deferred ? deferred.promise( $this ) : $this;
+			};
+			var Grid = (function() {
+				var $grid = $( '#og-grid' ),
+					$items = $grid.children( 'li' ),
+					current = -1,
+					previewPos = -1,
+					scrollExtra = 0,
+					marginExpanded = 10,
+					$window = $( window ), winsize,
+					$body = $( 'html, body' ),
+					transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					support = Modernizr.csstransitions,
+					settings = {
+						minHeight : 500,
+						speed : 350,
+						easing : 'ease'
+					};
+				function init( config ) {
+					
+					settings = $.extend( true, {}, settings, config );
+					$grid.imagesLoaded( function() {
+						saveItemInfo( true );
+						getWinSize();
+						initEvents();
+					} );
+				}
+				function addItems( $newitems ) {
+					$items = $items.add( $newitems );
+					$newitems.each( function() {
+						var $item = $( this );
+						$item.data( {
+							offsetTop : $item.offset().top,
+							height : $item.height()
+						} );
+					} );
+					initItemsEvents( $newitems );
+				}
+				function saveItemInfo( saveheight ) {
+					$items.each( function() {
+						var $item = $( this );
+						$item.data( 'offsetTop', $item.offset().top );
+						if( saveheight ) {
+							$item.data( 'height', $item.height() );
+						}
+					} );
+				}
+				function initEvents() {
+					
+					initItemsEvents( $items );
+					
+					$window.on( 'debouncedresize', function() {
+						
+						scrollExtra = 0;
+						previewPos = -1;
+						saveItemInfo();
+						getWinSize();
+						var preview = $.data( this, 'preview' );
+						if( typeof preview != 'undefined' ) {
+							hidePreview();
+						}
+					} );
+				}
+				function initItemsEvents( $items ) {
+					$items.on( 'click', 'span.og-close', function() {
+						hidePreview();
+						return false;
+					} ).children( 'a' ).on( 'click', function(e) {
+						var $item = $( this ).parent();
+						current === $item.index() ? hidePreview() : showPreview( $item );
+						return false;
+					} );
+				}
+				function getWinSize() {
+					winsize = { width : $window.width(), height : $window.height() };
+				}
+				function showPreview( $item ) {
+					var preview = $.data( this, 'preview' ),
+						position = $item.data( 'offsetTop' );
+					scrollExtra = 0;
+					if( typeof preview != 'undefined' ) {
+						if( previewPos !== position ) {
+							if( position > previewPos ) {
+								scrollExtra = preview.height;
+							}
+							hidePreview();
+						}
+						else {
+							preview.update( $item );
+							return false;
+						}
+						
+					}
+					previewPos = position;
+					preview = $.data( this, 'preview', new Preview( $item ) );
+					preview.open();
+				}
+				function hidePreview() {
+					current = -1;
+					var preview = $.data( this, 'preview' );
+					preview.close();
+					$.removeData( this, 'preview' );
+				}
+				function Preview( $item ) {
+					this.$item = $item;
+					this.expandedIdx = this.$item.index();
+					this.create();
+					this.update();
+				}
+				Preview.prototype = {
+					create : function() {
+						this.$title = $( '<h3></h3>' );
+						this.$description = $( '<p></p>' );
+						this.$href = $( '<a href="#"></a>' );
+						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+						this.$loading = $( '<div class="og-loading"></div>' );
+						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+						this.$closePreview = $( '<span class="og-close"></span>' );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
+						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
+						this.$item.append( this.getEl() );
+						if( support ) {
+							this.setTransition();
+						}
+					},
+					update : function( $item ) {
+						if( $item ) {
+							this.$item = $item;
+						}
+						
+						if( current !== -1 ) {
+							var $currentItem = $items.eq( current );
+							$currentItem.removeClass( 'og-expanded' );
+							this.$item.addClass( 'og-expanded' );
+							this.positionPreview();
+						}
+						current = this.$item.index();
+						var $itemEl = this.$item.children( 'a' ),
+							eldata = {
+								href : $itemEl.attr( 'href' ),
+								largesrc : $itemEl.data( 'largesrc' ),
+								title : $itemEl.data( 'title' ),
+								description : $itemEl.data( 'description' )
+							};
+						this.$title.html( eldata.title );
+						this.$description.html( eldata.description );
+						this.$href.attr( 'href', eldata.href );
+						var self = this;
+						
+						if( typeof self.$largeImg != 'undefined' ) {
+							self.$largeImg.remove();
+						}
+						if( self.$fullimage.is( ':visible' ) ) {
+							this.$loading.show();
+							$( '<img/>' ).load( function() {
+								var $img = $( this );
+								if( $img.attr( 'src' ) === self.$item.children('a').data( 'largesrc' ) ) {
+									self.$loading.hide();
+									self.$fullimage.find( 'img' ).remove();
+									self.$largeImg = $img.fadeIn( 350 );
+									self.$fullimage.append( self.$largeImg );
+								}
+							} ).attr( 'src', eldata.largesrc );	
+						}
+					},
+					open : function() {
+						setTimeout( $.proxy( function() {	
+							this.setHeights();
+							this.positionPreview();
+						}, this ), 25 );
+					},
+					close : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									$( this ).off( transEndEventName );
+								}
+								self.$item.removeClass( 'og-expanded' );
+								self.$previewEl.remove();
+							};
+						setTimeout( $.proxy( function() {
+							if( typeof this.$largeImg !== 'undefined' ) {
+								this.$largeImg.fadeOut( 'fast' );
+							}
+							this.$previewEl.css( 'height', 0 );
+							var $expandedItem = $items.eq( this.expandedIdx );
+							$expandedItem.css( 'height', $expandedItem.data( 'height' ) ).on( transEndEventName, onEndFn );
+							if( !support ) {
+								onEndFn.call();
+							}
+						}, this ), 25 );
+						
+						return false;
+					},
+					calcHeight : function() {
+						var heightPreview = winsize.height - this.$item.data( 'height' ) - marginExpanded,
+							itemHeight = winsize.height;
+						if( heightPreview < settings.minHeight ) {
+							heightPreview = settings.minHeight;
+							itemHeight = settings.minHeight + this.$item.data( 'height' ) + marginExpanded;
+						}
+						this.height = heightPreview;
+						this.itemHeight = itemHeight;
+					},
+					setHeights : function() {
+						var self = this,
+							onEndFn = function() {
+								if( support ) {
+									self.$item.off( transEndEventName );
+								}
+								self.$item.addClass( 'og-expanded' );
+							};
+						this.calcHeight();
+						this.$previewEl.css( 'height', this.height );
+						this.$item.css( 'height', this.itemHeight ).on( transEndEventName, onEndFn );
+						if( !support ) {
+							onEndFn.call();
+						}
+					},
+					positionPreview : function() {
+						var position = this.$item.data( 'offsetTop' ),
+							previewOffsetT = this.$previewEl.offset().top - scrollExtra,
+							scrollVal = this.height + this.$item.data( 'height' ) + marginExpanded <= winsize.height ? position : this.height < winsize.height ? previewOffsetT - ( winsize.height - this.height ) : previewOffsetT;
+						
+						$body.animate( { scrollTop : scrollVal }, settings.speed );
+					},
+					setTransition  : function() {
+						this.$previewEl.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+						this.$item.css( 'transition', 'height ' + settings.speed + 'ms ' + settings.easing );
+					},
+					getEl : function() {
+						return this.$previewEl;
+					}
+				}
+				return { 
+					init : init,
+					addItems : addItems
+				};
+			})();
+		</script>
+		<script>
+			$(function() {
+				Grid.init();
+			});
+		</script>
+</body>
+</html>
+

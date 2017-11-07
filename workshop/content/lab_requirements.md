@@ -52,7 +52,8 @@ and 4443 (websockets) is required.
 9. Verify your install by opening a terminal/command window and typing `cf --version`. You now have a Cloud Foundry client that can communicate with any Cloud Foundry installation.
 
 
-
-
-
-
+10. For .NET Migration workshop
+  1. MySQL IDE On Windows: [HeidiSQL](https://www.heidisql.com/downloads/releases/HeidiSQL_9.4_Portable.zip), On Mac use, [SequelPro](https://sequelpro.com/download)
+  2. [FlywayDb Console](https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.2.0/flyway-commandline-4.2.0-windows-x64.zip)
+  3. `Optional` [MySQL](https://dev.mysql.com/downloads/) 
+ 
