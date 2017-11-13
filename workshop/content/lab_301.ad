@@ -39,6 +39,7 @@ Generate :: Maven Project
 Spring Boot :: 1.4.2
 Group:: `lab`
 Artifact:: `springbox-catalog`
+Package:: `lab` (Click 'switch to full version' link at the bottom to see the Package field)
 Dependencies:: `Web`,`JPA`,`Actuator`,`DevTools`,`Rest Repositories`,`H2`,`Config Client`,`Eureka Discovery`
 
 . Click the *Generate Project* button. Your browser will download a zip file.
