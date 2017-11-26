@@ -26,6 +26,11 @@ app.get( '/', function ( req, res) {
   })
 })
 
+
+app.get('/kill', function ( req, res) {
+    process.exit()
+})
+
 //app.listen( process.env.PORT || 4000)
 
 var listener = app.listen(process.env.PORT || 4000);

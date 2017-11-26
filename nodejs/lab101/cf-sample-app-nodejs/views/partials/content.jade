@@ -43,11 +43,14 @@ ul.list-group
         .type-neutral-4.small
           .type-ellipsis MEMORY LIMIT
         .type-ellipsis #{ app_mem_limits != undefined ? app_mem_limits + 'M' : '@application_mem_limits'}
-      .col-xs-5.col-sm-5.col-md-5.col-lg-5
+      .col-xs-5.col-sm-5.col-md-5
         .type-neutral-4.small
           .type-ellipsis DISK LIMIT
-        .type-ellipsis #{ app_disk_limits!= undefined ? app_disk_limits + 'M' : '@application_disk_limits'}        
-      .col-xs-6.col-sm-6.col-md-6.col-lg-6.ptl.txt-r.type-ellipsis
+        .type-ellipsis #{ app_disk_limits!= undefined ? app_disk_limits + 'M' : '@application_disk_limits'}
+      .col-md-2.ptl.txt-r.type-ellipsis
+        a.btn.btn-danger(href='kill', aria-label='Delete')
+          i.fa.fa-trash-o(aria-hidden='true')
+      .col-xs-6.col-sm-4.col-md-6.col-lg-4.ptl.txt-r.type-ellipsis
         a.type-accent-4(href='https://docs.cloudfoundry.org/devguide/deploy-apps/cf-scale.html', target='_blank')
           span.small Scaling
           span.fa.fa-icon.fa-external-link.plm.txt-m.small
