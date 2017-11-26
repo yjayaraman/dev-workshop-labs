@@ -35,6 +35,12 @@ module.exports = {
     }
   },
 
+  get_app_instance_addr: function () {
+    if ( process.env.CF_INSTANCE_ADDR) {
+      return process.env.CF_INSTANCE_ADDR
+    }
+  },
+
   get_app_disk_limits: function () {
     if ( process.env.VCAP_APPLICATION) {
       var app_info = JSON.parse( process.env.VCAP_APPLICATION)
