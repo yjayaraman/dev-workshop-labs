@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const NodeGeocoder = require('node-geocoder');
 const redis = require('redis');
 const fs = require('fs');
+const cfenv = require("cfenv")
 
 
 //Set Port
@@ -28,12 +29,11 @@ app.use(express.static(path.join(__dirname, "public")));
 //method-override
 app.use(methodOverride('_method'));
 
-//redis client
-const client = redis.createClient();
+//cfenv
 
-client.on('connect', () => {
-    console.log('Redis connected...')
-});
+
+//initialize redis client
+
 
 var locations;
 
@@ -44,12 +44,8 @@ app.get('/',(req,res,next) => {
         var data = fs.readFileSync('json/locations.json');
         locations = JSON.parse(data);
         locations.forEach(function(element) {
-            client.hmset(element.id, ['name', element.name, 'address', element.address, 'map', element.map, 'lat', element.lat, 'lon', element.lon ], (err, reply) => {
-                if(err){
-                    console.log(err);
-                }
-                console.log(reply);
-            } );
+            //Cache locations in Redis
+
         }, this);
     }
     hrend = process.hrtime(hrstart);
@@ -61,24 +57,14 @@ app.get('/',(req,res,next) => {
 app.post('/lab/search', (req, res, next) => {
    const id = req.body.id;
 
-   client.hgetall(id, (err,obj)=> {
-       if (!obj) {
-           res.render('searchlab', {
-               error: 'Invalid Lab ID'
-           });
-       } else {
-           console.log(obj.name);
-           console.log(obj.address);
-           console.log(obj.lat);
-           console.log(obj.lon);
-           res.render('details', {lab: obj});
-       }
-   });
+   //Get the location from Redis
+
 });
 
 app.get('/listlabs', (req,res,next) => {
     res.render('listlabs');
 });
+
 app.listen( process.env.PORT || port, () => {
     console.log('Server started');
 });
