@@ -25,21 +25,21 @@
      "name": "Singapore",
      "lat":1.2783023,
      "lon":103.8473368,
-     "address":"140 Robinson Road<br>Level 16<br>Singapore 068907"
+     "address":"140 Robinson Road, Level 16, Singapore 068907"
  },
  {
      "id": 5,
      "name": "Cambridge",
      "lat":42.3626831,
      "lon":-71.087541,
-     "address":"255 Main St<br>Sixth Floor<br>Cambridge, MA 02142"
+     "address":"255 Main St, Sixth Floor, Cambridge, MA 02142"
  },
  {
      "id": 6,
      "name": "Washington D.C.",
      "lat":38.9017198,
      "lon":-77.0396718,
-     "address":"1625 I St NW<br>Suite 601<br>Washington, D.C. 20006"
+     "address":"1625 I St NW, Suite 601, Washington, D.C. 20006"
  }
 ]
    
