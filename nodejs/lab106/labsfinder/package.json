@@ -1,0 +1,20 @@
+{
+  "name": "labsfinder",
+  "version": "1.0.0",
+  "description": "Pivotal Labs Finder App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "node-geocoder": "^3.21.1",
+    "redis": "^2.8.0"
+  }
+}

@@ -1,0 +1,24 @@
+<script>
+    function initMap(){
+        const lat = {{lab.lat}};
+        const lon = {{lab.lon}};
+        const coords = {lat:lat, lng:lon};
+        console.log('In init map');
+        const map = new google.maps.Map(document.getElementById('map'), {zoom: 10, center: coords});
+        const marker = new google.maps.Marker({position: coords, map: map});
+    }
+</script>
+<a href="/">Go Back</a>
+<h1>Lab Details</h1>
+<p>Name: {{lab.name}}</p>
+<p>Address: {{lab.address}}</p>
+
+<div id="map">
+</div>
+
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8KkQe5iFnpVUAYUmPtxBufkNk-BDed6I&callback=initMap">
+</script>
+
+
+

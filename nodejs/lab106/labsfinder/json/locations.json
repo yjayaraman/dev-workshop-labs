@@ -1,0 +1,45 @@
+[
+ {
+    "id": 1,
+    "name": "San Francisco",
+    "address": "875 Howard Street, Fifth Floor, San Francisco, CA 94103, United States",
+    "lat":37.7818416,
+    "lon":-122.403956
+ },
+ {
+     "id": 2,
+     "name": "New York",
+     "lat":40.7404363,
+     "lon":-73.9962924,
+     "address":"636 Avenue of the Americas, Sixth Floor, New York, NY 10011, United States"
+ },
+ {
+     "id": 3,
+     "name": "London",
+     "lat":51.5259126,
+     "lon":-0.0891408,
+     "address":"The Warehouse, 211 Old Street, Second Floor, London EC1V 9NR, United Kingdom"
+ },
+ {
+     "id": 4,
+     "name": "Singapore",
+     "lat":1.2783023,
+     "lon":103.8473368,
+     "address":"140 Robinson Road<br>Level 16<br>Singapore 068907"
+ },
+ {
+     "id": 5,
+     "name": "Cambridge",
+     "lat":42.3626831,
+     "lon":-71.087541,
+     "address":"255 Main St<br>Sixth Floor<br>Cambridge, MA 02142"
+ },
+ {
+     "id": 6,
+     "name": "Washington D.C.",
+     "lat":38.9017198,
+     "lon":-77.0396718,
+     "address":"1625 I St NW<br>Suite 601<br>Washington, D.C. 20006"
+ }
+]
+   
