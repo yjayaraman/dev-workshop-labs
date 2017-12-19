@@ -1,5 +1,6 @@
 package lab.repositories;
 
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import lab.domain.Movie;
