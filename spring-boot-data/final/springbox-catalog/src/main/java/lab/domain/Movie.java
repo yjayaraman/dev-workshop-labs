@@ -13,26 +13,26 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="movies")
+@Table(name = "movies")
 public class Movie {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-    @Column(nullable = false)
-    private String title;
 
-    @Column(nullable = false)
-    private String mlId;
-	
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "movies_genres",
-            joinColumns = {@JoinColumn(name = "movie_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "genre_id", referencedColumnName = "id")})
-    private List<Genre> genres;
-    
-	@Column(nullable=false)
+	@Column(nullable = false)
+	private String title;
+
+	@Column(nullable = false)
+	private String mlId;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "movies_genres", joinColumns = {
+			@JoinColumn(name = "movie_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "genre_id", referencedColumnName = "id") })
+	private List<Genre> genres;
+
+	@Column(nullable = false)
 	private int numberInStock;
 
 	public Long getId() {
@@ -73,10 +73,7 @@ public class Movie {
 
 	public void setNumberInStock(int numberInStock) {
 		this.numberInStock = numberInStock;
-	} 
-	
-	
-	
-	
+	}
+
 }
 
