@@ -1,7 +1,6 @@
 ---
 applications:
 - name: springbox-catalog
-  host: springbox-catalog
   memory: 1G
   random-route: true
   instances: 1
