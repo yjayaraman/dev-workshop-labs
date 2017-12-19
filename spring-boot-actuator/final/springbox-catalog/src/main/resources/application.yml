@@ -9,12 +9,19 @@ spring:
     name: springbox-catalog
   profiles:
     active: spanish 
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
 greeting: Hello World
-
+info:
+  build:
+    artifact: "@project.artifactId@"
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
 ---
 spring:
   profiles: spanish
 greeting: Hola
+
+
+      
+      
+      
