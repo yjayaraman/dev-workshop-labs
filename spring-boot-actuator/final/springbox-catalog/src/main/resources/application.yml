@@ -1,25 +1,22 @@
 management:
   security:
     enabled: false
+  info:
+    git:
+      mode: full
+  cloudfoundry:
+    skip-ssl-validation: true    
+      
 security:
   basic:
     enabled: false
-spring:
-  application:
-    name: springbox-catalog
-  profiles:
-    active: spanish 
-greeting: Hello World
-info:
-  build:
-    artifact: "@project.artifactId@"
-    name: "@project.name@"
-    description: "@project.description@"
-    version: "@project.version@"
----
-spring:
-  profiles: spanish
-greeting: Hola
+ 
+logging:
+  level: 
+    org.springframework.web: DEBUG
+    org.hibernate: ERROR
+    
+greeting: "Hello Movie Fans!!!"
 
 
       
