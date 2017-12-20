@@ -1,0 +1,4 @@
+greeting: "Hello Movie Fans!"
+security:
+  basic:
+    enabled: false
