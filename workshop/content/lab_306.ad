@@ -27,7 +27,7 @@ In this lab, we’ll do the following::
 
 === `Create Spring Cloud Hystrix Dashboard in Cloud Foundry`
 
-. Go to Cloud Foundry UI https://apps.run.haas-80.pez.pivotal.io and add an instance of `Hystrix Dashboard` from the marketplace 
+. Go to Cloud Foundry UI https://apps.sys.mag.perfexel.com and add an instance of `Circuit Breaker Dashboard` from the marketplace 
 +
 image:/images/spring-cloud-hystrix.png[]
 +
@@ -60,7 +60,7 @@ applications:
   path: target/springbox-client-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.run.haas-80.pez.pivotal.io  
+    TRUST_CERTS: api.sys.mag.perfexel.com  
   services:
   - springbox-config-service
   - springbox-service-registry  

@@ -81,6 +81,14 @@ $ mvn spring-boot:run
 ----
 $ cd $COURSE_HOME/spring-cloud-eureka/initial/springbox-catalog
 ----
+. Open pom.xml and add the following lines
++
+----
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-eureka</artifactId>
+    </dependency>
+----
 
 . Now open `lab.SpringboxCatalogApplication` and add the `@EnableDiscoveryClient` annotation:
 +

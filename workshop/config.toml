@@ -13,11 +13,11 @@ copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
         # To provide some metadata for search engines feel free to add a few
         # information about you and your website.
     name = "Yadhav Jayaraman"
-    date = "2017-04-19T06:57:47Z-04:00"
+    date = "2017-12-19T06:57:47Z-04:00"
     venue = "WEBEX: https://pivotal.webex.com/join/yjayaraman <br> Venue:TBD"
-    dates = "Next Workshop: Nov 6-8, Billercia" 
+    dates = "Next Workshop: Dec 20-21, Dulles, Virginia" 
     customer_logo="raytheon.png"
-    mainMenu = ["lab_requirements", "billerica_day1", "billerica_day2", "billerica_day3", "cloud_tig"]
+    mainMenu = ["lab_requirements", "day1", "day2", "cloud_tig"]
     noCategoryLink = true
     #feedbackLink = "https://docs.google.com/forms/d/1KG88z2eWfG2Rx0guENzKgzeu6VlMjhRyW2PiJoCbtxI/viewform?entry.1504550910&entry.108151957&entry.1907066466=Liberty+Mutual&entry.1934264208&entry.2083454847&entry.1484855815&entry.1880096690&entry.879050699"
 

@@ -31,7 +31,7 @@ In this lab, we'll do the following::
 
 === `Create Spring Cloud Service Registry in Cloud Foundry`
 
-. Go to Cloud Foundry UI https://apps.run.haas-80.pez.pivotal.io and add an instance of `Service Registry` from the marketplace 
+. Go to Cloud Foundry UI https://apps.sys.mag.perfexel.com and add an instance of `Service Registry` from the marketplace 
 +
 image:/images/spring-cloud-registry-0.png[]
 +
@@ -63,7 +63,7 @@ applications:
   path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.run.haas-80.pez.pivotal.io  # <--- Add this!
+    TRUST_CERTS: api.sys.mag.perfexel.com  # <--- Add this!
   services:
   - springbox-catalog-db
   - springbox-config-service
@@ -128,7 +128,7 @@ applications:
   path: target/springbox-client-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.run.haas-80.pez.pivotal.io  # <--- Add this!
+    TRUST_CERTS: api.sys.mag.perfexel.com  # <--- Add this!
   services:
   - springbox-config-service
   - springbox-service-registry  # <--- Add this!

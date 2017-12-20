@@ -61,9 +61,12 @@ $ cd $COURSE_HOME/springbox-config-server
 +
 ----
 server.port: 8888
-spring.cloud.config.server.git.uri: https://github.com/regpaco/springbox-config-repo.git
+spring.cloud.config.server.git.uri: https://github.com/regpaco/springbox-config-repo.git 
 ----
-
++
+NOTE: If you don't have github access, you can point to your local git
+*spring.cloud.config.server.git.uri=file:/path/to/your/git/repo*
++
 . Run the application:
 +
 ----
@@ -154,21 +157,35 @@ Welcome Movie Club Buffs!!!
 
 === `Create Config Server Service in Cloud Foundry`
 
-. Go to Cloud Foundry UI https://apps.run.haas-80.pez.pivotal.io and create an instance of `Config Server` call it `springbox-config-service` . Do not bind it to any apps at this time.
-
-. Click on the Service and Click on `Manage`
-+
-image:/images/spring-cloud-config-1.png[]
-+
-. Wait till the service has been created and you could see the configuration properties
-
-. Update the service to point to your github uri for `springbox-config-repo`
+. From the command window type `cf marketplace`
 +
 ----
-cf update-service springbox-config-service -c '{"git": { "uri": "https://github.com/regpaco/springbox-config-repo" } }'
-----
+service                       plans                                    description
+app-autoscaler                standard                                 Scales bound applications in response to load
+p-circuit-breaker-dashboard   standard                                 Circuit Breaker Dashboard for Spring Cloud Applications
+p-config-server               standard                                 Config Server for Spring Cloud Applications
+p-mysql                       100mb                                    MySQL databases on demand
+p-rabbitmq                    standard                                 RabbitMQ service to provide shared instances of this high-performance multi-protocol messaging broker.
+p-redis                       shared-vm, dedicated-vm                  Redis service to provide pre-provisioned instances configured as a datastore, running on a shared or dedicated VM.
+p-service-registry            standard                                 Service Registry for Spring Cloud Applications
+p.rabbitmq                    solo                                     RabbitMQ Service
+p.redis                       cache-small, cache-medium, cache-large   Redis service to provide on-demand dedicated instances configured as a cache.
 
-. Verify that the changes have been updated
+TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+----
+. create a file called config.json and put the following value in there (update it to point to your repo)
++
+----
+{"git": { "uri": "https://github.com/regpaco/springbox-config-repo" } }
+----
+. Using the values for p-config-server, create a config server service
+ the service to point to your github uri for `springbox-config-repo`
++
+----
+cf create-service p-config-server standard springbox-config-service -c config.json
+----
+NOTE: This takes about 15 mins
+. Periodically, verify that the changes have been applied
 +
 ----
 →cf services
@@ -176,7 +193,7 @@ Getting services in org Northeast / Canada / space yadhav as yjayaraman@pivotal.
 OK
 
 name                         service              plan       bound apps                                              last operation
-springbox-config-service     p-config-server      standard        update succeeded
+springbox-config-service     p-config-server      standard        create succeeded
 
 ----
 
@@ -199,19 +216,7 @@ spring:
       uri: ${vcap.services.springbox-config-service.credentials.uri:http://localhost:8888}
 
 ----
-[NOTE]
-This step is needed because of security is enabled on CF by default
 
-. Modify `src/main/resources/application.yml`
-+ 
-----
-management:
-  security:
-    enabled: false
-security:
-  basic:
-    enabled: false
-----
 
 . Add the `springbox-config-service` service to the `manifest.yml`:
 +
@@ -225,22 +230,28 @@ applications:
   path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.run.haas-80.pez.pivotal.io  # <--- Add this!
+    TRUST_CERTS: api.sys.mag.perfexel.com  # <--- Add this!
   services:
     - springbox-catalog-db
     - springbox-config-service  # <--- Add this!
 ----
 
-. Open `pom.xml`,  add the dependency management:
+. Open `pom.xml`,  add the following to the properties :
 +
 ----
+    <spring-cloud-services.version>1.6.0.RELEASE</spring-cloud-services.version>
+----
+. Add the following to dependecy management
++
+----
+
   <dependencyManagement>
     <dependencies>
     ...
       <dependency>
         <groupId>io.pivotal.spring.cloud</groupId>
         <artifactId>spring-cloud-services-dependencies</artifactId>
-        <version>1.3.0.RELEASE</version>
+        <version>${spring-cloud-services.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -277,10 +288,10 @@ Using manifest file /Users/yjayaraman/projects/dev-workshop-labs/spring-cloud-co
 Creating app springbox-catalog in org lab-org99 / space development as user99@raytheon.com...
 OK
 
-Creating route springbox-catalog-bondless-volcanologist.cfapps.haas-80.pez.pivotal.io...
+Creating route springbox-catalog-bondless-volcanologist.cfapps.mag.perfexel.com...
 OK
 
-Binding springbox-catalog-bondless-volcanologist.cfapps.haas-80.pez.pivotal.io to springbox-catalog...
+Binding springbox-catalog-bondless-volcanologist.cfapps.mag.perfexel.com to springbox-catalog...
 OK
 
 Uploading springbox-catalog...
@@ -297,7 +308,7 @@ OK
 requested state: started
 instances: 1/1
 usage: 1G x 1 instances
-urls: springbox-catalog-bondless-volcanologist.cfapps.haas-80.pez.pivotal.io
+urls: springbox-catalog-bondless-volcanologist.cfapps.mag.perfexel.com
 last uploaded: Sun Nov 13 20:21:43 UTC 2016
 stack: cflinuxfs2
 buildpack: java-buildpack=v3.8.1-offline-https://github.com/cloudfoundry/java-buildpack.git#29c79f2 java-main maria-db-jdbc=1.4.6 open-jdk-like-jre=1.8.0_91-unlimited-crypto open-jdk-like-memory-calculator=2.0.2_RELEASE spring-auto-reconfiguration=1.10.0_RELEASE

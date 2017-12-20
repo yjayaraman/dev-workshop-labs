@@ -275,7 +275,7 @@ $ cf marketplace
 and you'll get a list of services, their available plans, and descriptions.
 
 The second way is specific to Pivotal Cloud Foundry's Application Manager UI.
-If you haven't already, login to it by visiting https://apps.run.haas-80.pez.pivotal.io/login.
+If you haven't already, login to it by visiting https://apps.sys.mag.perfexel.com/login.
 
 Click on the ``Marketplace'' link:
 _The Screenshots below are from Pivotal Web Services (public managed Pivotal CF).  Your image will look different if you are using your own instance of Pivotal Cloud Foundry._
@@ -293,7 +293,7 @@ image::/images/PWS_Marketplace.png[]
 . From the CLI, let's _create_ a p-mysql service instance:
 +
 ----
-$ cf create-service p-mysql 100mb-dev attendees-db 
+$ cf create-service p-mysql 100mb attendees-db 
 Creating service attendees-db in org ACME / space instructor as mstine@pivotal.io...
 OK
 ----

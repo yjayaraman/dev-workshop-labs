@@ -36,12 +36,49 @@ We'll be using the http://grouplens.org/datasets/movielens/[MovieLens] dataset, 
 . Fill out the *Project metadata* fields as follows:
 +
 Generate :: Maven Project
-Spring Boot :: 1.4.2
+Spring Boot :: 1.5.9
 Group:: `lab`
 Artifact:: `springbox-catalog`
 Package:: `lab` (Click 'switch to full version' link at the bottom to see the Package field)
-Dependencies:: `Web`,`JPA`,`Actuator`,`DevTools`,`Rest Repositories`,`H2`,`Config Client`,`Eureka Discovery`
+Dependencies:: (Enter them one by one)
+- `Web`
+- `JPA`
+- `Rest Repositories`
+- `H2`
+- `Actuator`
+- `DevTools`
+- `Config Client`
++
+--
+.Table Starter POMs
+[cols="2,5a", options="header, border"]
+|===
+|Dependency | Description
 
+|Web
+|Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container
+
+|JPA
+|Starter for using Spring Data JPA with Hibernate
+
+|Actuator
+|Starter for using Spring Boot's Actuator which provides production ready features to help you monitor and manage your application
+
+|Devtools
+|Spring Boot Developer Tools
+
+|Rest Repositories
+|Starter for exposing Spring Data repositories over REST using Spring Data REST
+
+|H2
+|H2 database drivers
+
+|Config Client
+|Starter for Config client
+
+|===
+--
++
 . Click the *Generate Project* button. Your browser will download a zip file.
 
 . On a terminal window, +
@@ -84,9 +121,6 @@ Unpack that zip file into `$COURSE_HOME/spring-boot-basics/initial`.
 +
 [source,json]
 ----
-security:
-  basic:
-    enabled: false # <---  turn off basic security (on by default)	
 greeting: Hello World
 
 ----
@@ -107,7 +141,7 @@ http://localhost:8080:: Says `Hello, World`
 === `Clean Up`
 
 NOTE::
-The next step is optional. You can continue the next lab using the workspace that you have created, or clean up and follow the next lab from scratch.
+The next step is optional. You can continue the next lab using the workspace that you have created, or clean up and follow the next lab from scratch. `Recommendation is to skip this step and keep the project and continue to the next lab`
 
 
 Let's clean up our application so that we can have a clean start for the next lab 
