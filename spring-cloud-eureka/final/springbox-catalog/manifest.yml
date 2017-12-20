@@ -7,7 +7,7 @@ applications:
   path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.run.haas-80.pez.pivotal.io
+    TRUST_CERTS: api.sys.mag.perfexel.com
   services:
   - springbox-catalog-db
   - springbox-config-service

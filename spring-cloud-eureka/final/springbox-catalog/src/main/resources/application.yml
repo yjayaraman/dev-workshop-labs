@@ -1,10 +1,22 @@
 management:
   security:
     enabled: false
+  info:
+    git:
+      mode: full
+  cloudfoundry:
+    skip-ssl-validation: true    
+      
 security:
   basic:
     enabled: false
-
+ 
+logging:
+  level: 
+    org.springframework.web: DEBUG
+    org.hibernate: ERROR
+    
+    
 greeting: Hello World
 spring:
   jpa:
