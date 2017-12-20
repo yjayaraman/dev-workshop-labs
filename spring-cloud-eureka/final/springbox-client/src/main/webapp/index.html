@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="springboxui">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>SpringBox</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body ng-controller="CatalogController as catalog" class="container">
+  <h1>SpringBox Movies</h1>
+
+  <div ng-repeat="movie in catalog.movies">
+    <h2>{{movie.title}}</h1> <em class="pull-right">Number in Stock: {{movie.numberInStock}}</em>
+
+    <section ng-controller="PanelController as panel">
+      <ul class="nav nav-pills" >
+        <li ng-class="{active:panel.isSelected(1)}">
+          <a href ng-click="panel.tab = 1" >Genres</a>
+        </li>
+        <li ng-class="{active:panel.isSelected(2)}">
+          <a href ng-click="panel.tab = 2">Reviews</a>
+        </li>
+        <li ng-class="{active:panel.isSelected(3)}">
+          <a href ng-click="panel.tab = 3">Recommendations</a>
+        </li>
+      </ul>
+      <div class="well" ng-show="panel.isSelected(1)">
+        <h4>Genres</h4>
+        <p ng-repeat="genre in movie.genres">{{genre.name}}</p>
+      </div>
+      <div class="well" ng-show="panel.isSelected(2)">
+        <h4>Reviews</h4>
+      </div>
+      <div class="well" ng-show="panel.isSelected(3)">
+        <h4>Recommendations</h4>
+      </div>
+    </section>
+    <hr></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

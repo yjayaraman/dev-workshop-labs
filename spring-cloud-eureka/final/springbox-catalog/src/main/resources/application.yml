@@ -10,13 +10,7 @@ management:
 security:
   basic:
     enabled: false
- 
-logging:
-  level: 
-    org.springframework.web: DEBUG
-    org.hibernate: ERROR
-   
-    
+  
 greeting: Hello World
 spring:
   jpa:

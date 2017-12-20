@@ -1,7 +1,6 @@
 ---
 applications:
 - name: springbox-client
-  host: springbox-client
   random-route: true
   memory: 1G
   instances: 1
