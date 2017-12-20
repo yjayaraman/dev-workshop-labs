@@ -9,24 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="genres")
+@Table(name = "genres")
 public class Genre {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String mlId;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String name;
-	
-	@ManyToMany(mappedBy="genres")
+
+	@ManyToMany(mappedBy = "genres")
 	@JsonIgnore
 	private List<Movie> movies;
 
@@ -61,7 +60,5 @@ public class Genre {
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
-	
-	
-}
 
+}
