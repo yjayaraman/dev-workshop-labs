@@ -45,7 +45,7 @@ public class SpringboxClientApplication {
 		return movieClient.getBackendUri();
 	}
 	
-	@RequestMapping(name="/movies2", method = RequestMethod.GET, produces = {"application/json"})
+	@RequestMapping(path="/movies2", method = RequestMethod.GET, produces = {"application/json"})
 	public PagedResources<Movie> movies2() {
 		return movieClient.getMovies2();
 	}

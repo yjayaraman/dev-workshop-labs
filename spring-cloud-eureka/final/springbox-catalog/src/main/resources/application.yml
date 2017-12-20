@@ -15,7 +15,7 @@ logging:
   level: 
     org.springframework.web: DEBUG
     org.hibernate: ERROR
-    
+   
     
 greeting: Hello World
 spring:
