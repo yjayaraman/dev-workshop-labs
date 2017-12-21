@@ -11,9 +11,14 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 @Component
 public class MovieClient {
 
+	static final String STR= "{ \"_embedded\": {  \"movies\": [       {       \"title\": \"Backup Movie\", \"mlId\": \"1\",       \"numberInStock\": \"0\",  \"_links\":  {      \"self\":  {      \"href\": \"https://springbox-catalog-equivalve-matelot.cfapps.mag.perfexel.com/movies/1000\"  }  }}]}}";
+			//"{  \"_embedded\": { 	 \"movies\": [   {  \"title\": \"Backup Movie\", \"mlId\": \"1\", \"numberInStock\": \"0\" ] }}";
+
+
 	@Autowired
 	@LoadBalanced
 	RestTemplate restTemplate;
+	
 
 	@HystrixCommand(fallbackMethod = "getDefaultMovies", commandProperties = {
 	@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
@@ -26,6 +31,6 @@ public class MovieClient {
 	}
 
 	String getDefaultMovies() {
-		return "{movies: \"dummy\"}";
+		return STR;	
 	}
 }
