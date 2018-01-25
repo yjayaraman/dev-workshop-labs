@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/pivotal-enablement/hugo-theme-bootie-docs#readme",
   "devDependencies": {
-    "jquery": "~3.0.0"
+    "jquery": "3.0.0"
   }
 }
