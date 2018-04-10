@@ -20,12 +20,13 @@ public class MovieClient {
 	RestTemplate restTemplate;
 	
 
-	@HystrixCommand(fallbackMethod = "getDefaultMovies", commandProperties = {
-	@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
-	@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
-	@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "60000"),
-	@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") }, threadPoolProperties = {
-	@HystrixProperty(name = "coreSize", value = "30") })
+//	@HystrixCommand(fallbackMethod = "getDefaultMovies", commandProperties = {
+//	@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
+//	@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
+//	@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "60000"),
+//	@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") }, threadPoolProperties = {
+//	@HystrixProperty(name = "coreSize", value = "30") })
+	@HystrixCommand(fallbackMethod = "getDefaultMovies")
 	String getMovies() {
 		return restTemplate.getForObject("//SPRINGBOX-CATALOG/movies", String.class);
 	}

@@ -10,7 +10,7 @@ title = "_index"
 </div>
 <div style="width:63%; position: relative; display: inline-block; vertical-align: top">
 <div class="h4">
-This Portal serves as one-stop location to get educated on Pivotal Cloud Foundry, Spring Boot, Spring Cloud, Spring Cloud Data Flow, and how that we can help Nuance transform the way it builds software.
+This Portal serves as one-stop location to get educated on Pivotal Cloud Foundry, Spring Boot, Spring Cloud, Spring Cloud Data Flow, and how that we can help you transform the way it builds software.
 </div>
 <div class="h4">
 The Pivotal’s hands on workshops will introduce you to key concepts in modern application design with Pivotal Cloud Foundry, Spring Boot and Spring Cloud.

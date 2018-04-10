@@ -7,7 +7,7 @@ applications:
   random-route: true
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.sys.mag.perfexel.com
+    TRUST_CERTS: api.gcp.perfexel.com
   services:
   - springbox-catalog-db
   - springbox-config-service

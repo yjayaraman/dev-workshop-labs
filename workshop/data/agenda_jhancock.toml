@@ -1,0 +1,121 @@
+   [[days]]
+        day = "Agenda"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+            
+
+    [[days.sessions]]
+      title = "Getting started"
+
+            [[days.sessions.exercises]]
+            title = "_Setting up the workshop env_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Orgs, Spaces, Quotas"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+                lab = "/lab_101"
+
+        [[days.sessions.exercises]]
+            title = "_Pushing Your First Application_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First Application - Java"
+                lab = "/lab_102"
+
+    [[days.sessions]]
+        title = "Microservices Session 1:"
+
+        [[days.sessions.exercises]]
+            title = "_Spring Boot Primer_"
+            slides = "/slides/session3/session_01.pdf"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot Basics"
+                lab = "/lab_301"
+                slides = "/slides/session1/spring-boot-basics.pdf"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot Actuator"
+                lab = "/lab_302"
+                slides = "http://sl02.cfapps.io//spring-boot-actuator-slides/index.html#/"
+
+            [[days.sessions.exercises.labs]]
+                title = "Viewing Actuator in PCF"
+                lab = "/lab_302a"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot With Spring Data Rest - Data meets Hypermedia"
+                lab = "/lab_303"
+                slides = "http://sl02.cfapps.io//spring-data-rest-slides/index.html#/"
+
+            [[days.sessions.exercises.labs]]
+                lab = "/lab_303a"
+                title = "Deploying it to Cloud Foundry"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Breakp**"
+
+
+    [[days.sessions]]
+        title = "Microservices Session 2:"
+
+
+        [[days.sessions.exercises]]
+            title = "_Spring Cloud Native Architectures: Part One_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Config"
+                slides = "http://sl02.cfapps.io//spring-cloud-config-slides/index.html#/"
+                lab = "/lab_304"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Registry"
+                slides = "http://sl02.cfapps.io//spring-cloud-netflix-service-discovery-slides/index.html#/"
+                lab = "/lab_305"
+
+            [[days.sessions.exercises.labs]]
+                lab = "/lab_305a"
+                title = "Deploying it to Cloud Foundry"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+    [[days.sessions]]
+        title = "Microservices Session 3:"
+
+        [[days.sessions.exercises]]
+            title = "_Spring Cloud Native Architectures: Part Two_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Fault Tolerance With Hystrix and Monitoring Circuit Breakers with Hystrix Dashboard"
+                slides = "http://cloud-native-workshop.cloudfoundry.org/slides/#/33"
+                lab = "/lab_306"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Break**"
+
+    [[days.sessions]]
+        title = "CI/CD Using concourse"
+
+        [[days.sessions.exercises]]
+            title = "_Concourse Concepts_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Building a simple concourse pipeline"
+                #slides = "/slides/session3/session_06.pdf"
+                #lab = "/lab_306"
+
+            [[days.sessions.exercises.labs]]
+                title = "Blue Green Deployments using concourse"
+                #slides = "/slides/session3/session_06.pdf"
+                #lab = "/lab_306"
+
+
+        [[days.sessions.exercises]]
+            title = "**Wrap Up**"

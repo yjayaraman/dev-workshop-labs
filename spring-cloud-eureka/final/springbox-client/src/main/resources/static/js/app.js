@@ -4,8 +4,11 @@
   app.controller('CatalogController', ["$http", function($http) {
 	    var self=this;
 	    self.movies=[];
+	    self.hatresp={};
 	    $http.get('/movies').then( function(response){
-	    	self.movies=response.data;
+	    	self.hatresp=response.data;
+	    	embedded=self.hatresp._embedded;
+	    	self.movies=embedded.movies;
 	    }, function(errResponse) {
 	    	console.error('Error while getting movies')
 	    });

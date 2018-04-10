@@ -1,0 +1,1 @@
+{ "_embedded": {  "movies": [       {       "title": "Backup Movie", "mlId": "1",       "numberInStock": "0",  "_links":  {      "self":  {      "href": "https://springbox-catalog-equivalve-matelot.cfapps.mag.perfexel.com/movies/1000"  }  }}]}}

@@ -1,0 +1,26 @@
+management:
+  security:
+    enabled: false
+  info:
+    git:
+      mode: full                #<== Add this
+  cloudfoundry:
+    skip-ssl-validation: true   #<== Add this
+security:
+  basic:
+    enabled: false
+spring:
+  application:
+    name: springbox-catalog
+  profiles:
+    active: spanish
+
+server:
+  port: 9000
+  
+greeting: Hello World
+
+---
+spring:
+  profiles: spanish
+greeting: Hola

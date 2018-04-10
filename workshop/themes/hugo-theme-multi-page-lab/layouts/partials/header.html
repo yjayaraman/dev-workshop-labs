@@ -64,7 +64,7 @@ table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inh
 				{{ $url := .Permalink }}
 				{{ range $item := .Site.Params.mainMenu }}
 					{{ $itemUrl := printf "%s/%s/" $item }}
-					<li {{ if eq $url $itemUrl }}class="active"{{ end }}><a class="navbar-txt" href="/{{ $item }}">{{ title $item }}</a></li>
+					<li {{ if eq $url $itemUrl }}class="active"{{ end }}><a class="navbar-txt" href="/topmenu/{{ $item }}">{{ title $item }}</a></li>
 				{{ end }}
 			{{ end }}
 			{{ if  .Site.Params.noResourcesLink }}{{ else }}

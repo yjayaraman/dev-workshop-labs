@@ -1,0 +1,103 @@
+   [[days]]
+        day = "Agenda"
+            
+
+    [[days.sessions]]
+      title = "Dotnet on Pivotal Cloud Foundry"
+
+        [[days.sessions.exercises]]
+            title = "_Setting up the workshop env_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Orgs, Spaces, Quotas"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+                lab = "/lab_101"
+
+        [[days.sessions.exercises]]
+            title = "_Pushing Your First Application_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First ASP .NET Application"
+                lab = "/dotnet/lab_100"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First .NET Core Application"
+                lab = "/dotnet/lab_101"
+
+            [[days.sessions.exercises.labs]]
+                title = "Binding to Cloud Foundry Services - .NET"
+                lab = "/dotnet/lab_102"
+
+            [[days.sessions.exercises.labs]]
+                title = "Scaling and Operating Applications - .NET"
+                lab = "/dotnet/lab_103"
+
+            [[days.sessions.exercises.labs]]
+                title = "Monitoring Applications - .NET"
+                lab = "/dotnet/lab_104"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Break**"
+
+
+    [[days.sessions]]
+        title = "SteelToe:"
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core Primer_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Running, Publishing and Deploying ASP.NET Core Micro-services"
+                lab = "/dotnet/lab_105"
+
+            [[days.sessions.exercises.labs]]
+                title = "Build Fortune teller Micro-services"
+                lab = "/dotnet/lab_106"
+
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core Cloud Native Architectures: Part One_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe Config Server"
+                lab = "/dotnet/lab_107"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe Service Registry"
+                lab = "/dotnet/lab_108"
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core Cloud Native Architectures: Part Two_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe connectors and data protection providers"
+                lab = "/dotnet/lab_109"
+
+            [[days.sessions.exercises.labs]]
+                title = "**Break**"
+
+    [[days.sessions]]
+        title = "Dotnet Modernization"
+
+        [[days.sessions.exercises]]
+            title = "_Running legacy application on Pivotal Cloud Foundry_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Running existing legacy IIS apps"
+                lab = "/dotnet/lab_205"
+
+            [[days.sessions.exercises.labs]]
+                title = "Database management with Flyway"
+                lab = "/dotnet/lab_206"
+
+            [[days.sessions.exercises.labs]]
+                title = "Managing external depenedencies with CUPS"
+                lab = "/dotnet/lab_207"
+
+            [[days.sessions.exercises.labs]]
+                title = "Modernize backend with ASP.NET Core & Steeltoe Connectors"
+                lab = "/dotnet/lab_208"
+
+        [[days.sessions.exercises]]
+            title = "**_Retrospective_**"
+            slides = "https://postfacto.io/retros/raytheon"

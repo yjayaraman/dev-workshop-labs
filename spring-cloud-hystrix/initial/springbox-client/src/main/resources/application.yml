@@ -3,6 +3,12 @@ server:
 management:
   security:
     enabled: false
+  info:
+    git:
+      mode: full
+  cloudfoundry:
+    skip-ssl-validation: true 
+    
 security:
   basic:
     enabled: false

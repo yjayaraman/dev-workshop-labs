@@ -18,19 +18,19 @@
 
             [[days.sessions.exercises.labs]]
                 title = "Pivotal Overview" 
-                slides = "/slides/general/Fullerton Pivotal workshop.pdf"
+                slides = ["/slides/general/Fullerton Pivotal workshop.pdf"]
 
             [[days.sessions.exercises.labs]]
                 title = "Enabling a Cloud-Native Organization" 
-                slides = "/slides/general/Enabling a Cloud-Native Organization.key"   
+                slides = ["/slides/general/Enabling a Cloud-Native Organization.key"]   
 
             [[days.sessions.exercises.labs]]
                 title = "Pivotal Cloud Foundry Intro"
-                slides = "/slides/session1/PCF_Basics.key"
+                slides = ["/slides/session1/PCF_Basics.key"]
 
             [[days.sessions.exercises.labs]]
                 title = "Demo"
-                slides = "http://basics-workshop.cloudfoundry.org/slides/#/interacting"
+                slides = ["http://basics-workshop.cloudfoundry.org/slides/#/interacting"]
 
     [[days.sessions]]
       title = "Getting started"
@@ -40,45 +40,45 @@
 
             [[days.sessions.exercises.labs]]
                 title = "Orgs, Spaces, Quotas"
-                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
-                lab = "/lab_101"
+                slides = ["http://sl02.cfapps.io/orgs-spaces/index.html#"]
+                labs = ["/lab_101"]
 
         [[days.sessions.exercises]]
             title = "_Pushing Your First Application_"
 
             [[days.sessions.exercises.labs]]
                 title = "Pushing Your First Application - Java"
-                lab = "/lab_102"
+                labs = ["/lab_102"]
 
     [[days.sessions]]
         title = "Microservices Session 1:"
 
         [[days.sessions.exercises]]
             title = "_Spring Boot Primer_"
-            slides = "/slides/session3/session_01.pdf"
+            slides = ["/slides/session3/session_01.pdf"]
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Boot Basics"
-                lab = "/lab_301"
-                slides = "/slides/session1/spring-boot-basics.pdf"
+                labs = ["/lab_301"]
+                slides = ["/slides/session1/spring-boot-basics.pdf"]
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Boot Actuator"
-                lab = "/lab_302"
-                slides = "http://sl02.cfapps.io//spring-boot-actuator-slides/index.html#/"
+                labs = ["/lab_302"]
+                slides = ["http://sl02.cfapps.io//spring-boot-actuator-slides/index.html#/"]
 
             [[days.sessions.exercises.labs]]
                 title = "Viewing Actuator in PCF"
-                lab = "/lab_302a"
+                labs = ["/lab_302a"]
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Boot With Spring Data Rest - Data meets Hypermedia"
-                lab = "/lab_303"
-                slides = "http://sl02.cfapps.io//spring-data-rest-slides/index.html#/"
+                labs = ["/lab_303"]
+                slides = ["http://sl02.cfapps.io//spring-data-rest-slides/index.html#/"]
 
             [[days.sessions.exercises.labs]]
-                lab = "/lab_303a"
                 title = "Deploying it to Cloud Foundry"
+                labs = ["/lab_303a"]
 
             [[days.sessions.exercises.labs]]
                 title = "**Wrap Up**"
@@ -104,16 +104,16 @@
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Cloud Config"
-                slides = "http://sl02.cfapps.io//spring-cloud-config-slides/index.html#/"
-                lab = "/lab_304"
+                slides = ["http://sl02.cfapps.io//spring-cloud-config-slides/index.html#/"]
+                labs = ["/lab_304"]
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Cloud Registry"
-                slides = "http://sl02.cfapps.io//spring-cloud-netflix-service-discovery-slides/index.html#/"
-                lab = "/lab_305"
+                slides = ["http://sl02.cfapps.io//spring-cloud-netflix-service-discovery-slides/index.html#/"]
+                labs = ["/lab_305"]
 
             [[days.sessions.exercises.labs]]
-                lab = "/lab_305a"
+                labs = ["/lab_305a"]
                 title = "Deploying it to Cloud Foundry"
 
             [[days.sessions.exercises.labs]]
@@ -127,8 +127,8 @@
 
             [[days.sessions.exercises.labs]]
                 title = "Fault Tolerance With Hystrix and Monitoring Circuit Breakers with Hystrix Dashboard"
-                slides = "/slides/session3/session_06.pdf"
-                lab = "/lab_306"
+                slides = ["http://cloud-native-workshop.cloudfoundry.org/slides/#/33"]
+                labs = ["/lab_306"]
 
             [[days.sessions.exercises.labs]]
                 title = "**Afternoon Break**"
@@ -137,17 +137,16 @@
         title = "CI/CD Using concourse"
 
         [[days.sessions.exercises]]
-            title = "_Concourse Concepts_"
+            title = "_Concourse overview_"
 
             [[days.sessions.exercises.labs]]
-                title = "Building a simple concourse pipeline"
-                #slides = "/slides/session3/session_06.pdf"
-                #lab = "/lab_306"
+                title = "Concourse overview"
+                slides = ["/slides/general/Concourse.pdf"]
+
 
             [[days.sessions.exercises.labs]]
                 title = "Blue Green Deployments using concourse"
-                #slides = "/slides/session3/session_06.pdf"
-                #lab = "/lab_306"
+
 
     [[days.sessions]]
         title = "Data Microservices Demo"
@@ -158,13 +157,217 @@
 
             [[days.sessions.exercises.labs]]
                 title = "Demo: RealTime Failure Prediction of Emulated Devices Demo"
-                slides = "/slides/general/IoT Demo.pdf"
+                slides = ["/slides/general/IoT Demo.pdf"]
 
             [[days.sessions.exercises.labs]]
                 title = "Spring Cloud Data Flow"
-                slides = "/slides/session4/springcloud_dataflow.pdf"
+                slides = ["/slides/session4/springcloud_dataflow.pdf"]
 
 
         [[days.sessions.exercises]]
             title = "**Wrap Up**"
-            #slides = "https://postfacto.io/retros/raytheon"
+
+   [[days]]
+        day = "Dotnet"
+            
+
+    [[days.sessions]]
+      title = "Dotnet on Pivotal Cloud Foundry"
+
+        [[days.sessions.exercises]]
+            title = "_Setting up the workshop env_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Orgs, Spaces, Quotas"
+                slides = ["http://sl02.cfapps.io/orgs-spaces/index.html#"]
+                labs = ["/lab_101"]
+
+        [[days.sessions.exercises]]
+            title = "_Pushing Your First Application_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First ASP .NET Application"
+                labs = ["/dotnet/lab_100"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First .NET Core Application"
+                labs = ["/dotnet/lab_101"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Binding to Cloud Foundry Services - .NET"
+                labs = ["/dotnet/lab_102"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Scaling and Operating Applications - .NET"
+                labs = ["/dotnet/lab_103"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Monitoring Applications - .NET"
+                labs = ["/dotnet/lab_104"]
+
+            [[days.sessions.exercises.labs]]
+                title = "**Break**"
+
+
+    [[days.sessions]]
+        title = "SteelToe:"
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core Primer_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Running, Publishing and Deploying ASP.NET Core Micro-services"
+                labs = ["/dotnet/lab_105"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Build Fortune teller Micro-services"
+                labs = ["/dotnet/lab_106"]
+
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core Cloud Native Architectures: Part One_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe Config Server"
+                labs = ["/dotnet/lab_107"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe Service Registry"
+                labs = ["/dotnet/lab_108"]
+
+        [[days.sessions.exercises]]
+            title = "_.NET Core Cloud Native Architectures: Part Two_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Steeltoe connectors and data protection providers"
+                labs = ["/dotnet/lab_109"]
+
+            [[days.sessions.exercises.labs]]
+                title = "**Break**"
+
+    [[days.sessions]]
+        title = "Dotnet Modernization"
+
+        [[days.sessions.exercises]]
+            title = "_Running legacy application on Pivotal Cloud Foundry_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Running existing legacy IIS apps"
+                labs = ["/dotnet/lab_205"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Database management with Flyway"
+                labs = ["/dotnet/lab_206"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Managing external depenedencies with CUPS"
+                labs = ["/dotnet/lab_207"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Modernize backend with ASP.NET Core & Steeltoe Connectors"
+                labs = ["/dotnet/lab_208"]
+
+        [[days.sessions.exercises]]
+            title = "**_Retrospective_**"
+            slides = ["https://postfacto.io/retros/raytheon"]
+
+   [[days]]
+        day = "AppTx1"
+            
+    [[days.sessions]]
+      title = "AppTx Workshop"
+
+        [[days.sessions.exercises]]
+            title = "_Day 1_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Event Storming"
+                slides = ["/slides/general/Event Storming.pdf", "https://www.youtube.com/watch?v=veTVAN0oEkQ"]
+
+
+            [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+        [[days.sessions.exercises]]
+            title = "_PCF Hands-on Lab_"
+
+            [[days.sessions.exercises.labs]]
+                title = "PCF Overview"
+                slides = ["/slides/session1/PCF_Basics.pdf","/slides/session1/PCF_2_1.pdf"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Setting up the workshop env"
+                slides = ["http://sl02.cfapps.io/orgs-spaces/index.html#"]
+                labs = ["/lab_101"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Pushing Your First Application - Java"
+                labs = ["/lab_102"]
+
+        [[days.sessions.exercises]]
+            title = "_Spring Boot Primer_"
+            slides = ["/slides/session3/session_01.pdf"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot Basics"
+                labs = ["/lab_301"]
+                slides = ["/slides/session1/spring-boot-basics.pdf"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot Actuator"
+                labs = ["/lab_302"]
+                slides = ["http://sl02.cfapps.io//spring-boot-actuator-slides/index.html#/"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Viewing Actuator in PCF"
+                labs = ["/lab_302a"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Boot With Spring Data Rest - Data meets Hypermedia"
+                labs = ["/lab_303"]
+                slides = ["http://sl02.cfapps.io//spring-data-rest-slides/index.html#/"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Deploying it to Cloud Foundry"
+                labs = ["/lab_303a"]
+
+        [[days.sessions.exercises]]
+            title = "_Spring Cloud Native Architectures: Part One_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Config"
+                slides = ["http://sl02.cfapps.io//spring-cloud-config-slides/index.html#/"]
+                labs = ["/lab_304"]
+
+            [[days.sessions.exercises.labs]]
+                title = "Spring Cloud Registry"
+                slides = ["http://sl02.cfapps.io//spring-cloud-netflix-service-discovery-slides/index.html#/"]
+                labs = ["/lab_305"]
+
+            [[days.sessions.exercises.labs]]
+                labs = ["/lab_305a"]
+                title = "Deploying it to Cloud Foundry"
+
+                              
+            [[days.sessions.exercises.labs]]
+                title = "**Wrap up**"
+
+        [[days.sessions.exercises]]
+            title = "_Day 2_"
+
+
+            [[days.sessions.exercises.labs]]
+                title = "SNAP Analysis"
+                slides = ["/slides/general/AppTxWorkshop.pdf" ]
+                labs = ["/slides/general/java-snap.xlsx"]
+
+
+            [[days.sessions.exercises.labs]]
+                title = "**Lunch**"
+
+            [[days.sessions.exercises.labs]]
+                title = "Value Stream Mapping"
+                slides = ["/slides/general/vsm.pdf"]    
+                              
+            [[days.sessions.exercises.labs]]
+                title = "**Wrap up**"

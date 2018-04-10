@@ -30,10 +30,20 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride('_method'));
 
 //cfenv
-
+var appEnv = cfenv.getAppEnv();
 
 //initialize redis client
+var client;
+if (appEnv.isLocal){
+   client = redis.createClient();
+} else {
+    const rediscreds = appEnv.getServiceCreds('my-cache');
+    client = redis.createClient({host: rediscreds.host, port: rediscreds.port, password: rediscreds.password});
+}
 
+client.on('connect', () => {
+    console.log('Redis connected...')
+});
 
 var locations;
 
@@ -45,7 +55,11 @@ app.get('/',(req,res,next) => {
         locations = JSON.parse(data);
         locations.forEach(function(element) {
             //Cache locations in Redis
-
+            client.hmset(element.id, ['name', element.name, 'address', element.address, 'map', element.map, 'lat', element.lat, 'lon', element.lon ], (err, reply) => {
+                if(err){
+                    console.log(err);
+                }
+            } );
         }, this);
     }
     hrend = process.hrtime(hrstart);
@@ -58,11 +72,27 @@ app.post('/lab/search', (req, res, next) => {
    const id = req.body.id;
 
    //Get the location from Redis
-
+   client.hgetall(id, (err,obj)=> {
+    if (!obj) {
+        res.render('searchlab', {
+            error: 'Invalid Lab ID'
+        });
+    } else {
+        console.log(obj.name);
+        console.log(obj.address);
+        console.log(obj.lat);
+        console.log(obj.lon);
+        res.render('details', {lab: obj});
+    }
+    });
 });
 
 app.get('/listlabs', (req,res,next) => {
     res.render('listlabs');
+});
+
+app.get('/addlabs', (req,res,next) => {
+    res.render('addlabs');
 });
 
 app.listen( process.env.PORT || port, () => {

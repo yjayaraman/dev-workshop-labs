@@ -24,18 +24,20 @@ public class MovieClient {
 	@Autowired
 	LoadBalancerClient loadBalancer;
 
-//	@HystrixCommand(fallbackMethod = "getDefaultMovies", commandProperties = {
-//			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
-//			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
-//			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "60000"),
-//			@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") }, threadPoolProperties = {
-//					@HystrixProperty(name = "coreSize", value = "30"),
-//					@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") })
-	String getMoviess() {
+	/*
+	@HystrixCommand(fallbackMethod = "getDefaultMovies", commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
+			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
+			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "60000"),
+			@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") }, threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "30"),
+					@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "180000") })
+	*/
+	public String getMoviess() {
 		return restTemplate.getForObject("//SPRINGBOX-CATALOG/movies", String.class);
 	}
 
-	PagedResources<Movie> getMovies() {
+	public PagedResources<Movie> getMovies() {
 		return restTemplate.exchange(
                 "//SPRINGBOX-CATALOG/movies",
                 HttpMethod.GET, null,
@@ -44,7 +46,7 @@ public class MovieClient {
         .getBody();
 
 	}
-	String getDefaultMovies() {
+	public String getDefaultMovies() {
 		return "{movies: \"dummy\"}";
 	}
 }

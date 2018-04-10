@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rf public/*
 touch pub.sh
 hugo
 cd public

@@ -1,0 +1,147 @@
+   [[days]]
+        day = "PALDay1"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Introductions and Value Prop"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Day in the life of Platform Operator"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "PCF Overview"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Applications"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Buildpacks"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Manifests"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+    [[days.sessions]]
+        title = "Afternoon Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "Orgs and Spaces"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Services"
+
+            [[days.sessions.exercises.labs]]
+                title = "Concourse overview"
+                slides = "/slides/session3/session_06.pdf"
+
+        [[days.sessions.exercises]]
+            title = "**Wrap Up**"
+
+   [[days]]
+        day = "PALDay2"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+
+            [[days.sessions.exercises.labs]]
+                title = "12-Factor App"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Domain Driven Design"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Evolutionary Architecture"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Test Driven Development"
+                slides = "http://sl02.cfapps.io/orgs-spaces/index.html#"
+
+
+    [[days.sessions]]
+        title = "Afternoon Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "Resilience"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Scaling"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Service Discovery"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Service Configuration"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Circuit Breakers"
+                slides = "#"
+
+
+        [[days.sessions.exercises]]
+            title = "**Wrap Up**"
+
+   [[days]]
+        day = "PALDay3"
+
+    [[days.sessions]]
+        title = "Morning Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "_8:30 AM - 9:00 AM: Breakfast_"
+
+            [[days.sessions.exercises.labs]]
+                title = "Portfolio Analysis"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "Application Snap Analysis"
+                slides = "#"
+
+
+    [[days.sessions]]
+        title = "Afternoon Session"
+
+        [[days.sessions.exercises]]
+
+            [[days.sessions.exercises.labs]]
+                title = "Event Storming"
+                slides = "#"
+
+            [[days.sessions.exercises.labs]]
+                title = "VSM Lite"
+                slides = "#"
+
+
+        [[days.sessions.exercises]]
+            title = "**Wrap Up**"

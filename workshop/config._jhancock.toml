@@ -1,0 +1,134 @@
+# Site settings
+baseurl = "http://workshops.cfapps.io/"
+languageCode = "en-us"
+title = "Pivotal Workshops"
+theme = "hugo-theme-multi-page-lab"
+copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
+ignorefiles = [ "static/slides/.*" ]
+
+[params]
+
+        # You can use Markdown syntax for urls [text](//url.to/source) for
+        # most longer texts.
+
+        # To provide some metadata for search engines feel free to add a few
+        # information about you and your website.
+    name = "Yadhav Jayaraman"
+    date = "2017-02-19T06:57:47Z-04:00"
+    venue = "200 Berkeley St. Boston (Back Bay station is closest T stop)"
+    dates = "Feb 16 2018 - John Hancock Spring Boot Workshop" 
+    customer_logo="jh.png"
+    mainMenu = ["lab_requirements", "agenda"]
+    noCategoryLink = true
+    #feedbackLink = "https://docs.google.com/forms/d/1KG88z2eWfG2Rx0guENzKgzeu6VlMjhRyW2PiJoCbtxI/viewform?entry.1504550910&entry.108151957&entry.1907066466=Liberty+Mutual&entry.1934264208&entry.2083454847&entry.1484855815&entry.1880096690&entry.879050699"
+
+
+    [[params.instructors]]
+        name = "Yadhav Jayaraman"
+        title = "Platform Architect"
+        org = "Pivotal."
+        email = "yjayaraman@pivotal.io"
+
+    [[params.instructors]]
+        name = "Craig Olrich"
+        title = "Platform Architect"
+        org = "Pivotal."
+        email = "colrich@pivotal.io"
+
+    [[params.instructors]]
+        name = "Lucy Sullivan"
+        title = "Account Executive"
+        org = "Pivotal."
+        email = "lsullivan@pivotal.io"
+
+  
+    [[params.booklinks]]
+        name = "Beyond the 12-Factor App"
+        url = "/books/Beyond_the_12-Factor_App_Pivotal.pdf"
+
+    [[params.booklinks]]
+        name = "Migrating to Cloud Native Application Architectures"
+        url = "/books/Migrating_to_Cloud-Native_App_Architectures_Pivotal.pdf"
+
+    [[params.booklinks]]
+        name = "Cloud Foundry The Cloud Native Platform"
+        url = "/books/Cloud_Foundry_The_Cloud_Native_Platform_Pivotal.pdf"
+
+    [[params.booklinks]]
+        name = "Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry"
+        url = "http://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646"
+
+# Resource Links
+
+        
+    [[params.resourcelinks]]
+        name = "All SpringOne Conference Videos"
+        url = "https://www.youtube.com/playlist?list=PLAdzTan_eSPQ2uPeB0bByiIUMLVAhrPHL"
+               
+    [[params.resourcelinks]]
+        name = "Try PCF on your Local Workstation with PCF Dev"
+        url = "http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction"
+
+    [[params.resourcelinks]]
+        name = "Try PCF on the Public Cloud"
+        url = "http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction"
+
+
+    [[params.resourcelinks]]
+        name = "Pivotal Overview"
+        url = "/CorporateOverview.pdf"
+
+
+    [[params.resourcelinks]]
+        name = "PCF Dev"
+        url = "https://network.pivotal.io/products/pcfdev"
+
+    [[params.resourcelinks]]
+        name = "PCF Documentation"
+        url = "https://docs.pivotal.io/pivotalcf"
+
+    [[params.resourcelinks]]
+        name = "CF CLI Documentation"
+        url = "https://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html"
+
+    [[params.resourcelinks]]
+        name = "Git"
+        url = "https://www.git-scm.com"
+
+    [[params.resourcelinks]]
+        name = "Git Lessons"
+        url = "https://try.github.io/levels/1/challenges/1"
+
+    [[params.resourcelinks]]
+        name = "Spring Platform"
+        url = "http://platform.spring.io/platform/"
+
+    [[params.resourcelinks]]
+        name = "Spring Docs"
+        url = "https://spring.io/docs"
+
+    [[params.resourcelinks]]
+        name = "Spring Initializer"
+        url = "http://start.spring.io/"
+
+    [[params.resourcelinks]]
+        name = "Spring Cloud at Netflix"
+        url = "https://spring.io/blog/2015/10/19/springone2gx-2015-replay-spring-cloud-at-netflix"
+
+    [[params.resourcelinks]]
+        name = "Microservices with Spring"
+        url = "https://spring.io/blog/2015/07/14/microservices-with-spring"
+
+    [[params.resourcelinks]]
+         name = "Spring Guides"
+         url = "https://spring.io/guides#tutorials"
+
+    [[params.resourcelinks]]
+        name = "Pivotal Network"
+        url = "https://network.pivotal.io/"
+
+    [[params.resourcelinks]]
+        name = "Pivotal Documentation"
+        url = "http://docs.pivotal.io"
+
+

@@ -30,6 +30,12 @@ input[type='text']{
 #input-id{
     width: 20%;
 }
+#input-name{
+    width: 20%;
+}
+#input-address{
+    width: 50%;
+}
 
 #submit{
     padding: 10px;

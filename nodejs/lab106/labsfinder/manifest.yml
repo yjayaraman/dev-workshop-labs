@@ -1,0 +1,8 @@
+---
+applications:
+- name: lab-finder
+  memory: 512M
+  instances: 1
+  random-route: true
+  services:
+  - my-cache

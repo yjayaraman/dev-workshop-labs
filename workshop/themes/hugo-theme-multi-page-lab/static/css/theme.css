@@ -1,7 +1,10 @@
+
 body {
   padding-top: 5px;
   padding-bottom: 30px;
 }
+
+.cls-2{fill:#008775}
 
 .theme-dropdown .dropdown-menu {
   position: static;

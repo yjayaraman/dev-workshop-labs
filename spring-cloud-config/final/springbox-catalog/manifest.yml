@@ -8,8 +8,7 @@ applications:
   path: target/springbox-catalog-0.0.1-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
-    TRUST_CERTS: api.sys.mag.perfexel.com  # <--- Add this!
+    TRUST_CERTS: api.gcp.perfexel.com
   timeout: 120
   services:
-    - springbox-catalog-db
     - springbox-config-service  # <--- Add this!

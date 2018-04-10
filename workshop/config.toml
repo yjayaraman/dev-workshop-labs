@@ -1,9 +1,10 @@
 # Site settings
-baseurl = "http://raytheon.cfapps.io/"
+baseurl = "http://workshops.cfapps.io/"
 languageCode = "en-us"
-title = "Raytheon Pivotal Workshops"
+title = "Pivotal Workshops"
 theme = "hugo-theme-multi-page-lab"
 copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
+ignorefiles = [ "static/slides/.*" ]
 
 [params]
 
@@ -13,11 +14,11 @@ copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
         # To provide some metadata for search engines feel free to add a few
         # information about you and your website.
     name = "Yadhav Jayaraman"
-    date = "2017-12-19T06:57:47Z-04:00"
-    venue = "WEBEX: https://pivotal.webex.com/join/yjayaraman <br> Venue:TBD"
-    dates = "Next Workshop: Dec 20-21, Dulles, Virginia" 
+    date = "2017-02-19T06:57:47Z-04:00"
+    venue = ""
+    dates = "" 
     customer_logo="raytheon.png"
-    mainMenu = ["lab_requirements", "day1", "day2", "cloud_tig"]
+    mainMenu = ["apptx1", "java_requirements", "java1", "java2", "dotnet_requirements", "dotnet"]
     noCategoryLink = true
     #feedbackLink = "https://docs.google.com/forms/d/1KG88z2eWfG2Rx0guENzKgzeu6VlMjhRyW2PiJoCbtxI/viewform?entry.1504550910&entry.108151957&entry.1907066466=Liberty+Mutual&entry.1934264208&entry.2083454847&entry.1484855815&entry.1880096690&entry.879050699"
 
@@ -34,7 +35,6 @@ copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
         org = "Pivotal."
         email = "jglenn@pivotal.io"
 
-  
     [[params.booklinks]]
         name = "Beyond the 12-Factor App"
         url = "/books/Beyond_the_12-Factor_App_Pivotal.pdf"
@@ -56,7 +56,7 @@ copyright = "Copyright (c) 2015, Pivotal; All rights reserved."
         
     [[params.resourcelinks]]
         name = "All SpringOne Conference Videos"
-        url = "https://www.youtube.com/playlist?list=PLAdzTan_eSPQ1fuLSBhyB4eEZF7JQM0Mx"
+        url = "https://www.youtube.com/playlist?list=PLAdzTan_eSPQ2uPeB0bByiIUMLVAhrPHL"
                
     [[params.resourcelinks]]
         name = "Try PCF on your Local Workstation with PCF Dev"

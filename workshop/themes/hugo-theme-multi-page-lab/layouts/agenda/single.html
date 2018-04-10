@@ -36,9 +36,9 @@
                             <div style="float:left;">
                               {{ with .title }}<span>{{ . | markdownify }}</span><br>{{ end }}
                             </div>
-                            <div style="float:right;">    
-                              {{ with .slides }}<a href="{{.}}" class="tag-item label label-primary mlm">slides</a> {{end}}
-             	                {{ with .lab }}<a class="tag-item label label-primary"  href="{{.}}">lab</a> {{end}}       
+                            <div style="float:right;">  
+                              {{ range .slides }}<a href="{{.}}" class="tag-item label label-primary mlm">slides</a> {{end}}
+             	                {{ range .labs }}<a class="tag-item label label-primary"  href="{{.}}">labs</a> {{end}}       
                             </div>
                           </div><br>
                           <hr style="height:1px;">

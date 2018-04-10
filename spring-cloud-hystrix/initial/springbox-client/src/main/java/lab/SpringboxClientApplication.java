@@ -18,12 +18,10 @@ import lab.domain.Movie;
 @EnableDiscoveryClient
 //@EnableCircuitBreaker
 @RestController
-
 public class SpringboxClientApplication {
 	
 	@Autowired
 	private MovieClient movieClient;
-	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringboxClientApplication.class, args);
@@ -35,12 +33,12 @@ public class SpringboxClientApplication {
         return new RestTemplate();
     }
     
-	@RequestMapping("/moviess")
+	//@RequestMapping("/moviess")
 	public String moviess() {
 		return movieClient.getMoviess();
 	}
 	
-	@RequestMapping(name="/movies", method = RequestMethod.GET, produces = {"application/json"})
+	@RequestMapping(path="/movies", method = RequestMethod.GET, produces = {"application/json"})
 	public PagedResources<Movie> movies() {
 		return movieClient.getMovies();
 	}

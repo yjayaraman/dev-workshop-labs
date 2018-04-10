@@ -50,7 +50,7 @@ $ cd $COURSE_HOME/dotnet/pcf-dotnet-environment-viewer/ViewEnvironment
 . Push the application!
 +
 ----
-$ cf push attendees -p attendees.jar --random-route
+$ cf push env -s windows2012R2 -b hwc_buildpack
 ----
 +
 You should see output similar to the previous exercise
