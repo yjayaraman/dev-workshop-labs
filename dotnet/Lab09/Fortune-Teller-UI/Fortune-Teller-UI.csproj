@@ -11,16 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.0" />
-    <PackageReference Include="Pivotal.Extensions.Configuration.ConfigServer" version="1.0.0" />
-    <PackageReference Include="Pivotal.Discovery.Client" version="1.0.0" />
-    <PackageReference Include="Steeltoe.CloudFoundry.Connector.Redis" version="1.0.0" />
-    <PackageReference Include="Steeltoe.Security.DataProtection.Redis" version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Pivotal.Extensions.Configuration.ConfigServer" version="2.2.0" />
+    <PackageReference Include="Pivotal.Discovery.Client" version="2.2.0" />
+    <PackageReference Include="Steeltoe.CloudFoundry.Connector.Redis" version="2.2.0" />
+    <PackageReference Include="Steeltoe.Security.DataProtection.Redis" version="2.2.0" />
   </ItemGroup>
 
 
