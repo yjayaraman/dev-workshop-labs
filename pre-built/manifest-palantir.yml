@@ -1,0 +1,6 @@
+---
+applications:
+  - name: palantir-test
+    path: target/PalantirTest-0.0.1-SNAPSHOT.jar
+    env:
+      JAVA_OPTS: "-Dhttp.proxyHost=proxy.ext.ray.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=proxy.ext.ray.com -Dhttps.proxyPort=80 -Dhttp.nonProxyHosts=127.0.0.1,localhost,.ray.com,s3-us-gov-west-1.amazonaws.com,169.254.169.254,rds.amazonaws.com,s3-fips-us-gov-west-1.amazonaws.com -Dcom.amazonaws.sdk.disableCertChecking -Djavax.net.debug=ssl:trustmanager"
