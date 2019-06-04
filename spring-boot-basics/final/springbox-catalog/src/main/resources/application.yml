@@ -1,4 +1,23 @@
-greeting: "Hello Movie Fans!"
+management:
+  security:
+    enabled: false
+  info:
+    git:
+      mode: full                #<== Add this
+  cloudfoundry:
+    skip-ssl-validation: true   #<== Add this
 security:
   basic:
     enabled: false
+spring:
+  application:
+    name: springbox-catalog
+  profiles:
+    active: spanish
+     
+greeting: Hello World
+
+---
+spring:
+  profiles: spanish
+greeting: Hola
