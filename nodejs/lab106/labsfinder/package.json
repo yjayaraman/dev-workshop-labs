@@ -16,6 +16,6 @@
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.10",
     "node-geocoder": "^3.21.1",
-    "redis": "^2.8.0"
+    "redis": "^3.1.1"
   }
 }
